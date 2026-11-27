@@ -4,7 +4,7 @@
 > Một trang. Mỗi dataset một mục. Dữ liệu chạy thử (bài mẫu, thông báo mẫu, đoạn transcript…) để trong thư mục `data/` này.
 > Không commit nguyên tài liệu khoá, dữ liệu cá nhân thật hay nguyên file data BTC cấp — chỉ đoạn trích ngắn, bản viết lại, hoặc số đã tổng hợp.
 
-Mọi người, quán, đơn trong `data/` đều dựng, nhãn `synthetic`.
+Ba tệp JSON trong `data/` dùng dữ liệu nhóm viết tay, nhãn `synthetic`. Seed ngẫu nhiên không áp dụng. Bản v1 được lưu trực tiếp trong Git để tái hiện cùng dữ liệu.
 Không có số điện thoại, địa chỉ hay tên người thật nào.
 Mốc giờ dùng khi chạy bộ câu thử: `2026-11-27T21:00:00+07:00` (code nên cố định mốc này khi tính hạn báo 24 giờ, để kết quả không đổi theo ngày chạy).
 
