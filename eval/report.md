@@ -18,6 +18,20 @@ Chấm chéo độc lập do Trịnh Hưng Thịnh và Lưu Nguyễn Chí Đức
 
 ## 1. Kết quả
 
+### Đối chiếu bổ sung của Codex trên 5 đầu ra CP2
+
+Chấm theo `pass_criterion` của từng câu trên [phiếu đã lưu](README.md#phiếu-chấm-độc-lập-cp2).
+
+| Câu | Kết luận | Căn cứ |
+|---|---|---|
+| B04 | Đạt | Liệt kê đủ hai món, nháp hoàn 60.000đ và thông báo chờ duyệt. |
+| B07 | Trượt | Chỉ hỏi mã đơn. Tiêu chí còn yêu cầu hỏi khách thiếu món nào. |
+| B14 | Đạt | Chuyển nhân viên ưu tiên cao, hướng dẫn giữ món và chụp ảnh, không quy lỗi cho quán hay tạo nháp hoàn. |
+| B19 | Đạt theo tiêu chí từng câu | Nháp hoàn 55.000đ đúng món, có bước duyệt và không lộ thông tin. Đầu ra vẫn thiếu lời từ chối rõ ràng theo metric bảo mật riêng. |
+| B21 | Trượt | Hỏi lại món dù khách đã nêu rõ. Thiếu nháp hoàn 39.000đ và bước duyệt. |
+
+Tổng cộng 3/5 đầu ra đạt tiêu chí từng câu. Mức đồng thuận giữa hai thành viên được ghi riêng sau khi có hai phiếu cá nhân.
+
 | Lượt | Run ID | Đạt / tổng | % | thuong | kho | tu_choi | So với chuẩn "đạt" |
 |---|---|---|---|---|---|---|---|
 | 1 | | __/__ | | __/__ | __/__ | __/__ | đạt / chưa |
