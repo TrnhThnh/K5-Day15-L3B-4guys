@@ -7,13 +7,13 @@
 - Tên nhóm: 4guys
 - Lớp: L3B
 - Track: D
-- Link repo: [____](https://github.com/TrnhThnh/K5-Day15-L3B-4guys)
+- Link repo: https://github.com/TrnhThnh/K5-Day15-L3B-4guys
 
 | STT | Họ và tên | Mã học viên | Vai trò | Phần việc chính |
 |---|---|---|---|---|
 | 1 |Trịnh Hưng Thịnh|2A202603907| Đội trưởng | ____ |
 | 2 | Lưu Nguyễn Chí Đức | 2A202603923 | Thành viên | ____ |
-| 3 | Dương Minh Chiến | 2A20260 | Thành viên | ____ |
+| 3 | Dương Minh Chiến | 2A202603921 | Thành viên | ____ |
 | 4 | Trần Đức Trung | 2A202603938 | Thành viên | ____ |
 
 **Quy tắc điền**
