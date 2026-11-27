@@ -1,4 +1,4 @@
-# AI SPEC - Xử lý khiếu nại đơn đồ ăn thiếu món · Nhóm 4guys · Phòng C401 · Zone __
+# AI SPEC - Xử lý khiếu nại đơn đồ ăn thiếu món · Nhóm 4guys · Phòng C401 · Zone 1
 
 > Mốc nộp: §7 chốt chuẩn "đạt" tại **CP2 19:30 Thứ Sáu 27/11** · §0–§7 nộp **CP3 10:00 Thứ Bảy 28/11** · đủ §0–§10 **CP4 14:30 Thứ Bảy 28/11** · §10 changelog ghi tiếp đến **23:59 Thứ Bảy 28/11**.
 > Đầu mỗi mục ghi bước guide (`02-guide.md` trong repo đề) chỉ cách điền. Mỗi mục ngắn, có số và nguồn; chi tiết để ở file được trỏ tới.
@@ -25,15 +25,19 @@ Data BTC cấp đã dùng (nếu có - không commit nguyên file): không có (
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-| D1 · thiếu món trong đơn nhiều món |  |  |  |  | Có | ✓ |
-| D1 hẹp · người nhà bệnh nhân đặt đồ ăn tới bệnh viện |  |  |  |  | Bằng chứng không kịp | ✗ |
-| D2 · đặt đơn nhóm có ràng buộc ăn uống |  |  |  |  | Có, nhưng bằng chứng mỏng | ✗ |
+| D1 · thiếu món trong đơn nhiều món | ~1.100 / 10.000 khách *(tự ước tính, xem dưới)* | 1 | ~20 phút chờ + tiền món thiếu không được hoàn đúng (1 ca: đơn thiếu gần 100k, bù mã 15k) | ~370 giờ | Có | ✓ |
+| D1 hẹp · người nhà bệnh nhân đặt đồ ăn tới bệnh viện | rất ít: 2 review / 89.919 *(chưa có cách đếm, xem dưới)* | chưa đo | chưa đo (rủi ro sức khoẻ, không chỉ tiền) | không ước được | Bằng chứng không kịp | ✗ |
+| D2 · đặt đơn nhóm có ràng buộc ăn uống | chưa đo: review công khai gần như không nhắc | chưa đo | chưa đo | không ước được | Có, nhưng bằng chứng mỏng | ✗ |
 
-- **Impact / tháng** của hướng chọn = __ người × __ lần × __ phút = __ - nguồn từng thừa số: __ (không có nguồn thì ghi rõ *(tự ước tính)*)
+- **Impact / tháng** của hướng chọn = 1.100 người × 1 lần × 20 phút ≈ 22.000 phút ≈ **370 giờ / tháng** trên 10.000 khách, chưa tính tiền món thiếu không được hoàn đúng. Nguồn từng thừa số:
+  - 10.000 khách đặt đồ ăn / tháng: quy mô thí điểm *(tự ước tính)*. Đối chiếu quy mô: Grab báo hệ tự động giảm khoảng 32.000 ticket xử lý tay / tháng cho riêng ca thiếu một phần đơn, toàn khu vực, không tách VN ([Inside Grab, 14/08/2026](https://www.grab.com/inside-grab/stories/how-we-taught-llms-to-solve-the-missing-muffins-mystery/)).
+  - 1.100 người gặp / tháng = 10.000 × 1/3 (người gặp thiếu/sai món trong 3 tháng) ÷ 3 tháng. Tỉ lệ 1/3 là **ngưỡng giả thuyết, chưa kiểm** (`evidence/hypothesis.md`) - thay bằng câu 3 khảo sát `evidence/survey/form.md`.
+  - 1 lần / người / tháng: *(tự ước tính)* - thay bằng câu 1 và câu 3 khảo sát.
+  - 20 phút / lần: *(tự ước tính)*; review cho thấy dao động từ 30 phút không ai trả lời đến nhiều ngày (`evidence/data-mining.md`, mẫu B) - thay bằng trung vị câu 8 khảo sát.
 - Hướng ĐÃ LOẠI + vì sao:
-  - Người nhà bệnh nhân làm người dùng chính: trong 89.919 review Google Play (2024–2026) của ShopeeFood, Grab, be, Xanh SM chỉ có 2 khiếu nại đồ ăn giao tới bệnh viện; người dùng này không có trong lớp, khó đủ 3 cuộc phỏng vấn trong 1 tháng qua trước CP3. Giữ lại thành ca khó lớp 4 (§5).
+  - Người nhà bệnh nhân làm người dùng chính: trong 89.919 review Google Play (2024–2026) của ShopeeFood, Grab, be, Xanh SM chỉ có 2 khiếu nại đồ ăn giao tới bệnh viện *(cách đếm chưa ghi trong `evidence/data-mining.md` và chưa có script đếm - Chiến bổ sung trước CP3, nếu không thì bỏ con số này)*; người dùng này không có trong lớp, khó đủ 3 cuộc phỏng vấn trong 1 tháng qua trước CP3. Giữ lại thành ca khó lớp 4 (§5).
   - D2: hai app lớn đã có đặt đơn nhóm; review công khai gần như không nói tới đơn nhóm có ràng buộc ăn uống; 4 nhóm L3B khác đã đi D2.
-- Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8): __
+- Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8) *(tự ước tính, thay bằng câu 1 + câu 3 khảo sát)*: ít gặp - 1 lần khiếu nại / 3 tháng · thỉnh thoảng - 1 lần / tháng · hay gặp (đặt nhiều, đơn nhiều món) - 2–3 lần / tháng.
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - **Grab, hệ LLM xử lý "thiếu một phần đơn"** ([Inside Grab, 14/08/2026](https://www.grab.com/inside-grab/stories/how-we-taught-llms-to-solve-the-missing-muffins-mystery/)): đáng học: tra giá món thiếu từ menu, ca an toàn (dị vật, đồ ăn hỏng) chuyển thẳng người · đáng né: không công bố độ chính xác, hoàn "xấp xỉ" khi không khớp món · mình khác: số tiền lấy **đúng** từ dữ liệu đơn và do code kiểm, có bộ câu thử công khai với chuẩn "đạt" bằng số, không trừ tiền quán / shipper khi chưa có bằng chứng.
@@ -120,7 +124,7 @@ flowchart TD
 (1) nguồn sự thật · (2) mơ hồ / thiếu thông tin · (3) ngoài phạm vi / thẩm quyền · (4) đặc thù lĩnh vực (sai thì người dùng mất gì đắt nhất)
 
 ## §6. Bốn đường đi của trải nghiệm
-- **Mọi thứ suôn sẻ:** khách gửi mã đơn + món thiếu → trong một tin: xin lỗi, "đã tạo yêu cầu hoàn X đ cho món Y (điều khoản Z), nhân viên duyệt trong __".
+- **Mọi thứ suôn sẻ:** khách gửi mã đơn + món thiếu → trong một tin: xin lỗi, "đã tạo yêu cầu hoàn X đ cho món Y (điều khoản Z), nhân viên duyệt trong 2 giờ" (thời hạn duyệt là giả định của nhóm *(tự ước tính)*, chưa có trong `data/policy.json`).
 - **Không chắc (lớp 2):** thiếu mã đơn hoặc món mơ hồ → hỏi đúng một câu, không đoán.
 - **Không có căn cứ (lớp 1):** món không có trong đơn, hoặc đơn không tồn tại → nói rõ không thấy trong đơn, mời gửi lại mã đơn hoặc chuyển nhân viên.
 - **Người dùng sửa:** khách sửa lại món / mã đơn → chạy lại từ đầu với thông tin mới; khách không đồng ý → chuyển nhân viên.
@@ -145,14 +149,14 @@ flowchart TD
 
 ## §10. Phân công & changelog
 - Phân công có tên: **Cặp X (build + chi phí):** Lưu Nguyễn Chí Đức (luồng agent, nối model, §4, video) · Trịnh Hưng Thịnh (công cụ + `check_limit`, §2, §8, nộp checkpoint). **Cặp Y (bằng chứng + đánh giá):** Dương Minh Chiến (đào review, khảo sát, phỏng vấn, §0–§1) · Trần Đức Trung (dữ liệu dựng, bộ câu thử, metric, §5, §7). Mỗi người tự phỏng vấn ≥1 khách. Slide: Thịnh + Chiến.
-- Dùng AI vào việc gì (2–3 dòng; chi tiết `docs/ai-usage.md`): __
+- Dùng AI vào việc gì (2–3 dòng; chi tiết `docs/ai-usage.md`): Claude chạy desk research Track D (review công khai, chính sách, luật) và soạn nháp canvas, giả thuyết, spec; người trong nhóm đọc lại và sửa. Gắn nhãn lượt đầu cho `evidence/reviews-labelled.csv` có trợ giúp của AI trên review thật đã cào; Chiến soát lại ≥20 dòng. Coding agent hỗ trợ viết `codebase/`; số tiền hoàn do code tính, không do model.
 - Nhật ký thay đổi - **mọi thay đổi sau CP2 19:30 Thứ Sáu 27/11 phải có dòng ở đây**:
 
 **CP2 → CP4** (vd thu hẹp lát cắt, hỏi thêm người dùng, lần cải tiến trước lượt 2)
 
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
-| Rà soát CP2 | Đồng bộ chuẩn tổng trong eval/README.md với §7 và sửa bộ trích món ở chế độ giả. | B01 hỏi lại dù khách đã ghi rõ tên món. |
+| 27/11 18:27 (trước CP2) | Đồng bộ chuẩn tổng trong eval/README.md với §7 và sửa bộ trích món ở chế độ giả. | B01 hỏi lại dù khách đã ghi rõ tên món. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý - không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
