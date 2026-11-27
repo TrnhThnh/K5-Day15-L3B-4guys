@@ -26,7 +26,7 @@ Data BTC cấp đã dùng (nếu có - không commit nguyên file): không có (
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
 | D1 · thiếu món trong đơn nhiều món | ~1.100 / 10.000 khách *(tự ước tính, xem dưới)* | 1 | ~20 phút chờ + tiền món thiếu không được hoàn đúng (1 ca: đơn thiếu gần 100k, bù mã 15k) | ~370 giờ | Có | ✓ |
-| D1 hẹp · người nhà bệnh nhân đặt đồ ăn tới bệnh viện | rất ít: 2 review / 89.919 *(chưa có cách đếm, xem dưới)* | chưa đo | chưa đo (rủi ro sức khoẻ, không chỉ tiền) | không ước được | Bằng chứng không kịp | ✗ |
+| D1 hẹp · người nhà bệnh nhân đặt đồ ăn tới bệnh viện | chưa đo được tần suất từ nguồn có thể kiểm lại | chưa đo | chưa đo (rủi ro sức khoẻ, không chỉ tiền) | không ước được | Bằng chứng không kịp | ✗ |
 | D2 · đặt đơn nhóm có ràng buộc ăn uống | chưa đo: review công khai gần như không nhắc | chưa đo | chưa đo | không ước được | Có, nhưng bằng chứng mỏng | ✗ |
 
 - **Impact / tháng** của hướng chọn = 1.100 người × 1 lần × 20 phút ≈ 22.000 phút ≈ **370 giờ / tháng** trên 10.000 khách, chưa tính tiền món thiếu không được hoàn đúng. Nguồn từng thừa số:
@@ -35,7 +35,7 @@ Data BTC cấp đã dùng (nếu có - không commit nguyên file): không có (
   - 1 lần / người / tháng: *(tự ước tính)* - thay bằng câu 1 và câu 3 khảo sát.
   - 20 phút / lần: *(tự ước tính)*; review cho thấy dao động từ 30 phút không ai trả lời đến nhiều ngày (`evidence/data-mining.md`, mẫu B) - thay bằng trung vị câu 8 khảo sát.
 - Hướng ĐÃ LOẠI + vì sao:
-  - Người nhà bệnh nhân làm người dùng chính: trong 89.919 review Google Play (2024–2026) của ShopeeFood, Grab, be, Xanh SM chỉ có 2 khiếu nại đồ ăn giao tới bệnh viện *(cách đếm chưa ghi trong `evidence/data-mining.md` và chưa có script đếm - Chiến bổ sung trước CP3, nếu không thì bỏ con số này)*; người dùng này không có trong lớp, khó đủ 3 cuộc phỏng vấn trong 1 tháng qua trước CP3. Giữ lại thành ca khó lớp 4 (§5).
+  - Người nhà bệnh nhân đặt đồ ăn tới bệnh viện: nhóm chưa có mẫu riêng đủ để ước lượng tần suất và tác động. Giữ tình huống xung đột chế độ ăn làm ca khó lớp 4 (§5).
   - D2: hai app lớn đã có đặt đơn nhóm; review công khai gần như không nói tới đơn nhóm có ràng buộc ăn uống; 4 nhóm L3B khác đã đi D2.
 - Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8) *(tự ước tính, thay bằng câu 1 + câu 3 khảo sát)*: ít gặp - 1 lần khiếu nại / 3 tháng · thỉnh thoảng - 1 lần / tháng · hay gặp (đặt nhiều, đơn nhiều món) - 2–3 lần / tháng.
 
@@ -157,6 +157,7 @@ flowchart TD
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
 | 27/11 18:27 (trước CP2) | Đồng bộ chuẩn tổng trong eval/README.md với §7 và sửa bộ trích món ở chế độ giả. | B01 hỏi lại dù khách đã ghi rõ tên món. |
+| 27/11, chuẩn bị CP3 | Bổ sung số khảo sát sơ bộ và gỡ ước lượng tần suất giao tới bệnh viện. | 12 phiếu tại lần đọc đầu, 6 người có đặt qua app. Nhóm chưa có cách tái hiện phép đếm riêng cho bệnh viện. Xem `evidence/summary.md`. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý - không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

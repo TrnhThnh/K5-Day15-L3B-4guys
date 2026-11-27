@@ -10,7 +10,7 @@
 |---|---|---|
 | Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☑ lượt đầu, chờ Chiến soát nhãn | `evidence/data-mining.md` · `evidence/reviews-labelled.csv` · `evidence/scripts/` |
 | Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | ☐ chờ kết quả | `evidence/interviews/script.md` · `P1.md`… |
-| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☐ chờ kết quả | `evidence/survey/form.md` |
+| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | 12 phiếu tại lần đọc ngày 27/11; 6 người có đặt qua app. Tư cách ngoài nhóm chưa được xác minh. | Google Sheets của nhóm, câu 1, 3 và 10 |
 
 ## 2. Số chính
 
@@ -18,7 +18,7 @@
 - **Đào data, mẫu B** (mọi review khớp từ khoá thiếu món, 4 app, 27/11/2025 - 26/11/2026): 41/50 hit là đơn thiếu món thật; trong 41 đơn đó, chờ lâu / bot **21/41 (51,2%)** · bù voucher thay vì hoàn giá **6/41 (14,6%)** · bị từ chối / không được gì **6/41 (14,6%)** · ít nhất một trong ba **30/41 (73,2%)**.
   Trong 13 review kể rõ kết quả cuối, chỉ 2 được bù đúng phần thiếu.
 - Phỏng vấn: *chờ kết quả* - __/3 người gặp *(n nhỏ không ghi %)* · số lần / tháng: P1 __, P2 __, P3 __ · mỗi lần mất __–__ phút
-- Khảo sát: *chờ kết quả* - n = __ · gặp thiếu/sai món 3 tháng qua __/__ (__%) · trong đó không được hoàn đúng giá __/__ (__%)
+- Khảo sát sơ bộ ngày 27/11 có 12 phiếu. Câu 1 có 6 người chọn 0 lần, 4 người chọn 1–3 lần, 1 người chọn 4–10 lần và 1 người chọn hơn 10 lần. Trong 6 người có đặt, 3 người báo thiếu/sai món ở câu 3. Ở câu 10, 1 trong 3 được hoàn đúng giá, 1 chỉ nhận voucher và 1 không khiếu nại.
 
 Phỏng vấn nhiều vai thì đếm theo từng vai, không cộng chung.
 
@@ -36,17 +36,15 @@ Phỏng vấn nhiều vai thì đếm theo từng vai, không cộng chung.
 4. "Mình gửi yêu cầu trong app lên Green SM khiếu nại. 22 tiếng sau, yêu cầu đó vẫn ở trạng thái "đang mở"? và chưa chuyển qua "xử lý"." - review Xanh SM, 1★, 20/08/2026 (`B-xanhsm-2026-08-20T12:38:54`)
 5. "Quán giao món thiếu, shopfood xử lý bằng cách hoàn mã giảm giá, k hoàn tiền, nhưng mã giảm vô nghĩa ship 29k tặng mã 30k. K bao giờ dám đặt lại." - review ShopeeFood, 1★, 07/11/2026 (`A-shopeefood-2026-11-07T16:29:21`)
 6. *(phỏng vấn - chờ kết quả)*
-7. *(khảo sát câu 10 - chờ kết quả)*
 
 ## 4. Các nguồn có khớp nhau không
 
 Data nói: thiếu món **hiếm** trong review (2/150 phàn nàn ShopeeFood), nhưng khi đã xảy ra thì phần lớn người viết review kể bị bot / chờ lâu / chỉ được voucher / không được gì (30/41).
-Người dùng nói: *chờ kết quả khảo sát và phỏng vấn.*
-Khớp / lệch ở đâu, vì sao: *chờ kết quả* - điểm cần kiểm nhất là tần suất (review không đo được) và kết quả lần gần nhất của người **không** viết review.
+Khảo sát cũng ghi nhận một trường hợp chỉ nhận voucher. Một người bỏ qua khi gặp sự cố, nên việc chỉ đọc review có thể bỏ sót trải nghiệm này. Phỏng vấn đang chờ kết quả.
 
 ## 5. Kết luận
 
-Giả thuyết ở `evidence/hypothesis.md`: *chờ kết quả khảo sát* - ngưỡng giả thuyết đo bằng khảo sát, không bằng review.
+Hai tỷ lệ sơ bộ để kiểm giả thuyết ở `evidence/hypothesis.md` là 3/6 gặp sự cố và 2/3 không được hoàn đúng giá hay giao bù. Cỡ mẫu người có đặt còn dưới ngưỡng 20 người ngoài nhóm, nên nhóm chưa chốt giả thuyết từ khảo sát.
 Tín hiệu từ review: vế "kênh khiếu nại là bot / chờ lâu, thường chỉ được voucher" được ủng hộ; vế "thiếu món xảy ra đủ thường" **chưa** được ủng hộ - cách giải thích khác (a) và (b) trong giả thuyết vẫn mở, vì giao trễ là phàn nàn lớn hơn nhiều (40/150 so với 2/150).
 Điều vẫn chưa biết: bao nhiêu % người trong lớp gặp thiếu món trong 3 tháng; mỗi lần mất bao nhiêu phút; người không viết review có được hoàn đúng giá không.
 
