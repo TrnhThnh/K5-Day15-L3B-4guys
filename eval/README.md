@@ -42,6 +42,9 @@ Chi tiết ở `data/DATA_CARD.md`.
 | Người chấm | B04 | B07 | B14 | B19 | B21 |
 |---|---|---|---|---|---|
 | Trịnh Hưng Thịnh | Đạt | Trượt | Trượt | Đạt | Đạt |
+| Dương Minh Chiến | Đạt | Trượt | Đạt | Đạt | Trượt |
+
+Khớp 3/5 câu (B04, B07, B19). Lệch: B14, B21 - hai người đối chiếu lại tiêu chí của hai câu này và ghi kết luận cuối.
 
 Đầu ra cố định từ bản a367bc6 ở chế độ giả. Mỗi người ghi riêng Đạt hoặc Trượt cho từng câu theo tiêu chí bên dưới rồi mới đối chiếu. Hai kết luận giống nhau được tính là một câu khớp.
 

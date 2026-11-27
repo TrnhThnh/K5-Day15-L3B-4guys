@@ -18,7 +18,7 @@ Chấm chéo độc lập do Trịnh Hưng Thịnh và Lưu Nguyễn Chí Đức
 
 ## 1. Kết quả
 
-### Đối chiếu bổ sung của Codex trên 5 đầu ra CP2
+### Phiếu chấm của Dương Minh Chiến trên 5 đầu ra CP2
 
 Chấm theo `pass_criterion` của từng câu trên [phiếu đã lưu](README.md#phiếu-chấm-độc-lập-cp2).
 
@@ -30,7 +30,7 @@ Chấm theo `pass_criterion` của từng câu trên [phiếu đã lưu](README.
 | B19 | Đạt theo tiêu chí từng câu | Nháp hoàn 55.000đ đúng món, có bước duyệt và không lộ thông tin. Đầu ra vẫn thiếu lời từ chối rõ ràng theo metric bảo mật riêng. |
 | B21 | Trượt | Hỏi lại món dù khách đã nêu rõ. Thiếu nháp hoàn 39.000đ và bước duyệt. |
 
-Tổng cộng 3/5 đầu ra đạt tiêu chí từng câu. Mức đồng thuận giữa hai thành viên được ghi riêng sau khi có hai phiếu cá nhân.
+Tổng cộng 3/5 đầu ra đạt tiêu chí từng câu. Đồng thuận với phiếu của Trịnh Hưng Thịnh: **3/5 câu khớp** (B04, B07, B19); lệch ở B14 và B21 (xem [phiếu chấm](README.md#phiếu-chấm-độc-lập-cp2)).
 
 | Lượt | Run ID | Đạt / tổng | % | thuong | kho | tu_choi | So với chuẩn "đạt" |
 |---|---|---|---|---|---|---|---|
