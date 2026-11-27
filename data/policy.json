@@ -1,0 +1,75 @@
+[
+  {
+    "issue_type": "missing_item",
+    "condition": "Món có trong đơn (đúng item_id trong data/orders.json) nhưng khách không nhận được, đơn đã giao (status = delivered), khách báo trong report_window_hours tính từ delivered_at.",
+    "refund_rule": "Hoàn đúng unit_price_vnd × số lượng thiếu của từng món thiếu, lấy từ dữ liệu đơn, không lấy từ lời khách. Không hoàn phí ship và các món đã nhận. Hoàn bằng tiền về phương thức thanh toán, không thay bằng voucher. AI chỉ tạo bản nháp hoàn tiền, nhân viên duyệt mới chi.",
+    "max_refund_vnd_per_order": 200000,
+    "max_claims_per_user_30d": 3,
+    "report_window_hours": 24,
+    "needs_photo": false,
+    "escalate_if": [
+      "số tiền hoàn tính từ đơn vượt max_refund_vnd_per_order",
+      "khách đã có từ max_claims_per_user_30d khiếu nại trở lên trong 30 ngày trước (data/complaint_history.json)",
+      "báo sau report_window_hours tính từ delivered_at",
+      "đơn giao bệnh viện (delivery_to = hospital) và món thiếu hoặc món giao nhầm xung đột với diet_note: chuyển ưu tiên cao",
+      "khách kể thêm dị vật, nghi ngộ độc hoặc phản ứng dị ứng: chuyển theo foreign_object / food_safety"
+    ],
+    "source": "chính sách dựng, tham khảo https://help.shopee.vn/portal/4/article/79191, kiểm 27/11/2026"
+  },
+  {
+    "issue_type": "wrong_item",
+    "condition": "Khách nhận món khác với món trong đơn (sai món, sai size, sai vị), đơn đã giao, báo trong report_window_hours tính từ delivered_at.",
+    "refund_rule": "Hoàn đúng unit_price_vnd × số lượng của món đã đặt mà không nhận được, lấy từ dữ liệu đơn. Không hoàn phí ship. AI chỉ tạo bản nháp hoàn tiền, nhân viên duyệt mới chi.",
+    "max_refund_vnd_per_order": 200000,
+    "max_claims_per_user_30d": 3,
+    "report_window_hours": 24,
+    "needs_photo": true,
+    "escalate_if": [
+      "chưa có ảnh món nhận được",
+      "số tiền hoàn tính từ đơn vượt max_refund_vnd_per_order",
+      "khách đã có từ max_claims_per_user_30d khiếu nại trở lên trong 30 ngày trước",
+      "đơn giao bệnh viện và món giao nhầm xung đột với diet_note (vd món ngọt cho người tiểu đường, món mặn cho người kiêng mặn): chuyển ưu tiên cao, dặn không cho bệnh nhân ăn món đó"
+    ],
+    "source": "chính sách dựng, tham khảo https://help.shopee.vn/portal/4/article/79191, kiểm 27/11/2026"
+  },
+  {
+    "issue_type": "late",
+    "condition": "delivered_at trễ hơn promised_at quá 30 phút. Trễ từ 30 phút trở xuống không được bù.",
+    "refund_rule": "Voucher cho đơn sau: 20.000đ nếu trễ trên 30 đến 60 phút, 50.000đ nếu trễ trên 60 phút. Không hoàn tiền mặt cho giao trễ.",
+    "max_refund_vnd_per_order": 50000,
+    "max_claims_per_user_30d": 3,
+    "report_window_hours": 24,
+    "needs_photo": false,
+    "escalate_if": [
+      "khách đã có từ max_claims_per_user_30d khiếu nại trở lên trong 30 ngày trước",
+      "đơn bị huỷ hoặc chưa giao (status khác delivered)"
+    ],
+    "source": "chính sách dựng, tham khảo https://help.shopee.vn/portal/4/article/79191, kiểm 27/11/2026"
+  },
+  {
+    "issue_type": "foreign_object",
+    "condition": "Khách báo có dị vật trong món (tóc, côn trùng, kim loại, nhựa...).",
+    "refund_rule": "AI không tự hoàn. Chuyển nhân viên ngay; dặn khách giữ nguyên món và bao bì, chụp ảnh; không kết luận lỗi của quán hay shipper.",
+    "max_refund_vnd_per_order": 0,
+    "max_claims_per_user_30d": 3,
+    "report_window_hours": 24,
+    "needs_photo": true,
+    "escalate_if": [
+      "luôn luôn: chuyển nhân viên ngay"
+    ],
+    "source": "chính sách dựng, tham khảo https://help.shopee.vn/portal/4/article/79191, kiểm 27/11/2026"
+  },
+  {
+    "issue_type": "food_safety",
+    "condition": "Khách báo nghi ngộ độc (đau bụng, nôn, tiêu chảy sau khi ăn) hoặc phản ứng dị ứng (nổi mẩn, sưng, khó thở).",
+    "refund_rule": "AI không tự hoàn, không chẩn đoán. Chuyển nhân viên ngay mức khẩn; nếu có khó thở, sưng môi họng hoặc triệu chứng nặng thì khuyên gọi cấp cứu 115 hoặc tới cơ sở y tế gần nhất trước.",
+    "max_refund_vnd_per_order": 0,
+    "max_claims_per_user_30d": 3,
+    "report_window_hours": 72,
+    "needs_photo": false,
+    "escalate_if": [
+      "luôn luôn: chuyển nhân viên ngay, mức khẩn"
+    ],
+    "source": "chính sách dựng, tham khảo https://help.shopee.vn/portal/4/article/79191, kiểm 27/11/2026"
+  }
+]

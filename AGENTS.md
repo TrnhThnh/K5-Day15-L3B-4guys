@@ -40,6 +40,7 @@ Khung chỉ dùng thư viện chuẩn của Python. Thêm thư viện thì ghi v
 
 ## Quy ước của nhóm
 
-- Ngôn ngữ trả lời người dùng: __
-- Phong cách code / đặt tên: __
-- Ai duyệt thay đổi do agent tạo trước khi commit: __
+- Ngôn ngữ trả lời người dùng: tiếng Việt có dấu, ngắn, một tin nhắn gồm quyết định + số tiền + điều khoản + bước tiếp theo.
+- Phong cách code / đặt tên: Python thư viện chuẩn, tên hàm tiếng Anh `snake_case`, tiền là số nguyên VND (`*_vnd`), mã đơn `DH-xxxx`, mã khách `KH-xx`.
+- Tiền và luật do code (`compute_missing_refund`, `check_limit`, hậu kiểm), model không bao giờ tự gõ số tiền.
+- Ai duyệt thay đổi do agent tạo trước khi commit: người có tên ở phần đó trong `TEAMS.md`; thay đổi `eval/` do cặp X soát, thay đổi `codebase/` do cặp Y chạy thử với bộ câu thử.

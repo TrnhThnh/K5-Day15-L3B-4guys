@@ -1,0 +1,19 @@
+{
+  "KH-07": [
+    {"complaint_id": "KN-2001", "order_id": "DH-1025", "issue_type": "missing_item", "created_at": "2026-11-05T13:10:00+07:00", "claimed_item": "Canh rong biển", "refund_vnd": 15000, "outcome": "da_hoan"},
+    {"complaint_id": "KN-2004", "order_id": "DH-1026", "issue_type": "missing_item", "created_at": "2026-11-12T13:20:00+07:00", "claimed_item": "Cơm tấm sườn bì chả", "refund_vnd": 55000, "outcome": "da_hoan"},
+    {"complaint_id": "KN-2009", "order_id": "DH-1027", "issue_type": "missing_item", "created_at": "2026-11-19T19:50:00+07:00", "claimed_item": "Bún bò giò heo", "refund_vnd": 60000, "outcome": "da_hoan"},
+    {"complaint_id": "KN-2013", "order_id": "DH-1028", "issue_type": "wrong_item", "created_at": "2026-11-24T20:05:00+07:00", "claimed_item": "Combo gà rán 6 miếng", "refund_vnd": 0, "outcome": "chuyen_nhan_vien"}
+  ],
+  "KH-12": [
+    {"complaint_id": "KN-2002", "order_id": "DH-1029", "issue_type": "missing_item", "created_at": "2026-11-08T16:00:00+07:00", "claimed_item": "Trà sữa trân châu", "refund_vnd": 35000, "outcome": "da_hoan"},
+    {"complaint_id": "KN-2006", "order_id": "DH-1030", "issue_type": "late", "created_at": "2026-11-15T08:30:00+07:00", "claimed_item": null, "refund_vnd": 0, "outcome": "tu_choi"},
+    {"complaint_id": "KN-2011", "order_id": "DH-1035", "issue_type": "missing_item", "created_at": "2026-11-22T18:50:00+07:00", "claimed_item": "Pepsi lon", "refund_vnd": 15000, "outcome": "da_hoan"}
+  ],
+  "KH-11": [
+    {"complaint_id": "KN-2005", "order_id": "DH-1031", "issue_type": "missing_item", "created_at": "2026-11-10T08:15:00+07:00", "claimed_item": "Cà phê sữa đá", "refund_vnd": 25000, "outcome": "da_hoan"}
+  ],
+  "KH-24": [
+    {"complaint_id": "KN-2015", "order_id": "DH-1032", "issue_type": "late", "created_at": "2026-11-26T12:40:00+07:00", "claimed_item": null, "refund_vnd": 20000, "outcome": "da_hoan"}
+  ]
+}

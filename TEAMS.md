@@ -11,10 +11,10 @@
 
 | STT | Họ và tên | Mã học viên | Vai trò | Phần việc chính |
 |---|---|---|---|---|
-| 1 |Trịnh Hưng Thịnh|2A202603907| Đội trưởng | ____ |
-| 2 | Lưu Nguyễn Chí Đức | 2A202603923 | Thành viên | ____ |
-| 3 | Dương Minh Chiến | 2A202603921 | Thành viên | ____ |
-| 4 | Trần Đức Trung | 2A202603938 | Thành viên | ____ |
+| 1 | Trịnh Hưng Thịnh | 2A202603907 | Đội trưởng | Công cụ + `check_limit` (`codebase/tools.py`), impact (`spec.md` §2), mô phỏng chi phí (`cost/`), nộp checkpoint |
+| 2 | Lưu Nguyễn Chí Đức | 2A202603923 | Thành viên | Luồng agent + nối model (`codebase/agent.py`, `ai.py`), thiết kế (`spec.md` §4), video demo |
+| 3 | Dương Minh Chiến | 2A202603921 | Thành viên | Bằng chứng pain: đào review, khảo sát, phỏng vấn (`evidence/`, `spec.md` §0–§1) |
+| 4 | Trần Đức Trung | 2A202603938 | Thành viên | Dữ liệu dựng + bộ câu thử + metric (`data/`, `eval/`, `spec.md` §5, §7) |
 
 **Quy tắc điền**
 - **Lớp:** `L3A` hoặc `L3B`. **Track:** một chữ `A` (EdTech), `B` (Y tế), `C` (Du lịch), `D` (Thương mại điện tử), `E` (Tài chính) hoặc `F` (Làn khác). **Link repo:** link GitHub công khai của nhóm.
