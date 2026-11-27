@@ -96,8 +96,8 @@ Khớp 3/5 câu (B04, B07, B19). Lệch: B14, B21 - hai người đối chiếu 
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
-| 1 | | | | __/__ | | |
-| 2 | | | | __/__ | | |
+| 1 | run-1@20261128-003410 | anthropic/claude-haiku-5.5 (OpenRouter) | workflow 4 bước, commit 6409d1b + nối OpenRouter | 16/24 | 67% | chưa |
+| 2 | run-2@20261128-005155 | anthropic/claude-haiku-5.5 (OpenRouter) | sửa sau lượt 1, commit c39997e (changelog `spec.md` §10, dòng (1)–(10)) | 24/24 | 100% | đạt |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 

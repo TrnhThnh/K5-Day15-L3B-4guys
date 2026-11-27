@@ -227,7 +227,8 @@ def decide(x, text):
                 "question": "Đơn có %d phần %s, bạn bị thiếu mấy phần?" % (m["ordered_qty"], m["name"])}
     # Đơn bệnh viện: chỉ chuyển người khi món thiếu thuộc chế độ ăn của bệnh nhân (diet_critical trong data/orders.json),
     # vì món bù phải hợp chế độ ăn, code không tự phán được. Món trung tính (vd nước suối) xử lý như đơn thường.
-    diet_ids = {it["item_id"] for it in order["items"] if it.get("diet_critical")}
+    # Chặn an toàn (fail closed): món thiếu trường diet_critical vẫn coi là thuộc chế độ ăn → chuyển người.
+    diet_ids = {it["item_id"] for it in order["items"] if it.get("diet_critical") is not False}
     if hospital and any(m["item_id"] in diet_ids for m in matched):
         escalate_to_human(oid, "đơn bệnh viện, món thiếu thuộc chế độ ăn: %s" % order["diet_note"], "high")
         return {"action": "escalate", "priority": "high", "order_id": oid,
