@@ -6,6 +6,7 @@ Hình dạng: WORKFLOW CỐ ĐỊNH 4 bước (không phải agent tự chọn b
     2. code   tra đơn, khớp món, tính tiền, check_limit, áp luật chặn → chọn 1 trong 3: hoàn (nháp) / hỏi thêm / chuyển người.
     3. model  viết 1 câu trả lời tiếng Việt từ các dữ kiện code đưa (chế độ giả → mẫu cố định).
     4. code   hậu kiểm: mọi con số trong câu trả lời phải có trong dữ kiện, không có SĐT / địa chỉ → sai thì dùng mẫu.
+Tin không phải khiếu nại (hỏi giờ mở cửa, đổi địa chỉ...) và đơn chưa giao xong thì nói thẳng, không đi vào luồng hoàn tiền.
 Model không bao giờ tự gõ số tiền, không tự kiểm hạn mức, không tự chuyển tiền.
 """
 import json
@@ -27,7 +28,8 @@ CLAUSE = "chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, 
 REPORT_NOW = datetime.fromisoformat("2026-11-27T21:00:00+07:00")
 
 EXTRACT_SYSTEM = """Bạn trích thông tin từ tin nhắn khiếu nại đơn giao đồ ăn. Chỉ trả về MỘT object JSON, không giải thích:
-{"order_id": "DH-xxxx" hoặc null, "issue_type": một trong %s,
+{"is_complaint": true nếu tin là khiếu nại về một đơn đồ ăn (thiếu / sai món, giao trễ, đồ ăn có vấn đề), false nếu là câu hỏi hay yêu cầu khác,
+ "order_id": "DH-xxxx" hoặc null, "issue_type": một trong %s,
  "missing_items": [{"name": "tên món khách nói", "qty": số hoặc null}],
  "claimed_amount": số tiền khách đòi (VND) hoặc null, "threats": true nếu doạ 1 sao / bóc phốt / review xấu,
  "pii_request": true nếu đòi số điện thoại / địa chỉ của shipper hoặc quán,
@@ -56,7 +58,7 @@ KW = {  # từ khoá đã bỏ dấu
     "safety_flag": r"\b(?:di vat|toc|soi toc|con gian|con ruoi|con sau|con trung|manh (thuy tinh|nhua|kim loai)|ngo doc"
                    r"|dau bung|tieu chay|non mua|bi oi|di ung|noi man|kho tho|ngua)\b",
     "threats": r"\b(?:1 sao|mot sao|boc phot|review xau|danh gia (thap|xau)|len mang|bao chi)\b",
-    "pii_request": r"\b(so dien thoai|sdt|so dt|dia chi|nha o)\b.{0,25}\b(shipper|tai xe|quan|cua hang|nha hang|ben)\b"
+    "pii_request": r"\b(so dien thoai|sdt|so dt|dia chi|nha o)\b.{0,25}\b(shipper|tai xe|quan(?!\s*\d)|cua hang|nha hang|ben)\b"
                    r"|\b(shipper|tai xe|quan|cua hang|nha hang)\b.{0,25}\b(so dien thoai|sdt|so dt|dia chi)\b"
                    r"|\b(?:xin|cho|dua|gui)\b.{0,12}\bso (?:cua )?(?:shipper|tai xe|quan|chu quan)\b",
     "penalty_request": r"\b(phat|tru tien|khoa|duoi|ky luat)\b.{0,15}\b(shipper|tai xe|quan|shop|cua hang)\b",
@@ -70,6 +72,7 @@ ISSUE_KW = [("foreign_object", r"\b(?:di vat|toc|soi toc|con gian|con ruoi|con s
             ("wrong_item", r"\b(?:sai mon|nham mon|giao nham|khong dung mon)\b"),
             ("missing_item", r"\b(?:thieu|khong co|chua co|quen bo|khong thay)\b"),
             ("late", r"\b(?:tre|cham|lau qua)\b")]
+COMPLAINT_KW = r"\b(?:hoan|den bu|boi thuong|khieu nai)\b"
 # "nhưng" (liên từ) được thay bằng dấu chấm TRƯỚC khi bỏ dấu, vì sau khi bỏ dấu nó trùng "nhúng" (lẩu nhúng giấm)
 BUT_RE = re.compile(r"\bnhưng\b", re.I)
 MENTION_RE = re.compile(r"(?:thieu|khong co|chua co|quen bo|khong thay)\s+(.+?)(?=[.!?;)]|\bcon lai\b|$)")
@@ -85,7 +88,8 @@ def heuristic_extract(text):
     """Bộ trích tất định (chế độ giả + dự phòng khi model trả JSON hỏng)."""
     f = fold(BUT_RE.sub(".", text)) + " "
     m = ORDER_RE.search(text)
-    issue = next((name for name, pat in ISSUE_KW if re.search(pat, f)), "missing_item")
+    found = next((name for name, pat in ISSUE_KW if re.search(pat, f)), None)
+    issue = found or "missing_item"
     items = []
     for chunk in MENTION_RE.findall(f):
         for part in re.split(r",|\b(?:va|voi)\b|\+", chunk):
@@ -105,6 +109,8 @@ def heuristic_extract(text):
     out = {"order_id": "DH-" + m.group(1) if m else None, "issue_type": issue, "missing_items": items,
            "claimed_amount": claimed}
     out.update({k: bool(re.search(p, f)) for k, p in KW.items()})
+    # có từ khoá sự cố, cờ an toàn, hoặc lời đòi hoàn / đền / khiếu nại thì coi là khiếu nại
+    out["is_complaint"] = bool(found) or out["safety_flag"] or bool(re.search(COMPLAINT_KW, f))
     return out
 
 
@@ -137,6 +143,9 @@ def extract(text):
         or rule["missing_items"]
     for k in KW:
         d[k] = bool(d.get(k)) or rule[k]
+    # Chỉ coi là ngoài phạm vi khi cả model lẫn từ khoá của code đều thấy đây không phải khiếu nại,
+    # để một khiếu nại thật không bị gạt đi vì model đọc nhầm.
+    d["is_complaint"] = d.get("is_complaint") is not False or rule["is_complaint"]
     return d
 
 
@@ -190,6 +199,10 @@ def decide(x, text):
         else:
             facts["next"] += "; nếu thấy khó chịu trong người, bạn hãy đi khám ngay"
         return facts
+    if not x.get("is_complaint", True):  # ngoài phạm vi: nói thẳng, không đoán, không chuyển tiền
+        return {"action": "info", "message": "Mình chỉ hỗ trợ khiếu nại đơn đồ ăn đã giao bị thiếu món, nên không có "
+                                             "thông tin cho yêu cầu này. Bạn dùng mục Trợ giúp trong app hoặc nhắn quán qua "
+                                             "chat trong app nhé. Nếu đơn của bạn bị thiếu món, bạn gửi mình mã đơn và tên món."}
     if not oid:
         return {"action": "ask", "question": "Bạn cho mình xin mã đơn (dạng DH-xxxx) và cho mình biết "
                                              "bạn bị thiếu món nào, mấy phần nhé?"}
@@ -197,6 +210,16 @@ def decide(x, text):
     if not order:
         return {"action": "ask", "order_id": oid,
                 "question": "Mình không tìm thấy đơn %s. Bạn kiểm tra lại giúp mình mã đơn nhé?" % oid}
+    if order.get("status") == "delivering":  # chưa tới tay khách thì chưa thể thiếu món
+        return {"action": "info", "order_id": oid,
+                "message": "Đơn %s đang được giao, chưa tới tay bạn. Khi nhận đơn mà thiếu món, bạn nhắn lại mình "
+                           "kèm tên món nhé." % oid}
+    if order.get("status") != "delivered":  # đã huỷ...: không hoàn theo chính sách thiếu món, chuyển người xem
+        escalate_to_human(oid, "đơn ở trạng thái %s, không phải đã giao" % order.get("status"), "normal")
+        return {"action": "escalate", "priority": "normal", "order_id": oid,
+                "why": "đơn %s đang ở trạng thái %s, không phải đơn đã giao" % (
+                    oid, {"cancelled": "đã huỷ"}.get(order.get("status"), order.get("status"))),
+                "next": "nhân viên CSKH sẽ kiểm tra đơn và trả lời bạn"}
     hospital = order.get("delivery_to") == "hospital" and order.get("diet_note")
     if x.get("issue_type") != "missing_item":
         diet_clash = hospital and x.get("issue_type") == "wrong_item"
@@ -266,6 +289,8 @@ def vnd(n):
 
 
 def template_body(f):
+    if f["action"] == "info":
+        return f["message"]
     if f["action"] == "ask":
         return "Xin lỗi bạn vì sự bất tiện. " + f["question"]
     if f["action"] == "escalate":

@@ -57,9 +57,17 @@ flowchart TD
     A[Khách nhắn khiếu nại] --> B["AI bước 1: trích ý<br/>mã đơn · loại sự cố · món thiếu · lời doạ · đòi SĐT · cờ an toàn"]
     B --> C{"Cờ an toàn?<br/>dị vật · ngộ độc · dị ứng"}
     C -- có --> H1[escalate_to_human ưu tiên cao]
-    C -- không --> D{"Có mã đơn<br/>và tìm được đơn?"}
+    C -- không --> S{"Là khiếu nại về đơn?<br/>model và từ khoá của code<br/>cùng nói không thì mới loại"}
+    S -- không --> I0["Nói rõ ngoài phạm vi,<br/>chỉ về mục Trợ giúp trong app"]
+    I0 --> L
+    S -- có --> D{"Có mã đơn<br/>và tìm được đơn?"}
     D -- không --> Q[Hỏi thêm MỘT câu]
-    D -- có --> E["Code: get_order · get_policy · get_complaint_history"]
+    D -- có --> T{"Trạng thái đơn?"}
+    T -- đang giao --> I1["Báo đơn chưa tới,<br/>nhận rồi thiếu thì nhắn lại"]
+    I1 --> L
+    T -- đã huỷ --> H3[escalate_to_human, nói rõ đơn đã huỷ]
+    H3 --> L
+    T -- đã giao --> E["Code: get_order · get_policy · get_complaint_history"]
     E --> F{"Món khách nói<br/>có trong đơn?"}
     F -- không --> Q
     F -- có --> G{"Đơn tới bệnh viện và<br/>món đụng ghi chú ăn kiêng?"}
@@ -104,7 +112,7 @@ flowchart TD
   | Dễ sửa khi AI sai (HAX G9) | Hoàn tiền chỉ là bản nháp; khách luôn có lựa chọn "chuyển nhân viên" |
   | Tiền và luật do code, lời do AI | `compute_missing_refund`, `check_limit`, hậu kiểm số và SĐT đều là code |
 
-- Phần nào còn giả: dữ liệu đơn, chính sách, lịch sử khiếu nại là dữ liệu dựng (`data/DATA_CARD.md`); `draft_refund`, `escalate_to_human`, `request_evidence` chỉ ghi ra bản nháp, không gửi thật. Trước CP3 model còn ở chế độ giả.
+- Phần nào còn giả: dữ liệu đơn, chính sách, lịch sử khiếu nại là dữ liệu dựng (`data/DATA_CARD.md`); `draft_refund`, `escalate_to_human`, `request_evidence` chỉ ghi ra bản nháp, không gửi thật. Model gọi thật từ lượt 1: `anthropic/claude-haiku-5.5` qua OpenRouter; chế độ giả chỉ chạy khi máy chưa có `.env`.
 
 ## §5. Chỗ khó - 4 lớp + ≥6 kịch bản + 2 tấn công *(guide 2.3 · Trung)*
 
@@ -163,6 +171,7 @@ flowchart TD
 | 28/11, sau lượt 1, trước lượt 2 | (9) Câu bắt buộc (từ chối SĐT / địa chỉ, lời doạ không đổi mức hoàn, không hứa phạt quán / shipper) do code gắn vào cuối câu trả lời; model chỉ viết lại phần thân. Nhận diện đòi SĐT bắt thêm kiểu "xin số tài xế". (10) Bộ trích dự phòng (chế độ giả / model trả JSON hỏng): "nhưng" không còn cắt nhầm "lẩu bò nhúng giấm", bỏ chữ dẫn "nguyên nồi", thêm từ dừng ("giờ mới", "nền tảng"…). | (9) B19, B23: lượt 1 model viết lại và làm rơi câu từ chối SĐT có trong câu mẫu. (10) B17, B18 ở chế độ giả trích sai tên món. |
 | 28/11, sau lượt 2 | Đơn bệnh viện: món thiếu trường `diet_critical` vẫn coi là thuộc chế độ ăn (chặn an toàn). Không đổi kết quả lượt 2 vì mọi món đơn bệnh viện đều đã có trường này. | Rà soát bảo mật tự động: thiếu trường thì code tự hoàn thay vì chuyển người. |
 | 28/11 02:00, sau lượt 2 | Thêm 6 câu **phần giữ riêng** H01–H06 vào cuối `eval/benchmark.csv` (24 câu cũ giữ nguyên từng byte; 2 câu lấy từ review thật chưa dùng). Viết không nhìn code, không sửa code theo các câu này. Chạy lượt 3 trên cả 30 câu (`run-3@20261128-021028`, cùng model `anthropic/claude-haiku-5.5`). Thêm `eval/stability.py`: chạy mỗi câu 3 lần, so quyết định (hoàn bao nhiêu / chuyển người / hỏi lại) lấy từ bản nháp công cụ → `eval/stability-1-summary.md`. | Lượt 2 đạt 24/24 sau khi sửa theo từng câu trượt của lượt 1, nên cần phần giữ riêng để biết có học vẹt bộ câu thử không, và cần chạy lặp để biết kết quả có ổn định không (guide 4.1 "muốn sâu hơn"). Lượt 1 → lượt 2 vẫn chấm trên 24 câu cũ (R5). |
+| 28/11 02:45, sau lượt 3 | `codebase/agent.py`: (1) model trích thêm `is_complaint`; tin không phải khiếu nại (hỏi giờ mở cửa, đổi địa chỉ...) trả lời rõ là ngoài phạm vi, không đi vào luồng hoàn tiền. Chỉ loại khi cả model lẫn từ khoá của code (sự cố, an toàn, hoàn / đền / khiếu nại) đều nói không, để khiếu nại thật không bị gạt. (2) Đơn đang giao: báo đơn chưa tới, không hỏi món; đơn đã huỷ: chuyển người và nói rõ lý do. (3) Từ khoá đòi SĐT / địa chỉ không bắt "quận 7" là quán. Sơ đồ §4 thêm hai nhánh này. Kiểm hồi quy: `eval/stability-2-summary.md`, 30/30 câu ra đúng quyết định như `expected`. | Thử tay ngoài bộ câu thử: "Quán Mẫu Cơm Tấm mấy giờ đóng cửa vậy?" bị hỏi mã đơn; "đổi địa chỉ giao đơn DH-1001 sang quận 7" bị coi là đòi địa chỉ quán; đơn DH-1034 đang giao bị hỏi thiếu mấy phần. Rubric R3: câu ngoài dữ liệu phải trả lời "không có". Không sửa theo câu giữ riêng nào. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý - không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

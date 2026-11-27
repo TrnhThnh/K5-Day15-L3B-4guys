@@ -81,7 +81,7 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 | Thành phần | Thật / Giả | Ghi chú |
 |---|---|---|
-| Lời gọi AI ở quyết định trung tâm | **Thật** (bắt buộc từ CP3) | Model: gemini-3.5-flash-lite (so sánh chi phí: Claude Haiku 5.5) |
+| Lời gọi AI ở quyết định trung tâm | **Thật** (bắt buộc từ CP3) | Model: `anthropic/claude-haiku-5.5` qua OpenRouter (`.env`: `MODEL_PROVIDER=openrouter`, `MODEL_NAME=anthropic/claude-haiku-5.5`, `API_KEY=...`) |
 | Đơn hàng, chính sách, lịch sử khiếu nại (`data/`) | Giả (dữ liệu dựng có seed) | Chính sách dựng theo trang trợ giúp công khai, xem `data/DATA_CARD.md` |
 | Tính tiền hoàn, kiểm hạn mức, hậu kiểm câu trả lời | Thật (code) | `compute_missing_refund`, `check_limit` trong `codebase/tools.py` |
 | Hoàn tiền, chuyển nhân viên, xin bằng chứng | Giả (chỉ ghi bản nháp) | Không gửi thật, chờ người duyệt |
