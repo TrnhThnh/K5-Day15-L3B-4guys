@@ -39,6 +39,10 @@ Chi tiết ở `data/DATA_CARD.md`.
 
 ## Phiếu chấm độc lập CP2
 
+| Người chấm | B04 | B07 | B14 | B19 | B21 |
+|---|---|---|---|---|---|
+| Trịnh Hưng Thịnh | Đạt | Trượt | Trượt | Đạt | Đạt |
+
 Đầu ra cố định từ bản a367bc6 ở chế độ giả. Mỗi người ghi riêng Đạt hoặc Trượt cho từng câu theo tiêu chí bên dưới rồi mới đối chiếu. Hai kết luận giống nhau được tính là một câu khớp.
 
 ### B04
