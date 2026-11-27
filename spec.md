@@ -152,7 +152,7 @@ flowchart TD
 
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
-|  |  |  |
+| Rà soát CP2 | Đồng bộ chuẩn tổng trong eval/README.md với §7 và sửa bộ trích món ở chế độ giả. | B01 hỏi lại dù khách đã ghi rõ tên món. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý - không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

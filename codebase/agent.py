@@ -62,7 +62,7 @@ ISSUE_KW = [("foreign_object", r"\b(?:di vat|toc|soi toc|con gian|con ruoi|con s
 MENTION_RE = re.compile(r"(?:thieu|khong co|chua co|quen bo|khong thay)\s+(.+?)(?=[.!?;]|\bnhung\b|\bcon lai\b|$)")
 QTY_RE = re.compile(r"^(\d+)\s*(?:ly|phan|cai|hop|suat|mieng|chai|lon|to|dia|goi|banh)?\s*")
 # phần sau dấu phẩy bắt đầu bằng các từ này là câu khác, không còn là tên món
-NOT_ITEM_RE = re.compile(r"^(?:hoan|cho|xin|phat|neu|khong|giup|lam|shop|ad|minh|toi|em|anh|chi|ban|tru|khoa|vui|mong)\b")
+NOT_ITEM_RE = re.compile(r"^(?:gui don khieu nai|hoan|cho|xin|phat|neu|khong|giup|lam|shop|ad|minh|toi|em|anh|chi|ban|tru|khoa|vui|mong)\b")
 
 
 def heuristic_extract(text):
@@ -76,9 +76,10 @@ def heuristic_extract(text):
             part = part.strip()
             if NOT_ITEM_RE.match(part):
                 break
+            part = re.sub(r"^(?:thieu|khong co|chua co|quen bo|khong thay)\s+", "", part)
             q = QTY_RE.match(part)
             name = part[q.end():].strip() if q else part
-            if name:
+            if name and name != "mon":
                 items.append({"name": name, "qty": int(q.group(1)) if q and q.group(1) else None})
     money = re.search(r"(\d[\d.,]*)\s*(k|nghin|ngan|d|vnd|dong)\b", f)
     claimed = None
