@@ -4,6 +4,18 @@
 > Số lấy từ `python run.py score eval/run-1.csv` (và `run-2.csv`) sau khi điền cột `pass`. **Kết quả thấp ghi thật vẫn đủ điểm.**
 > Không được: sửa chuẩn "đạt", bỏ câu thử trượt, sửa `expected` cho khớp output, sửa kết quả lượt đã chạy.
 
+## Kiểm tra bản chạy thử tại CP2
+
+Chạy `python run.py eval --try` với ba câu đầu của bộ 24 câu ở chế độ giả. Đối chiếu đầu ra với `pass_criterion` cho kết quả **1/3 câu đạt** trong lần thử này.
+
+| Câu | Kết quả | Đầu ra quan sát được |
+|---|---|---|
+| B01 | Đạt | Sau khi sửa bước nhận diện món, agent tạo nháp hoàn 55.000đ cho 1 phần cơm tấm sườn bì chả và thông báo chờ nhân viên duyệt. |
+| B02 | Trượt | Agent hỏi lại món thiếu. Tiêu chí yêu cầu nháp hoàn 95.000đ cho combo gà rán 6 miếng. |
+| B03 | Trượt | Agent hỏi lại món thiếu. Tiêu chí yêu cầu nháp hoàn 35.000đ cho 1 trong 3 ly trà sữa trân châu. |
+
+Chấm chéo độc lập do Trịnh Hưng Thịnh và Lưu Nguyễn Chí Đức phụ trách. Số câu hai người chấm khớp trên 5 đầu ra đang chờ xác nhận. Hai lượt đánh giá toàn bộ benchmark bằng model thật sẽ được ghi bên dưới sau khi có kết quả.
+
 ## 1. Kết quả
 
 | Lượt | Run ID | Đạt / tổng | % | thuong | kho | tu_choi | So với chuẩn "đạt" |
