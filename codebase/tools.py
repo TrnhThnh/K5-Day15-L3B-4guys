@@ -92,7 +92,8 @@ def check_limit(issue_type: str, amount_vnd: int, order: dict, history: list, no
     if amount_vnd <= 0:
         return {"within": False, "reason": "số tiền hoàn bằng 0", "policy": policy}
     if amount_vnd > cap:
-        return {"within": False, "reason": "vượt hạn mức %d đ / đơn" % cap, "policy": policy}
+        return {"within": False, "reason": "vượt hạn mức %sđ / đơn" % "{:,}".format(cap).replace(",", "."),
+                "policy": policy}
     if amount_vnd > int(order.get("total_vnd") or 0):
         return {"within": False, "reason": "lớn hơn tổng tiền đơn", "policy": policy}
     delivered = _when(order.get("delivered_at"))
@@ -129,7 +130,8 @@ def draft_refund(order_id: str, amount_vnd: int, reason: str) -> dict:
 
 @tool
 def escalate_to_human(order_id, reason: str, priority: str = "normal") -> dict:
-    """escalate_to_human · input: mã đơn (có thể None), lý do, mức ưu tiên "normal" | "high" · output: phiếu
+    """escalate_to_human · input: mã đơn (có thể None), lý do, mức ưu tiên "normal" | "high" | "urgent"
+    (urgent: sức khoẻ, ngộ độc, dị ứng) · output: phiếu
     chuyển nhân viên status "chờ duyệt" · CÓ tác động ra ngoài (vào hàng chờ CSKH), đảo được."""
     return _draft("escalation", order_id=order_id, reason=reason, priority=priority)
 

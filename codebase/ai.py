@@ -57,7 +57,7 @@ def call_model(system: str, user: str) -> dict:
     elif MODEL_PROVIDER == "anthropic":
         r = call_claude(system, user)
     else:
-        raise NotImplementedError("MODEL_PROVIDER=%s chưa hỗ trợ (dùng gemini, openai, anthropic hoặc fake)"
+        raise NotImplementedError("MODEL_PROVIDER=%s chưa hỗ trợ (dùng gemini, openai, openrouter, anthropic hoặc fake)"
                                   % MODEL_PROVIDER)
     return {"text": r["text"], "model": MODEL_NAME,
             "tokens_in": int(r["tokens_in"]), "tokens_out": int(r["tokens_out"])}
@@ -69,6 +69,7 @@ SHOW_RAW = False  # True: in nguyên phản hồi API khi cần tìm tên trư�
 URL_OPENAI_STYLE = {
     "gemini": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
     "openai": "https://api.openai.com/v1/chat/completions",
+    "openrouter": "https://openrouter.ai/api/v1/chat/completions",
 }
 URL_CLAUDE = "https://api.anthropic.com/v1/messages"
 

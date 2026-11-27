@@ -140,19 +140,22 @@
         "item_id": "CD01",
         "name": "Cháo cá lóc ít muối",
         "qty": 2,
-        "unit_price_vnd": 45000
+        "unit_price_vnd": 45000,
+        "diet_critical": true
       },
       {
         "item_id": "CD02",
         "name": "Rau luộc",
         "qty": 1,
-        "unit_price_vnd": 20000
+        "unit_price_vnd": 20000,
+        "diet_critical": true
       },
       {
         "item_id": "CD03",
         "name": "Nước suối",
         "qty": 2,
-        "unit_price_vnd": 8000
+        "unit_price_vnd": 8000,
+        "diet_critical": false
       }
     ],
     "ship_fee_vnd": 20000,
@@ -212,19 +215,22 @@
         "item_id": "CD01",
         "name": "Cháo cá lóc ít muối",
         "qty": 1,
-        "unit_price_vnd": 45000
+        "unit_price_vnd": 45000,
+        "diet_critical": true
       },
       {
         "item_id": "CD08",
         "name": "Cháo thịt bằm",
         "qty": 1,
-        "unit_price_vnd": 35000
+        "unit_price_vnd": 35000,
+        "diet_critical": true
       },
       {
         "item_id": "CD03",
         "name": "Nước suối",
         "qty": 2,
-        "unit_price_vnd": 8000
+        "unit_price_vnd": 8000,
+        "diet_critical": false
       }
     ],
     "ship_fee_vnd": 20000,
@@ -491,19 +497,22 @@
         "item_id": "CD04",
         "name": "Cháo yến mạch không đường",
         "qty": 1,
-        "unit_price_vnd": 45000
+        "unit_price_vnd": 45000,
+        "diet_critical": true
       },
       {
         "item_id": "CD05",
         "name": "Canh bí đao",
         "qty": 1,
-        "unit_price_vnd": 30000
+        "unit_price_vnd": 30000,
+        "diet_critical": true
       },
       {
         "item_id": "CD06",
         "name": "Sữa hạt không đường",
         "qty": 1,
-        "unit_price_vnd": 25000
+        "unit_price_vnd": 25000,
+        "diet_critical": true
       }
     ],
     "ship_fee_vnd": 20000,
@@ -971,19 +980,22 @@
         "item_id": "CD07",
         "name": "Súp gà hấp không dầu",
         "qty": 1,
-        "unit_price_vnd": 50000
+        "unit_price_vnd": 50000,
+        "diet_critical": true
       },
       {
         "item_id": "CD08",
         "name": "Cháo thịt bằm",
         "qty": 1,
-        "unit_price_vnd": 35000
+        "unit_price_vnd": 35000,
+        "diet_critical": true
       },
       {
         "item_id": "CD03",
         "name": "Nước suối",
         "qty": 1,
-        "unit_price_vnd": 8000
+        "unit_price_vnd": 8000,
+        "diet_critical": false
       }
     ],
     "ship_fee_vnd": 20000,

@@ -18,6 +18,7 @@ Mốc giờ dùng khi chạy bộ câu thử: `2026-11-27T21:00:00+07:00` (code 
 | Số dòng / số đoạn | 35 đơn (DH-1001 … DH-1035), 28 khách (KH-01 … KH-28): 19 giao nhà, 12 văn phòng, 4 bệnh viện có `diet_note`; 33 `delivered`, 1 `cancelled`, 1 `delivering` |
 | Phiên bản / ngày lấy | v1, 27/11/2026 · đơn trong tháng 11/2026 |
 | Nhãn | `synthetic` |
+| Trường thêm (v1.1, 28/11) | món trong 4 đơn bệnh viện có `diet_critical`: `true` nếu món thuộc bữa ăn theo chế độ của bệnh nhân (cháo, canh, súp, sữa hạt), `false` với món trung tính (nước suối). Code chỉ chuyển người ưu tiên cao khi món thiếu có `diet_critical = true`. Nhóm gắn tay, *(tự đánh giá)* |
 | Giới hạn | menu nhỏ (41 món), giá kiểu quán bình dân TP.HCM *(tự ước tính)*; không có ảnh, không có phương thức thanh toán; DH-1001 … DH-1024 khớp từng câu B01 … B24 trong `eval/benchmark.csv`, còn DH-1025 … DH-1035 làm lịch sử khiếu nại và đa dạng |
 
 ## Dataset 2 · Chính sách (`data/policy.json`)
