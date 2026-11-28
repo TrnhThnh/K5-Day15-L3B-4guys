@@ -8,7 +8,11 @@
 
 ## Giao diện demo
 
-Chạy `python codebase/demo_web.py` ở thư mục gốc, rồi mở http://127.0.0.1:8765. Chọn tình huống mẫu hoặc nhập lời khách và bấm **Xử lý khiếu nại**. Trang hiển thị phản hồi, số lần gọi công cụ và token. Để trình diễn ngoại tuyến, đặt `MODEL_PROVIDER=fake` trước khi khởi động; để dùng model thật, cấu hình theo [hướng dẫn](docs/connect-model.md).
+Chạy `python codebase/demo_web.py` ở thư mục gốc, rồi mở http://127.0.0.1:8765. Để trình diễn ngoại tuyến, đặt `MODEL_PROVIDER=fake` trước khi khởi động; để dùng model thật, cấu hình theo [hướng dẫn](docs/connect-model.md).
+
+- **Khiếu nại:** chọn tình huống mẫu hoặc nhập lời khách (một tin có thể nhắc tới tối đa 3 đơn), bấm **Xử lý khiếu nại**. Trang hiện phản hồi cho khách, số lần gọi model / công cụ và token, các yêu cầu vừa gửi nhân viên duyệt (mã `YC-xxxx`) và chi tiết các đơn được nhắc tới.
+- **Đơn hàng** (`/#orders`): toàn bộ đơn dựng trong `data/orders.json` (món, giá, phí ship, nơi giao, chế độ ăn), tìm theo mã đơn, quán hoặc món.
+- **Chờ duyệt** (`/#queue`): mọi nháp hoàn tiền và phiếu chuyển người do agent tạo. Nhân viên bấm **Duyệt** hoặc **Từ chối**; AI không tự chuyển tiền. Hàng chờ lưu ở `outbox/approval-queue.jsonl` (không commit), mỗi quyết định ghi thêm một dòng.
 
 ## Nhóm làm gì, khung làm gì
 
@@ -126,5 +130,5 @@ Claude hỗ trợ chấm nháp benchmark; Trung đã soát 24 câu lượt 1. Co
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · [Video demo CP3](https://youtu.be/963HFUlo8eY) |
+| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc (nguồn `slides/demo-slides.html`) · [Video demo CP3](https://youtu.be/963HFUlo8eY) · video dự phòng CP4: [`demo-cp4-du-phong-viet.mp4`](demo-cp4-du-phong-viet.mp4) |
 | + | *Bonus:* người dùng thử | `validation/log.md` |

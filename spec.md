@@ -151,9 +151,10 @@ flowchart TD
 - Kết quả: lượt 1 16/24 (67%), Trần Đức Trung đã soát 24 câu · lượt 2 24/24 (100%), Claude chấm nháp và đang chờ người soát. Run ID `run-1@20261128-003410` và `run-2@20261128-005155`, model `anthropic/claude-haiku-5.5` qua OpenRouter. Chi tiết ở `eval/report.md` và `eval/README.md`.
 
 ## §8. Chi phí khi dùng thật *(guide 4.2 · Thịnh)*
-- [Cấu hình](cost/personas.yaml) gồm ba persona, 50 phiên và seed 42. Phép đo nhiều lượt đang chờ model thật.
-- [Dự toán theo token lượt 2](cost/cost-estimate.md): Claude Haiku 5.5 khoảng 0,000995 USD/task thành công; áp giá Gemini 3.5 Flash Lite lên cùng số token là 0,004438 USD/task. Tỷ lệ đạt dùng trong phép tính là 24/24 theo điểm nháp lượt 2.
-- Với Claude Haiku 5.5, dự toán thấp / cơ sở / cao lần lượt là 0,488 / 0,976 / 1,952 USD mỗi tháng cho 550 / 1.100 / 2.200 khách.
+- [Cấu hình](cost/personas.yaml) gồm ba persona, 50 phiên và seed 42. Lượt mô phỏng dùng để báo cáo: [`cost/simulate-2-summary.md`](cost/simulate-2-summary.md) (`simulate-2@20261128-143936`, 50 phiên nhiều lượt chạy thật qua bản chạy thử, 0 phiên lỗi), tỉ lệ đạt 28/30 (93%) lấy từ lượt 3 đã chấm.
+- Không dùng tỉ lệ 24/24 của lượt 2: đó là 100% trên chính bộ câu đã dùng để sửa lỗi, và guide 4.2 không cho dùng tỉ lệ đạt 100%. `simulate-1` (dùng tỉ lệ đó) giữ lại làm hồ sơ, không dùng để báo cáo.
+- Chi phí / task thành công: 0,00074 USD (model `anthropic/claude-haiku-5.5`) · 0,0032 USD (giá `google/gemini-3.5-flash-lite`, token đo trên Haiku).
+- Chi phí / tháng với Haiku: thấp 0,46 · cơ sở 0,91 · cao 1,82 USD cho 550 / 1.100 / 2.200 khách *(quy mô tự ước tính)*; cơ sở là 0,00083 USD / khách / tháng, so với 5–15 phút / tháng mỗi khách gặp sự cố mất cho khiếu nại (§2). Chưa tính giờ công nhân viên duyệt nháp và hạ tầng.
 
 ## §9. Rủi ro & an toàn
 - Dữ liệu: chỉ dùng đơn dựng, tên quán dựng; review công khai đã bỏ tên người viết; không đưa SĐT, địa chỉ vào model.
@@ -198,7 +199,11 @@ Ngày 28/11: ghi nhận phiếu Thịnh cho 5 đầu ra lượt 2, đối chiế
 
 | Thời điểm | Đổi gì | Vì sao |
 |---|---|---|
-|  |  |  |
+| 28/11 14:40 | Chạy lại mô phỏng chi phí với tỉ lệ đạt lượt 3: `simulate-2@20261128-143936` (50 phiên, seed 42, tỉ lệ 28/30). Cập nhật §8 và `cost/cost-estimate.md` mục 2 theo lượt này; `simulate-1` giữ nguyên làm hồ sơ. | `simulate-1` dùng tỉ lệ 24/24 của lượt 2, là 100% trên bộ đã dùng để sửa lỗi; guide 4.2 không cho dùng tỉ lệ đạt 100%. `cost-estimate.md` mục 2 còn ghi "chưa có số đo nhiều lượt" dù đã có lượt mô phỏng. |
+| 28/11 15:00 | Xuất lại `demo-slides.pdf` từ nguồn mới `slides/demo-slides.html`; mỗi trang ghi file nguồn ở chân trang. Bỏ tiêu đề lặp trong `slides/so-do-giai-phap.png`. | Bản PDF lúc CP4 là bản nháp CP3 lúc 08:13, còn ghi "chờ người soát", "chờ đo 50 phiên", không có sơ đồ; số trên slide phải khớp file. |
+| 28/11 15:00 | `eval/report.md` mục 4: thay "cả 6 đạt theo điểm nháp" bằng kết quả đã chấm của lượt 3 (28/30, giữ riêng 5/6, trượt H02 và B08). | Câu cũ lệch với cột `pass` đã chấm trong `eval/run-3.csv`. |
+| 28/11 15:00 | `codebase/agent.py`: (1) đơn bệnh viện có `diet_note` mà khiếu nại không phải thiếu món → luôn chuyển người mức `high`, câu đầu dặn tạm đừng cho bệnh nhân ăn, không phụ thuộc nhãn model gắn. (2) Câu hỏi lại khi chưa rõ món hỏi cả "mấy phần". Chạy lượt 4 `run-4@20261128-150253` (30 câu, 0 lỗi) và độ ổn định 4: 30/30 câu cùng quyết định, 30/30 khớp `expected` (hành động + số tiền + mức ưu tiên). | (1) H04 chuyển người mức `normal` ở 2/6 lần chạy trước (`eval/stability-1-summary.md`, `stability-3-summary.md`): mức ưu tiên phụ thuộc model gắn nhãn `wrong_item`. H04 thuộc phần giữ riêng, nên từ lượt 4 nó không còn là dữ liệu chưa thấy; kết quả giữ riêng để báo cáo vẫn là lượt 3 (5/6). (2) B08 lượt 3 trượt vì chưa hỏi số lượng. |
+| 28/11 15:30 | `codebase/agent.py`, `codebase/tools.py`, `codebase/demo_web.py`, `codebase/demo.html`: (1) một tin nhắc nhiều đơn (tối đa 3) → model trích mỗi đơn một khiếu nại, code xử lý từng đơn, câu trả lời có một đoạn "Đơn DH-xxxx:" cho mỗi đơn, hậu kiểm đòi đủ mọi mã đơn; trên 3 đơn → chuyển nhân viên. (2) Giọng điệu: code bảo đảm có lời xin lỗi ở đầu (sau lời dặn an toàn nếu có) và lời cảm ơn ở cuối; prompt yêu cầu thừa nhận khó chịu của khách, không trách khách, không dùng markdown. (3) Mỗi nháp hoàn / phiếu chuyển người có mã yêu cầu `YC-xxxx`, ghi vào hàng chờ duyệt `outbox/approval-queue.jsonl` (không commit); câu trả lời nêu mã yêu cầu; nhân viên duyệt / từ chối qua `review_request()`. (4) Giao diện demo thêm tab Đơn hàng và Chờ duyệt. Kiểm hồi quy: lượt 5 `run-5@20261128-151922` (30 câu, 0 lỗi) và độ ổn định 5: 30/30 câu cùng quyết định, 30/30 khớp `expected`; cả 30 câu trả lời có lời xin lỗi ở đầu và lời cảm ơn ở cuối, không có markdown. | Thử tay: tin nhắc hai đơn chỉ được xử lý một đơn; có câu trả lời hoàn tiền không có lời xin lỗi; nháp hoàn chỉ nằm trong bộ nhớ, không ai được báo để duyệt; người xem demo không thấy đơn có gì. Bộ câu thử giữ nguyên 30 câu (không thêm câu sau CP4), nên nhánh nhiều đơn chưa có câu thử đo; mới thử tay (2 và 3 đơn trong một tin, trên 3 đơn), ghi ở slide trang 8. |
 
 Ngày 28/11: thêm giao diện web cục bộ cho demo, dùng lại hàm answer và số liệu trace của từng yêu cầu.
 

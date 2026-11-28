@@ -21,9 +21,17 @@ Giả định mỗi lượt hỏi dùng lượng token trung bình của 24 câu
 
 Đây là dự toán tuyến tính theo token benchmark. Độ dài hội thoại thực tế có thể thay đổi chi phí. Bảng mô phỏng chính thức bên dưới cần usage của 50 phiên.
 
-## 2. Trạng thái phép đo 50 phiên
+## 2. Phép đo 50 phiên
 
-Cấu hình đã có 50 phiên và seed 42. Chạy `python run.py simulate --rate-from eval/run-2.csv` trên máy đã cấu hình model thật. Khi có run ID, lấy kết quả từ báo cáo do chương trình sinh. Hiện chưa có số đo nhiều lượt trong repo.
+Lượt dùng để báo cáo là `simulate-2@20261128-143936` ([`simulate-2-summary.md`](simulate-2-summary.md)): 50 phiên nhiều lượt, seed 42, chạy thật qua bản chạy thử với `anthropic/claude-haiku-5.5`, 0 phiên lỗi. Lệnh: `python run.py simulate --rate-from eval/run-3.csv`.
+Tỉ lệ đạt là 28/30 (93%) của lượt 3 đã chấm. Không dùng 24/24 của lượt 2, vì đó là 100% trên chính bộ câu đã dùng để sửa lỗi và guide 4.2 không cho dùng tỉ lệ đạt 100%. Lượt `simulate-1@20261128-135631` dùng tỉ lệ đó, giữ lại làm hồ sơ, không dùng để báo cáo.
+
+| Model (giá) | Chi phí / phiên | Chi phí / task thành công | / tháng · 550 khách | / tháng · 1.100 khách | / tháng · 2.200 khách | / khách / tháng (cơ sở) |
+|---|---:|---:|---:|---:|---:|---:|
+| anthropic/claude-haiku-5.5 (vào 0,1 · ra 0,5 USD/1M) | $0.00069 | $0.00074 | $0.4559 | $0.9117 | $1.82 | $0.00083 |
+| google/gemini-3.5-flash-lite (vào 0,3 · ra 2,5 USD/1M) | $0.0030 | $0.0032 | $1.99 | $3.99 | $7.98 | $0.0036 |
+
+Token đo trên Claude Haiku 5.5; dòng Gemini là giá Gemini áp lên cùng số token. Quy mô 550 / 1.100 / 2.200 khách là quy mô thí điểm *(tự ước tính)*, xem `cost/personas.yaml`.
 
 ## 3. So với impact
 

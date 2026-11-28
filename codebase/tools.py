@@ -5,17 +5,22 @@ Ba nhóm:
     chỉ đọc        get_order, get_policy, get_complaint_history   (đọc data/*.json, nạp lười lần đầu dùng)
     code kiểm      check_limit, compute_missing_refund            (con số do code tính, không do model)
     tác động ngoài draft_refund, escalate_to_human, request_evidence  (CHỈ tạo bản nháp chờ nhân viên duyệt)
-Bản nháp được giữ trong OUTBOX (bộ nhớ). Bản thật sẽ đẩy vào hàng chờ của nhân viên CSKH.
+Mỗi bản nháp có mã yêu cầu (YC-xxxx), nằm trong OUTBOX (bộ nhớ) và được ghi vào hàng chờ duyệt
+outbox/approval-queue.jsonl: đó là thông báo tới nhân viên CSKH. Nhân viên duyệt / từ chối qua review_request()
+(tab "Chờ duyệt" của codebase/demo_web.py); mỗi quyết định ghi thêm một dòng, không sửa dòng cũ.
 """
 import json
 import os
+import threading
 from datetime import datetime, timedelta
 
 from tracing import tool, TOOLS  # noqa: F401
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.environ.get("D1_DATA_DIR") or os.path.join(ROOT, "data")  # D1_DATA_DIR: chỉ để thử với fixture riêng
+QUEUE = os.environ.get("D1_QUEUE") or os.path.join(ROOT, "outbox", "approval-queue.jsonl")
 _cache = {}
+_queue_lock = threading.Lock()
 OUTBOX = []  # bản nháp hoàn tiền / chuyển người / xin bằng chứng, chờ nhân viên duyệt
 
 
@@ -114,10 +119,55 @@ def check_limit(issue_type: str, amount_vnd: int, order: dict, history: list, no
 
 # ---------- tác động ra ngoài: chỉ tạo bản nháp ----------
 
+def _read_queue():
+    """Các dòng của hàng chờ duyệt, theo thứ tự ghi."""
+    if not os.path.exists(QUEUE):
+        return []
+    with open(QUEUE, encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def _append_queue(entry):
+    os.makedirs(os.path.dirname(QUEUE), exist_ok=True)
+    with open(QUEUE, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+
 def _draft(kind, **fields):
-    d = dict(kind=kind, status="chờ duyệt", **fields)
+    """Tạo bản nháp, cấp mã YC-xxxx và đẩy vào hàng chờ duyệt (thông báo tới nhân viên)."""
+    with _queue_lock:
+        n = sum(1 for e in _read_queue() if e.get("event") == "created") + 1
+        d = dict(request_id="YC-%04d" % n, kind=kind, status="chờ duyệt",
+                 created_at=datetime.now().astimezone().isoformat(timespec="seconds"), **fields)
+        _append_queue(dict(event="created", **d))
     OUTBOX.append(d)
     return d
+
+
+def list_requests():
+    """Hàng chờ duyệt, mỗi mã yêu cầu một dòng với trạng thái mới nhất (mới nhất lên đầu). Không phải @tool:
+    đây là màn hình của nhân viên, agent không gọi."""
+    latest = {}
+    for e in _read_queue():
+        if e.get("event") == "created":
+            latest[e["request_id"]] = {k: v for k, v in e.items() if k != "event"}
+        elif e.get("event") == "reviewed" and e.get("request_id") in latest:
+            latest[e["request_id"]].update(status=e["status"], reviewed_at=e["reviewed_at"])
+    return sorted(latest.values(), key=lambda r: r["request_id"], reverse=True)
+
+
+def review_request(request_id, approve):
+    """Nhân viên duyệt / từ chối một yêu cầu đang "chờ duyệt". Ghi thêm một dòng, không sửa dòng cũ.
+    Không phải @tool: chỉ người được gọi, agent không tự duyệt."""
+    with _queue_lock:
+        current = {r["request_id"]: r for r in list_requests()}.get(request_id)
+        if not current or current["status"] != "chờ duyệt":
+            return None
+        status = "đã duyệt" if approve else "từ chối"
+        _append_queue(dict(event="reviewed", request_id=request_id, status=status,
+                           reviewed_at=datetime.now().astimezone().isoformat(timespec="seconds")))
+    current.update(status=status)
+    return current
 
 
 @tool

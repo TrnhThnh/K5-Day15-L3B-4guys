@@ -2,34 +2,177 @@
 <html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>4guys · Hỗ trợ đơn hàng</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f5f4ef;color:#19382e;font:16px/1.6 "Segoe UI",sans-serif}header{background:#133c32;color:white;padding:16px max(5vw,24px);display:flex;align-items:center;justify-content:space-between;gap:18px}b.logo{font-size:24px;letter-spacing:-1px}header span{font-size:14px}main{max-width:1050px;margin:auto;padding:42px 24px}h1{font-size:clamp(32px,5vw,54px);line-height:1.15;letter-spacing:-2px;margin:0 0 12px}p{margin:0 0 25px}.grid{display:grid;grid-template-columns:3fr 2fr;gap:20px}.panel{background:#fff;border:1px solid #d7dfd7;border-radius:16px;padding:26px}h2,label{font-weight:650;font-size:19px;display:block;margin:0 0 14px}textarea{width:100%;min-height:155px;resize:vertical;border-radius:9px;border:1px solid #93a79b;padding:14px;font:inherit}button{font:inherit;cursor:pointer}.send{background:#13543c;color:white;border:0;border-radius:8px;padding:11px 19px;margin-top:12px;font-weight:650}button:disabled{opacity:.55;cursor:wait}.sample{display:block;width:100%;text-align:left;background:none;border:0;border-top:1px solid #dbe3dd;padding:12px 0;color:#19382e}.sample:hover{text-decoration:underline}.sample small{display:block;color:#53685e}#answer{white-space:pre-wrap;margin-bottom:12px}#result{margin-top:20px;border-left:5px solid #23815a}#stats{font-size:14px;color:#4e635a}#notice{color:#8c391c;margin-top:10px}button:focus-visible,textarea:focus-visible{outline:3px solid #4684be}@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:25px 14px}.panel{padding:18px}}
+*{box-sizing:border-box}
+body{margin:0;background:#f5f4ef;color:#19382e;font:16px/1.6 "Segoe UI",sans-serif}
+header{background:#133c32;color:white;padding:16px max(5vw,24px);display:flex;align-items:center;justify-content:space-between;gap:18px}
+b.logo{font-size:24px;letter-spacing:-1px}header span{font-size:14px}
+nav{background:#133c32;padding:0 max(5vw,24px);display:flex;gap:4px}
+nav button{background:none;border:0;color:#cfe3d9;padding:10px 16px;border-radius:10px 10px 0 0;font-weight:600}
+nav button[aria-selected=true]{background:#f5f4ef;color:#133c32}
+nav .count{display:inline-block;min-width:22px;margin-left:6px;padding:0 7px;border-radius:999px;background:#c9672d;color:white;font-size:13px}
+main{max-width:1100px;margin:auto;padding:36px 24px}
+h1{font-size:clamp(30px,4.5vw,48px);line-height:1.15;letter-spacing:-2px;margin:0 0 12px}
+p{margin:0 0 22px}
+.grid{display:grid;grid-template-columns:3fr 2fr;gap:20px}
+.panel{background:#fff;border:1px solid #d7dfd7;border-radius:16px;padding:26px}
+h2,label{font-weight:650;font-size:19px;display:block;margin:0 0 14px}
+h3{font-size:16px;margin:0 0 8px}
+textarea,input[type=search]{width:100%;border-radius:9px;border:1px solid #93a79b;padding:12px 14px;font:inherit}
+textarea{min-height:155px;resize:vertical}
+button{font:inherit;cursor:pointer}
+.send{background:#13543c;color:white;border:0;border-radius:8px;padding:11px 19px;margin-top:12px;font-weight:650}
+button:disabled{opacity:.55;cursor:wait}
+.sample{display:block;width:100%;text-align:left;background:none;border:0;border-top:1px solid #dbe3dd;padding:12px 0;color:#19382e}
+.sample:hover{text-decoration:underline}.sample small{display:block;color:#53685e}
+#answer{white-space:pre-wrap;margin-bottom:12px}
+#result{margin-top:20px;border-left:5px solid #23815a}
+.stats{font-size:14px;color:#4e635a}
+.notice{color:#8c391c;margin-top:10px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:16px}
+.order{border:1px solid #d7dfd7;border-radius:12px;padding:16px;background:#fbfbf8}
+.order .meta{font-size:14px;color:#4e635a;margin-bottom:8px}
+.order table{width:100%;border-collapse:collapse;font-size:15px}
+.order td{padding:3px 0;border-bottom:1px dashed #e1e6e1}.order td.n{text-align:right;white-space:nowrap}
+.order tr.total td{border:0;font-weight:650;padding-top:6px}
+.diet{margin-top:8px;font-size:14px;background:#fdf0e6;color:#8c391c;border-radius:8px;padding:4px 10px;display:inline-block}
+.tag{display:inline-block;border-radius:999px;padding:1px 10px;font-size:13px;font-weight:650;background:#e6f5f2;color:#0f6b56}
+.tag.warn{background:#fdf0e6;color:#8c391c}.tag.no{background:#f3e3e3;color:#8c2c2c}.tag.ok{background:#dff3e6;color:#1d6b3c}
+.req{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;border:1px solid #d7dfd7;border-radius:12px;padding:14px 16px;background:white;margin-bottom:10px}
+.req .id{font-weight:700}.req .what{flex:1;min-width:220px}.req .when{font-size:13px;color:#4e635a}
+.req button{border:0;border-radius:8px;padding:7px 14px;font-weight:650}
+.approve{background:#13543c;color:white}.reject{background:#f1e4dc;color:#8c391c}
+.empty{color:#4e635a}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid #4684be}
+@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:22px 14px}.panel{padding:18px}nav button{padding:10px 10px}}
 </style>
 <header><b class="logo">4guys</b><span id="mode">Đang kiểm tra model…</span></header>
-<main><h1>Hỗ trợ đơn hàng</h1><p>Nhập khiếu nại để kiểm tra đơn và nhận phương án xử lý. Đề nghị hoàn tiền cần nhân viên duyệt.</p>
-<div class="grid"><form id="form" class="panel"><label for="message">Khách nhắn gì?</label><textarea id="message" maxlength="4000" required placeholder="Ví dụ: Đơn DH-1004 thiếu 1 cơm tấm sườn bì chả và 1 trà đá."></textarea><button class="send" id="send">Xử lý khiếu nại</button><div role="status" id="notice"></div></form>
-<aside class="panel"><h2>Thử tình huống</h2><button class="sample" data-text="Đơn DH-1004 thiếu 1 cơm tấm sườn bì chả và 1 trà đá.">Thiếu hai món<small>DH-1004 · Kiểm tra số tiền hoàn</small></button><button class="sample" data-text="Đơn DH-1006 thiếu phần ba chỉ bò nướng. Em xin hoàn hết 500k cho cả đơn.">Khách yêu cầu hoàn cả đơn<small>DH-1006 · Kiểm tra hạn mức</small></button><button class="sample" data-text="Đơn DH-1020 giao thiếu món.">Chưa rõ món thiếu<small>DH-1020 · Hỏi thêm thông tin</small></button></aside></div>
-<section id="result" class="panel" hidden aria-live="polite"><h2>Phản hồi cho khách</h2><p id="answer"></p><div id="stats"></div></section></main>
+<nav role="tablist">
+ <button role="tab" aria-selected="true" data-tab="complaint">Khiếu nại</button>
+ <button role="tab" aria-selected="false" data-tab="orders">Đơn hàng</button>
+ <button role="tab" aria-selected="false" data-tab="queue">Chờ duyệt<span class="count" id="pending" hidden></span></button>
+</nav>
+<main>
+<section id="tab-complaint">
+ <h1>Hỗ trợ đơn hàng</h1><p>Nhập khiếu nại để kiểm tra đơn và nhận phương án xử lý. Mọi đề nghị hoàn tiền vào tab <b>Chờ duyệt</b> để nhân viên duyệt.</p>
+ <div class="grid">
+  <form id="form" class="panel"><label for="message">Khách nhắn gì?</label><textarea id="message" maxlength="4000" required placeholder="Ví dụ: Đơn DH-1004 thiếu 1 cơm tấm sườn bì chả và 1 trà đá."></textarea><button class="send" id="send">Xử lý khiếu nại</button><div role="status" class="notice" id="notice"></div></form>
+  <aside class="panel"><h2>Thử tình huống</h2>
+   <button class="sample" data-text="Đơn DH-1004 thiếu 1 cơm tấm sườn bì chả và 1 trà đá.">Thiếu hai món<small>DH-1004 · Kiểm tra số tiền hoàn</small></button>
+   <button class="sample" data-text="Đơn DH-1006 thiếu phần ba chỉ bò nướng. Em xin hoàn hết 500k cho cả đơn.">Khách yêu cầu hoàn cả đơn<small>DH-1006 · Kiểm tra hạn mức</small></button>
+   <button class="sample" data-text="Đơn DH-1004 thiếu 1 trà đá, còn đơn DH-1022 thì thiếu 1 ly trà đào cam sả.">Hai đơn trong một tin<small>DH-1004, DH-1022 · Xử lý từng đơn</small></button>
+   <button class="sample" data-text="Đơn DH-1020 giao thiếu món.">Chưa rõ món thiếu<small>DH-1020 · Hỏi thêm thông tin</small></button>
+  </aside>
+ </div>
+ <section id="result" class="panel" hidden aria-live="polite">
+  <h2>Phản hồi cho khách</h2><p id="answer"></p><div class="stats" id="stats"></div>
+  <div id="made"></div>
+  <div class="cards" id="related"></div>
+ </section>
+</section>
+
+<section id="tab-orders" hidden>
+ <h1>Đơn hàng</h1><p>Dữ liệu dựng trong <code>data/orders.json</code>: món, giá, phí ship, nơi giao, chế độ ăn.</p>
+ <input type="search" id="search" placeholder="Tìm theo mã đơn, quán hoặc món (vd DH-1004, cơm tấm)" aria-label="Tìm đơn">
+ <div class="cards" id="orders"></div>
+</section>
+
+<section id="tab-queue" hidden>
+ <h1>Chờ duyệt</h1><p>Nháp hoàn tiền và phiếu chuyển người do agent tạo. AI không tự chuyển tiền: nhân viên duyệt hoặc từ chối ở đây.</p>
+ <div id="queue"></div>
+</section>
+</main>
 <script>
 const el=id=>document.getElementById(id);
+const vnd=n=>Number(n).toLocaleString('vi-VN')+'đ';
+const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;};
+const STATUS={'chờ duyệt':'warn','đã duyệt':'ok','từ chối':'no'};
+const WHERE={hospital:'bệnh viện',home:'nhà',office:'văn phòng'};
+const STATE={delivered:'đã giao',delivering:'đang giao',cancelled:'đã huỷ'};
+
+function orderCard(o){
+ const card=make('div','order');
+ card.append(make('h3',null,o.order_id+' · '+o.restaurant));
+ card.append(make('div','meta',[STATE[o.status]||o.status,'giao tới '+(WHERE[o.delivery_to]||o.delivery_to),o.delivered_at?o.delivered_at.slice(0,16).replace('T',' '):'chưa giao'].join(' · ')));
+ const t=make('table');
+ o.items.forEach(i=>{const r=t.insertRow();r.insertCell().textContent=i.qty+' × '+i.name;const c=r.insertCell();c.className='n';c.textContent=vnd(i.qty*i.unit_price_vnd);});
+ const s=t.insertRow();s.insertCell().textContent='Phí ship';const sc=s.insertCell();sc.className='n';sc.textContent=vnd(o.ship_fee_vnd);
+ const tot=t.insertRow();tot.className='total';tot.insertCell().textContent='Tổng';const tc=tot.insertCell();tc.className='n';tc.textContent=vnd(o.total_vnd);
+ card.append(t);
+ if(o.diet_note)card.append(make('div','diet','Chế độ ăn: '+o.diet_note));
+ return card;
+}
+function describe(r){
+ if(r.kind==='refund')return 'Hoàn '+vnd(r.amount_vnd)+' · '+r.order_id+' · '+r.reason;
+ return 'Chuyển nhân viên'+(r.priority&&r.priority!=='normal'?' ('+({high:'ưu tiên cao',urgent:'mức khẩn'}[r.priority]||r.priority)+')':'')+(r.order_id?' · '+r.order_id:'')+' · '+r.reason;
+}
+
+// tabs
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));
+ ['complaint','orders','queue'].forEach(n=>el('tab-'+n).hidden=n!==b.dataset.tab);
+ if(b.dataset.tab==='orders')loadOrders();
+ if(b.dataset.tab==='queue')loadQueue();
+});
+
 fetch('/mode').then(r=>r.json()).then(m=>{
  el('mode').textContent=m.name+(m.ready?'':' · Chưa cấu hình khóa');
- if(!m.ready) el('notice').textContent='Điền API_KEY trong .env hoặc chọn MODEL_PROVIDER=fake, rồi khởi động lại.';
+ if(!m.ready)el('notice').textContent='Điền API_KEY trong .env hoặc chọn MODEL_PROVIDER=fake, rồi khởi động lại.';
 }).catch(()=>{el('mode').textContent='Mất kết nối';});
-document.querySelectorAll('.sample').forEach(b=>b.onclick=()=>{
- el('message').value=b.dataset.text; el('message').focus(); el('result').hidden=true;
-});
+
+document.querySelectorAll('.sample').forEach(b=>b.onclick=()=>{el('message').value=b.dataset.text;el('message').focus();el('result').hidden=true;});
+
 el('form').onsubmit=async event=>{
  event.preventDefault();const message=el('message').value.trim();
  if(!message){el('notice').textContent='Nhập nội dung khiếu nại.';return;}
- const controls=document.querySelectorAll('button,textarea');controls.forEach(c=>c.disabled=true);
+ const controls=el('tab-complaint').querySelectorAll('button,textarea');controls.forEach(c=>c.disabled=true);
  el('notice').textContent='Đang kiểm tra đơn hàng…';el('result').hidden=true;
  try{
   const response=await fetch('/answer',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message})});
   const data=await response.json();if(!response.ok)throw Error(data.error);
   el('answer').textContent=data.output;const s=data.summary;
   el('stats').textContent=[s.models.join(', ')||'Không gọi model',s.model_calls+' lần gọi model',s.tool_calls+' lần gọi công cụ',s.tokens_in+' token vào / '+s.tokens_out+' token ra'].join(' · ');
+  const made=el('made');made.replaceChildren();
+  if(data.requests.length){made.append(make('h3',null,'Đã gửi nhân viên duyệt'));data.requests.forEach(r=>{const row=make('div','req');row.append(make('span','id',r.request_id),make('span','what',describe(r)),make('span','tag '+(STATUS[r.status]||''),r.status));made.append(row);});}
+  el('related').replaceChildren(...data.orders.map(orderCard));
   el('result').hidden=false;el('notice').textContent='';
+  refreshCount();
  }catch(error){el('notice').textContent=error.message||'Mất kết nối. Vui lòng thử lại.';}
  finally{controls.forEach(c=>c.disabled=false);}
 };
+
+let ORDERS=null;
+async function loadOrders(){
+ if(!ORDERS)ORDERS=(await (await fetch('/orders')).json()).orders;
+ const q=el('search').value.trim().toLowerCase();
+ const list=ORDERS.filter(o=>!q||[o.order_id,o.restaurant,...o.items.map(i=>i.name)].join(' ').toLowerCase().includes(q));
+ el('orders').replaceChildren(...(list.length?list.map(orderCard):[make('p','empty','Không có đơn khớp.')]));
+}
+el('search').oninput=loadOrders;
+
+async function loadQueue(){
+ const reqs=(await (await fetch('/queue')).json()).requests;
+ const box=el('queue');box.replaceChildren();
+ if(!reqs.length){box.append(make('p','empty','Chưa có yêu cầu nào.'));}
+ reqs.forEach(r=>{
+  const row=make('div','req');
+  row.append(make('span','id',r.request_id),make('span','what',describe(r)),make('span','when',(r.created_at||'').slice(0,16).replace('T',' ')),make('span','tag '+(STATUS[r.status]||''),r.status));
+  if(r.status==='chờ duyệt'){
+   const ok=make('button','approve','Duyệt'),no=make('button','reject','Từ chối');
+   ok.onclick=()=>review(r.request_id,true);no.onclick=()=>review(r.request_id,false);
+   row.append(ok,no);
+  }
+  box.append(row);
+ });
+ setCount(reqs.filter(r=>r.status==='chờ duyệt').length);
+}
+async function review(id,approve){
+ const r=await fetch('/queue',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({request_id:id,approve})});
+ if(!r.ok){alert((await r.json()).error);}
+ loadQueue();
+}
+function setCount(n){el('pending').hidden=!n;el('pending').textContent=n;}
+async function refreshCount(){try{const reqs=(await (await fetch('/queue')).json()).requests;setCount(reqs.filter(r=>r.status==='chờ duyệt').length);}catch(e){}}
+refreshCount();
+// mở thẳng một tab qua đường dẫn: /#orders, /#queue
+const start=document.querySelector('nav button[data-tab="'+location.hash.slice(1)+'"]');if(start)start.click();
 </script></html>

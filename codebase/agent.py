@@ -1,13 +1,17 @@
 """Luồng chính lát cắt D1: khách báo thiếu món trong đơn giao đồ ăn nhiều món.
 
 Hình dạng: WORKFLOW CỐ ĐỊNH 4 bước (không phải agent tự chọn bước):
-    1. model  trích JSON {order_id, issue_type, missing_items, claimed_amount, threats, pii_request,
-              penalty_request, safety_flag} từ tin của khách. Chế độ giả / model trả sai JSON → bộ trích heuristic.
-    2. code   tra đơn, khớp món, tính tiền, check_limit, áp luật chặn → chọn 1 trong 3: hoàn (nháp) / hỏi thêm / chuyển người.
-    3. model  viết 1 câu trả lời tiếng Việt từ các dữ kiện code đưa (chế độ giả → mẫu cố định).
-    4. code   hậu kiểm: mọi con số trong câu trả lời phải có trong dữ kiện, không có SĐT / địa chỉ → sai thì dùng mẫu.
+    1. model  trích JSON {is_complaint, threats, pii_request, penalty_request, complaints: [{order_id, issue_type,
+              missing_items, claimed_amount, safety_flag}, ...]} từ tin của khách, mỗi đơn một phần tử.
+              Chế độ giả / model trả sai JSON → bộ trích heuristic (tách tin theo từng mã đơn).
+    2. code   với TỪNG đơn: tra đơn, khớp món, tính tiền, check_limit, áp luật chặn → hoàn (nháp) / hỏi thêm / chuyển người.
+              Tối đa 3 đơn một tin; nhiều hơn thì chuyển nhân viên.
+    3. model  viết 1 câu trả lời tiếng Việt từ các dữ kiện code đưa, mỗi đơn một đoạn (chế độ giả → mẫu cố định).
+    4. code   hậu kiểm: mọi con số phải có trong dữ kiện, đủ mọi mã đơn, không có SĐT / địa chỉ → sai thì dùng mẫu;
+              luôn có lời xin lỗi ở đầu và lời cảm ơn ở cuối.
 Tin không phải khiếu nại (hỏi giờ mở cửa, đổi địa chỉ...) và đơn chưa giao xong thì nói thẳng, không đi vào luồng hoàn tiền.
-Model không bao giờ tự gõ số tiền, không tự kiểm hạn mức, không tự chuyển tiền.
+Model không bao giờ tự gõ số tiền, không tự kiểm hạn mức, không tự chuyển tiền. Mỗi nháp hoàn / phiếu chuyển người có
+mã yêu cầu (YC-xxxx) và nằm trong hàng chờ duyệt của nhân viên (tools.py).
 """
 import json
 import re
@@ -16,11 +20,15 @@ from datetime import datetime
 
 import ai
 from ai import call_model
-from tools import (check_limit, compute_missing_refund, draft_refund, escalate_to_human, get_complaint_history,
+from tools import (OUTBOX, check_limit, compute_missing_refund, draft_refund, escalate_to_human, get_complaint_history,
                    get_order, request_evidence)
 from tracing import note
 
 ISSUES = ("missing_item", "wrong_item", "late", "foreign_object", "food_safety")
+MAX_ORDERS = 3  # số đơn tối đa xử lý trong một tin; nhiều hơn thì chuyển nhân viên
+COMPLAINT_KEYS = ("order_id", "issue_type", "missing_items", "claimed_amount", "safety_flag")
+APOLOGY = "Mình thành thật xin lỗi vì sự bất tiện bạn gặp phải."
+THANKS = "Cảm ơn bạn đã báo cho mình."
 # Câu điều khoản nói với khách (rút từ refund_rule của data/policy.json, không chứa số để hậu kiểm số tiền chặt)
 CLAUSE = "chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship"
 # Thời điểm khách báo, dùng để kiểm hạn báo. Dữ liệu dựng nên cố định mốc theo data/DATA_CARD.md
@@ -28,21 +36,25 @@ CLAUSE = "chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, 
 REPORT_NOW = datetime.fromisoformat("2026-11-27T21:00:00+07:00")
 
 EXTRACT_SYSTEM = """Bạn trích thông tin từ tin nhắn khiếu nại đơn giao đồ ăn. Chỉ trả về MỘT object JSON, không giải thích:
-{"is_complaint": true nếu tin là khiếu nại về một đơn đồ ăn (thiếu / sai món, giao trễ, đồ ăn có vấn đề), false nếu là câu hỏi hay yêu cầu khác,
- "order_id": "DH-xxxx" hoặc null, "issue_type": một trong %s,
- "missing_items": [{"name": "tên món khách nói", "qty": số hoặc null}],
- "claimed_amount": số tiền khách đòi (VND) hoặc null, "threats": true nếu doạ 1 sao / bóc phốt / review xấu,
+{"is_complaint": true nếu tin là khiếu nại về đơn đồ ăn (thiếu / sai món, giao trễ, đồ ăn có vấn đề), false nếu là câu hỏi hay yêu cầu khác,
+ "threats": true nếu doạ 1 sao / bóc phốt / review xấu,
  "pii_request": true nếu đòi số điện thoại / địa chỉ của shipper hoặc quán,
  "penalty_request": true nếu đòi phạt / trừ tiền / khoá quán hoặc shipper,
- "safety_flag": true nếu có dị vật, nghi ngộ độc, dị ứng, triệu chứng sức khoẻ}
-Không đoán: thông tin không có trong tin thì để null hoặc []."""
+ "complaints": [MỖI ĐƠN KHÁCH NHẮC TỚI MỘT PHẦN TỬ:
+   {"order_id": "DH-xxxx" hoặc null, "issue_type": một trong %s,
+    "missing_items": [{"name": "tên món khách nói cho đơn này", "qty": số hoặc null}],
+    "claimed_amount": số tiền khách đòi cho đơn này (VND) hoặc null,
+    "safety_flag": true nếu đơn này có dị vật, nghi ngộ độc, dị ứng, triệu chứng sức khoẻ}]}
+Không đoán: thông tin không có trong tin thì để null hoặc []. Không gán món của đơn này sang đơn khác."""
 
-REPLY_SYSTEM = """Bạn là nhân viên CSKH app giao đồ ăn. Viết câu trả lời tiếng Việt ngắn (tối đa 4 câu), lịch sự, xưng "mình" gọi "bạn".
-Chỉ dùng dữ kiện được đưa. Bắt buộc nêu: quyết định, số tiền (nếu có, chép đúng y nguyên chuỗi "amount_text", vd 60.000đ), điều khoản chính sách (nếu có), bước tiếp theo.
+REPLY_SYSTEM = """Bạn là nhân viên CSKH app giao đồ ăn. Viết câu trả lời tiếng Việt ngắn gọn, lịch sự và tôn trọng, xưng "mình" gọi "bạn".
+Giọng điệu: mở đầu bằng lời xin lỗi chân thành vì sự bất tiện; thừa nhận khó chịu của khách; không trách khách, không nghi ngờ khách; kết thúc bằng lời cảm ơn khách đã báo.
+Chỉ dùng dữ kiện được đưa. Bắt buộc nêu: quyết định, số tiền (nếu có, chép đúng y nguyên chuỗi "amount_text", vd 60.000đ), mã yêu cầu (nếu có "request_id", chép y nguyên), điều khoản chính sách (nếu có), bước tiếp theo.
+Nếu dữ kiện có nhiều đơn: trả lời đủ từng đơn, mỗi đơn một đoạn bắt đầu bằng "Đơn DH-xxxx:".
 Không viết con số nào khác ngoài các số có trong dữ kiện. Không hứa gì ngoài dữ kiện. Không nêu số điện thoại, địa chỉ của ai.
 Không đổ lỗi cho quán hay shipper. Không chẩn đoán bệnh hay nguyên nhân.
 Nếu dữ kiện có "first": câu ĐẦU TIÊN của câu trả lời phải là đúng nội dung "first", trước cả lời xin lỗi.
-Nếu dữ kiện có "question": nêu đủ mọi ý được hỏi trong đó. Chỉ trả về nội dung câu trả lời."""
+Nếu dữ kiện có "question": nêu đủ mọi ý được hỏi trong đó. Viết chữ thường, không dùng markdown (không **, không #). Chỉ trả về nội dung câu trả lời."""
 
 
 # ---------- bước 1: trích thông tin ----------
@@ -78,14 +90,40 @@ BUT_RE = re.compile(r"\bnhưng\b", re.I)
 MENTION_RE = re.compile(r"(?:thieu|khong co|chua co|quen bo|khong thay)\s+(.+?)(?=[.!?;)]|\bcon lai\b|$)")
 QTY_RE = re.compile(r"^(\d+)\s*(?:ly|phan|cai|hop|suat|mieng|chai|lon|to|dia|goi|banh)?\s*")
 # phần sau dấu phẩy bắt đầu bằng các từ này là câu khác, không còn là tên món
-NOT_ITEM_RE = re.compile(r"^(?:gui don khieu nai|hoan|cho|xin|phat|neu|khong|giup|lam|shop|ad|minh|toi|em|anh|chi|ban|tru|khoa|vui|mong"
+NOT_ITEM_RE = re.compile(r"^(?:con$|con (?:don|thi)|gui don khieu nai|hoan|cho|xin|phat|neu|khong|giup|lam|shop|ad|minh|toi|em|anh|chi|ban|tru|khoa|vui|mong"
                          r"|gio moi|tuan|hom|ca nha|ca phong|dang|roi|ma|nen|nen tang|doi tac|app)\b")
 # chữ đứng trước tên món, không thuộc tên món ("thiếu nguyên nồi lẩu" → "lẩu")
 LEAD_RE = re.compile(r"^(?:nguyen|ca|het|luon)\s+(?:(?:noi|phan|suat|to|hop|ly|dia)\s+)?")
 
 
+def split_by_order(text):
+    """Tách tin theo từng mã đơn: mỗi đoạn bắt đầu ở một mã đơn (đoạn đầu gồm cả phần trước mã đầu tiên).
+    → [(mã đơn, đoạn tin)]. Mã đơn nhắc lại nhiều lần thì gộp các đoạn của nó."""
+    ms = list(ORDER_RE.finditer(text))
+    if len({m.group(1) for m in ms}) <= 1:
+        return [(("DH-" + ms[0].group(1)) if ms else None, text)]
+    parts = {}
+    for i, m in enumerate(ms):
+        start = 0 if i == 0 else m.start()
+        end = ms[i + 1].start() if i + 1 < len(ms) else len(text)
+        oid = "DH-" + m.group(1)
+        parts[oid] = (parts.get(oid, "") + " " + text[start:end]).strip()
+    return list(parts.items())
+
+
 def heuristic_extract(text):
-    """Bộ trích tất định (chế độ giả + dự phòng khi model trả JSON hỏng)."""
+    """Bộ trích tất định (chế độ giả + dự phòng khi model trả JSON hỏng): cờ của cả tin + mỗi đơn một khiếu nại."""
+    whole = heuristic_one(text)
+    out = {k: whole[k] for k in ("is_complaint", "threats", "pii_request", "penalty_request", "safety_flag")}
+    out["complaints"] = []
+    for oid, segment in split_by_order(text):
+        one = heuristic_one(segment)
+        out["complaints"].append(dict({k: one[k] for k in COMPLAINT_KEYS}, order_id=oid, text=segment))
+    return out
+
+
+def heuristic_one(text):
+    """Trích một khiếu nại từ một đoạn tin (từ khoá, không gọi model)."""
     f = fold(BUT_RE.sub(".", text)) + " "
     m = ORDER_RE.search(text)
     found = next((name for name, pat in ISSUE_KW if re.search(pat, f)), None)
@@ -134,19 +172,44 @@ def extract(text):
     if not d:
         note("model trả JSON hỏng → dùng bộ trích heuristic")
         return rule
-    # Mã đơn: chỉ nhận mã có thật trong tin (model không được bịa mã). Cờ an toàn: OR với từ khoá của code.
-    oid = str(d.get("order_id") or "").upper().replace(" ", "-")
-    d["order_id"] = oid if oid and fold(oid).replace("-", "") in fold(text).replace("-", "").replace(" ", "") else rule["order_id"]
-    if d.get("issue_type") not in ISSUES:
-        d["issue_type"] = rule["issue_type"]
-    d["missing_items"] = [i for i in (d.get("missing_items") or []) if isinstance(i, dict) and i.get("name")] \
-        or rule["missing_items"]
-    for k in KW:
-        d[k] = bool(d.get(k)) or rule[k]
+    in_text = fold(text).replace("-", "").replace(" ", "")
+    by_rule = {c["order_id"]: c for c in rule["complaints"] if c["order_id"]}
+    single_rule = rule["complaints"][0] if len(rule["complaints"]) == 1 else {}
+    raw = d.get("complaints")
+    if not isinstance(raw, list) or not raw:
+        raw = [d]  # model trả kiểu một đơn
+    complaints, seen = [], set()
+    for c in raw:
+        if not isinstance(c, dict):
+            continue
+        # Mã đơn: chỉ nhận mã có thật trong tin (model không được bịa mã).
+        oid = str(c.get("order_id") or "").upper().replace(" ", "-")
+        oid = oid if oid and fold(oid).replace("-", "") in in_text else None
+        r = by_rule.get(oid) or single_rule
+        oid = oid or r.get("order_id")
+        if oid in seen:
+            continue
+        seen.add(oid)
+        items = [i for i in (c.get("missing_items") or []) if isinstance(i, dict) and i.get("name")]
+        complaints.append({
+            "order_id": oid,
+            "issue_type": c.get("issue_type") if c.get("issue_type") in ISSUES else r.get("issue_type", "missing_item"),
+            "missing_items": items or r.get("missing_items") or [],
+            "claimed_amount": c.get("claimed_amount") if c.get("claimed_amount") is not None else r.get("claimed_amount"),
+            # cờ an toàn: OR với từ khoá của code
+            "safety_flag": bool(c.get("safety_flag")) or bool(r.get("safety_flag")),
+            "text": r.get("text") or text})
+    # Đơn có mã trong tin mà model bỏ sót: vẫn xử lý theo bộ trích của code, để không đơn nào bị bỏ qua.
+    complaints += [c for oid, c in by_rule.items() if oid not in seen]
+    if len(complaints) > 1:  # nhiều đơn: bỏ khiếu nại không có mã đơn (đã nằm trong các đơn có mã)
+        complaints = [c for c in complaints if c["order_id"]] or complaints[:1]
+    out = {k: bool(d.get(k)) or rule[k] for k in KW}
+    out["safety_flag"] = out["safety_flag"] or any(c["safety_flag"] for c in complaints)
     # Chỉ coi là ngoài phạm vi khi cả model lẫn từ khoá của code đều thấy đây không phải khiếu nại,
     # để một khiếu nại thật không bị gạt đi vì model đọc nhầm.
-    d["is_complaint"] = d.get("is_complaint") is not False or rule["is_complaint"]
-    return d
+    out["is_complaint"] = d.get("is_complaint") is not False or rule["is_complaint"]
+    out["complaints"] = complaints or rule["complaints"]
+    return out
 
 
 # ---------- bước 2: code quyết định ----------
@@ -222,16 +285,20 @@ def decide(x, text):
                 "next": "nhân viên CSKH sẽ kiểm tra đơn và trả lời bạn"}
     hospital = order.get("delivery_to") == "hospital" and order.get("diet_note")
     if x.get("issue_type") != "missing_item":
-        diet_clash = hospital and x.get("issue_type") == "wrong_item"
-        prio = "high" if diet_clash else "normal"
-        escalate_to_human(oid, "loại khiếu nại %s ngoài phạm vi tự xử lý" % x.get("issue_type"), prio)
-        if diet_clash:  # món giao nhầm có thể trái chế độ ăn của bệnh nhân: dặn đừng ăn trước khi nhân viên xử lý
-            return {"action": "escalate", "priority": prio, "order_id": oid,
-                    "first": "Bạn tạm đừng cho bệnh nhân ăn món giao nhầm, vì món đó có thể không hợp chế độ ăn "
-                             "(%s)." % order["diet_note"],
-                    "why": "đơn giao tới bệnh viện bị giao nhầm món, cần nhân viên xử lý ưu tiên",
+        if hospital:
+            # Đơn bệnh viện có chế độ ăn: mức ưu tiên do code quyết, không phụ thuộc nhãn model gắn (wrong_item,
+            # late...). Món nhận được, dù giao nhầm hay có vấn đề, có thể trái chế độ ăn → dặn đừng ăn trước.
+            wrong = x.get("issue_type") == "wrong_item"
+            escalate_to_human(oid, "đơn bệnh viện có chế độ ăn (%s), khiếu nại %s"
+                              % (order["diet_note"], x.get("issue_type")), "high")
+            return {"action": "escalate", "priority": "high", "order_id": oid,
+                    "first": "Bạn tạm đừng cho bệnh nhân ăn %s, vì có thể không hợp chế độ ăn (%s)."
+                             % ("món giao nhầm" if wrong else "món này", order["diet_note"]),
+                    "why": "đơn giao tới bệnh viện %s, cần nhân viên xử lý ưu tiên"
+                           % ("bị giao nhầm món" if wrong else "có chế độ ăn riêng"),
                     "next": "nhân viên liên hệ bạn ngay để bù đúng món theo chế độ ăn"}
-        return {"action": "escalate", "priority": prio, "order_id": oid,
+        escalate_to_human(oid, "loại khiếu nại %s ngoài phạm vi tự xử lý" % x.get("issue_type"), "normal")
+        return {"action": "escalate", "priority": "normal", "order_id": oid,
                 "why": "loại khiếu nại này cần nhân viên kiểm tra", "next": "nhân viên CSKH sẽ liên hệ bạn"}
     matched, unknown, ambiguous = match_items(order, x.get("missing_items") or [])
     names = ", ".join(it["name"] for it in order["items"])
@@ -242,7 +309,7 @@ def decide(x, text):
                             % (", ".join('"%s"' % u for u in unknown), oid, names)}
     if unknown or ambiguous or not matched:
         return {"action": "ask", "order_id": oid,
-                "question": "Đơn %s gồm: %s. Bạn bị thiếu món nào trong số này?" % (oid, names)}
+                "question": "Đơn %s gồm: %s. Bạn bị thiếu món nào trong số này, mấy phần?" % (oid, names)}
     unclear = [m for m in matched if m["qty"] is None and m["ordered_qty"] > 1]
     if unclear:
         m = unclear[0]
@@ -289,27 +356,52 @@ def vnd(n):
     return "{:,}".format(int(n)).replace(",", ".") + "đ"
 
 
-def template_body(f):
+def part(f, with_items=True):
+    """Nội dung xử lý của một đơn, chưa có lời xin lỗi."""
+    req = "mã yêu cầu %s" % f["request_id"] if f.get("request_id") else ""
+    clause = " theo điều khoản: " + f["clause"] if f.get("clause") else ""
     if f["action"] == "info":
         return f["message"]
     if f["action"] == "ask":
-        return "Xin lỗi bạn vì sự bất tiện. " + f["question"]
+        return f["question"]
     if f["action"] == "escalate":
-        return "%sXin lỗi bạn vì sự cố%s. Mình đã chuyển cho nhân viên%s vì %s%s. Bước tiếp theo: %s." % (
-            f["first"] + " " if f.get("first") else "",
-            " với đơn " + f["order_id"] if f.get("order_id") else "",
-            {"high": " (ưu tiên cao)", "urgent": " (mức khẩn)"}.get(f["priority"], ""), f["why"],
+        tags = [t for t in ({"high": "ưu tiên cao", "urgent": "mức khẩn"}.get(f["priority"], ""), req) if t]
+        return "Mình đã chuyển cho nhân viên%s vì %s%s. Bước tiếp theo: %s." % (
+            " (%s)" % ", ".join(tags) if tags else "", f["why"],
             " (điều khoản: %s)" % f["clause"] if f.get("clause") else "", f["next"])
-    return "Xin lỗi bạn vì đơn %s bị %s. Mình đã tạo đề nghị hoàn %s%s. Bước tiếp theo: %s." % (
-        f["order_id"], f["items"], vnd(f["amount_vnd"]),
-        " theo điều khoản: " + f["clause"] if f.get("clause") else "", f["next"])
+    return "Mình đã tạo đề nghị hoàn %s%s%s%s. Bước tiếp theo: %s." % (
+        vnd(f["amount_vnd"]), " cho phần " + f["items"] if with_items else "", " (%s)" % req if req else "",
+        clause, f["next"])
 
 
-def required_lines(f, x):
+def template_body(facts_list):
+    """Câu trả lời mẫu do code dựng: lời dặn an toàn (nếu có) → xin lỗi → xử lý từng đơn."""
+    firsts = " ".join(f["first"] for f in facts_list if f.get("first"))
+    lead = firsts + " " if firsts else ""
+    if len(facts_list) > 1:
+        def labelled(f):  # "Đơn DH-xxxx: …", trừ khi câu đã tự mở đầu bằng mã đơn đó
+            p = part(f)
+            return p if p.startswith("Đơn %s" % f["order_id"]) else "Đơn %s: %s" % (f["order_id"], p)
+        return lead + "Mình thành thật xin lỗi vì sự bất tiện với các đơn của bạn. " + " ".join(
+            labelled(f) for f in facts_list)
+    f = facts_list[0]
+    if f["action"] == "refund_draft":
+        return lead + "Mình thành thật xin lỗi vì đơn %s bị %s. %s" % (f["order_id"], f["items"], part(f, False))
+    if f["action"] == "escalate" and f.get("order_id"):
+        return lead + "Mình thành thật xin lỗi vì sự cố với đơn %s. %s" % (f["order_id"], part(f))
+    if f["action"] == "info" and not f.get("order_id"):  # câu ngoài phạm vi: xin lỗi vì không giúp được, không nói "bất tiện"
+        msg = part(f)
+        return lead + "Mình xin lỗi, " + msg[0].lower() + msg[1:]
+    return lead + APOLOGY + " " + part(f)
+
+
+def required_lines(facts_list, complaints, x):
     """Các câu BẮT BUỘC do code gắn vào cuối câu trả lời (model không được bỏ): từ chối SĐT / địa chỉ,
     lời doạ / đòi thêm không đổi mức hoàn, không hứa phạt quán / shipper."""
     lines = []
-    if x.get("threats") or (x.get("claimed_amount") and f.get("amount_vnd") and x["claimed_amount"] > f["amount_vnd"]):
+    over = any(c.get("claimed_amount") and f.get("amount_vnd") and c["claimed_amount"] > f["amount_vnd"]
+               for f, c in zip(facts_list, complaints))
+    if x.get("threats") or over:
         lines.append("Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.")
     if x.get("pii_request"):
         lines.append("Mình không thể cung cấp số điện thoại hay địa chỉ của shipper / quán; "
@@ -319,8 +411,15 @@ def required_lines(f, x):
     return lines
 
 
-def template(f, x):
-    return " ".join([template_body(f)] + required_lines(f, x))
+def finish(reply, facts_list, lines):
+    """Bảo đảm giọng điệu: có lời xin lỗi ngay đầu (sau lời dặn an toàn nếu có), câu bắt buộc, lời cảm ơn ở cuối."""
+    reply = reply.replace("**", "").replace("__", "")  # bỏ markdown in đậm, khách thấy chữ thường
+    head = 160 + sum(len(f["first"]) for f in facts_list if f.get("first"))
+    if "xin loi" not in fold(reply[:head]):
+        cut = re.search(r"[.!?]\s+", reply) if any(f.get("first") for f in facts_list) else None
+        reply = (reply[:cut.end()] + APOLOGY + " " + reply[cut.end():]) if cut else APOLOGY + " " + reply
+    out = " ".join([reply] + lines)
+    return out if "cam on" in fold(out) else out + " " + THANKS
 
 
 NUM_RE = re.compile(r"\d[\d.,]*\d|\d")
@@ -344,24 +443,54 @@ def post_check(reply, fallback):
     return None
 
 
+def decide_all(x, text):
+    """Bước 2 cho cả tin: mỗi đơn một lần decide(); gắn mã yêu cầu của nháp / phiếu vừa tạo vào dữ kiện."""
+    complaints = x["complaints"]
+    if not x.get("is_complaint", True):
+        return [decide(dict(complaints[0], is_complaint=False), text)], complaints[:1]
+    if len(complaints) > MAX_ORDERS:
+        d = escalate_to_human(None, "khách khiếu nại %d đơn trong một tin" % len(complaints), "normal")
+        return [{"action": "escalate", "priority": "normal", "order_id": None, "request_id": d["request_id"],
+                 "why": "tin của bạn nhắc tới %d đơn, nhiều hơn %d đơn mình xử lý được trong một lần"
+                        % (len(complaints), MAX_ORDERS),
+                 "next": "nhân viên CSKH sẽ xem từng đơn và trả lời bạn; lần sau bạn gửi mỗi đơn một tin "
+                         "để được xử lý nhanh hơn"}], [{}]
+    facts_list = []
+    for c in complaints:
+        before = len(OUTBOX)
+        f = decide(dict(c, is_complaint=True), c.get("text") or text)
+        ids = [d["request_id"] for d in OUTBOX[before:] if d["kind"] in ("refund", "escalation")]
+        if ids:
+            f["request_id"] = ", ".join(ids)
+        facts_list.append(f)
+    return facts_list, complaints
+
+
 def answer(text: str) -> dict:
     x = extract(text)
-    facts = decide(x, text)
-    note("quyết định: %s" % facts["action"])
-    fallback = template(facts, x)
+    facts_list, complaints = decide_all(x, text)
+    note("quyết định: %s" % ", ".join(f["action"] for f in facts_list))
+    lines = required_lines(facts_list, complaints, x)
+    body = template_body(facts_list)
+    fallback = finish(body, facts_list, lines)
     if ai.MODEL_PROVIDER == "fake":
         return {"output": fallback}
-    # Model chỉ viết lại phần thân; các câu bắt buộc do code gắn sau, nên model không làm rơi được.
-    body = template_body(facts)
+    # Model chỉ viết lại phần thân; các câu bắt buộc, lời xin lỗi và lời cảm ơn do code bảo đảm.
+    facts = facts_list[0] if len(facts_list) == 1 else {"orders": facts_list}
     reply = call_model(REPLY_SYSTEM, "Dữ kiện (do hệ thống tính, chép đúng số):\n%s\n\nCâu trả lời mẫu tham khảo:\n%s"
                        % (json.dumps(facts, ensure_ascii=False), body))["text"].strip()
     problem = post_check(reply, body)
-    if not problem and facts.get("first") and not reply.startswith(facts["first"][:20]):
+    firsts = [f["first"] for f in facts_list if f.get("first")]
+    if not problem and firsts and not reply.startswith(firsts[0][:20]):
         problem = "không mở đầu bằng lời dặn an toàn"
+    if not problem and len(facts_list) > 1:
+        missing = [f["order_id"] for f in facts_list if f.get("order_id") and f["order_id"] not in reply]
+        if missing:
+            problem = "thiếu đơn %s" % ", ".join(missing)
     if problem:
         note("hậu kiểm trượt (%s) → dùng câu mẫu" % problem)
         return {"output": fallback}
-    lines = [l for l in required_lines(facts, x) if l not in reply]
+    lines = [l for l in lines if l not in reply]
     if lines:
         note("gắn câu bắt buộc: %d câu" % len(lines))
-    return {"output": " ".join([reply] + lines)}
+    return {"output": finish(reply, facts_list, lines)}

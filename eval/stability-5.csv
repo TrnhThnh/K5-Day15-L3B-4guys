@@ -1,0 +1,377 @@
+﻿id,type,lan,quyet_dinh,khop_expected,output,error
+B01,thuong,1,refund:55000,1,"Mình xin lỗi chân thành vì đơn DH-1001 bị thiếu 1 Cơm tấm sườn bì chả khiến bạn không hài lòng. Mình hiểu việc thiếu món gây khó chịu, nhất là khi bạn đã đặt và chờ đợi.
+
+Về quyết định, mình đã lập bản đề nghị hoàn 55.000đ cho món thiếu, mã yêu cầu YC-0027. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+B01,thuong,2,refund:55000,1,"Mình thành thật xin lỗi vì đơn DH-1001 bị thiếu 1 Cơm tấm sườn bì chả, khiến bạn không được trọn vẹn như mong đợi. Mình hiểu việc này gây khó chịu cho bạn.
+
+Mình đã tạo đề nghị hoàn tiền 55.000đ cho món thiếu, mã yêu cầu là YC-0028. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi được duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+B01,thuong,3,refund:55000,1,"Mình thành thật xin lỗi vì đơn DH-1001 bị thiếu 1 Cơm tấm sườn bì chả, gây bất tiện cho bạn. Mình hiểu việc thiếu món khiến bạn khó chịu.
+
+Mình đã tạo đề nghị hoàn 55.000đ cho đơn này, mã yêu cầu là YC-0029, theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+B02,thuong,1,refund:95000,1,"Mình xin lỗi vì đơn DH-1002 bị thiếu 1 Combo gà rán 6 miếng khiến bạn không hài lòng. Mình hiểu việc thiếu món gây bất tiện và khó chịu cho bạn.
+
+Mình đã tạo đề nghị hoàn 95.000đ (mã yêu cầu YC-0030) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán.
+
+Cảm ơn bạn đã báo để mình hỗ trợ kịp thời. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B02,thuong,2,refund:95000,1,"Mình thành thật xin lỗi vì đơn DH-1002 bị thiếu 1 Combo gà rán 6 miếng, làm bạn không được trọn vẹn bữa ăn. Mình hiểu đây là trải nghiệm khó chịu. Mình đã tạo đề nghị hoàn 95.000đ (mã yêu cầu YC-0031) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B02,thuong,3,refund:95000,1,"Mình thành thật xin lỗi vì đơn DH-1002 bị thiếu 1 Combo gà rán 6 miếng, làm bạn phải chịu bất tiện và khó chịu. Mình đã tạo đề nghị hoàn 95.000đ (mã yêu cầu YC-0032) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B03,thuong,1,refund:35000,1,"Mình thành thật xin lỗi vì đơn DH-1003 bị thiếu 1 Trà sữa trân châu, làm bạn bất tiện và khó chịu. Mình hiểu việc nhận đơn không đủ món là điều rất phiền.
+
+Mình đã tạo đề nghị hoàn 35.000đ cho đơn DH-1003 với mã yêu cầu YC-0033. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví / tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình kiểm tra và xử lý.",
+B03,thuong,2,refund:35000,1,"Mình thành thật xin lỗi vì đơn DH-1003 của bạn bị thiếu 1 Trà sữa trân châu, gây bất tiện và khó chịu cho bạn. Mình đã tạo đề nghị hoàn 35.000đ cho phần món thiếu (mã yêu cầu YC-0034) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý.",
+B03,thuong,3,refund:35000,1,"Mình thành thật xin lỗi vì đơn DH-1003 bị thiếu 1 Trà sữa trân châu, khiến bạn bất tiện và khó chịu.
+
+Mình đã tạo đề nghị hoàn 35.000đ cho phần món thiếu (mã yêu cầu YC-0035). Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví / tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+B04,thuong,1,refund:60000,1,"Mình thành thật xin lỗi vì đơn DH-1004 bị thiếu 1 Cơm tấm sườn bì chả và 1 Trà đá, gây bất tiện cho bạn. Mình hiểu việc thiếu món khi đã đặt đồ ăn sẽ khiến bạn khó chịu.
+
+Mình đã tạo đề nghị hoàn 60.000đ cho đơn này, mã yêu cầu YC-0036. Theo điều khoản chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình kiểm tra và xử lý.",
+B04,thuong,2,refund:60000,1,"Mình thành thật xin lỗi vì đơn DH-1004 bị thiếu 1 Cơm tấm sườn bì chả và 1 Trà đá, gây bất tiện cho bạn. Mình hiểu việc nhận đơn không đủ món thật sự khó chịu.
+
+Mình đã tạo đề nghị hoàn 60.000đ cho các món thiếu, mã yêu cầu là YC-0037. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Khi được duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+B04,thuong,3,refund:60000,1,"Mình thành thật xin lỗi vì đơn DH-1004 bị thiếu 1 Cơm tấm sườn bì chả và 1 Trà đá, gây bất tiện cho bạn. Mình hiểu việc thiếu món khi đã đặt đồ ăn thì rất khó chịu.
+
+Mình đã tạo bản đề nghị hoàn tiền 60.000đ cho đơn này, mã yêu cầu YC-0038. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+B05,thuong,1,refund:8000,1,"Mình rất xin lỗi vì đơn DH-1005 bị thiếu 1 Nước suối, gây bất tiện cho bạn. Mình hiểu việc nhận đơn thiếu món thật sự khó chịu. Mình đã tạo đề nghị hoàn 8.000đ cho đơn này với mã yêu cầu YC-0039, theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo, bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ được hoàn về ví hoặc tài khoản thanh toán của bạn. Cảm ơn bạn đã báo để mình xử lý.",
+B05,thuong,2,refund:8000,1,"Mình thành thật xin lỗi vì đơn DH-1005 bị thiếu 1 Nước suối, khiến bạn không hài lòng. Mình hiểu việc này gây bất tiện cho bạn. Mình đã lập bản đề nghị hoàn 8.000đ cho phần món thiếu, mã yêu cầu YC-0040. Theo điều khoản chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, và sau khi duyệt xong tiền sẽ về ví hoặc tài khoản thanh toán của bạn. Cảm ơn bạn đã báo để mình xử lý.",
+B05,thuong,3,refund:8000,1,"Mình thành thật xin lỗi vì đơn DH-1005 bị thiếu 1 Nước suối, làm bạn không hài lòng. Mình hiểu sự bất tiện này gây khó chịu cho bạn.
+
+Mình đã lập bản đề nghị hoàn tiền 8.000đ cho món thiếu, mã yêu cầu YC-0041, theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+B06,kho,1,refund:89000,1,"Mình thành thật xin lỗi vì đơn DH-1006 bị thiếu 1 Ba chỉ bò nướng, gây bất tiện cho bạn. Mình hiểu việc thiếu món khi nhận đồ ăn là điều rất khó chịu. Mình đã tạo đề nghị hoàn 89.000đ (mã yêu cầu YC-0042) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B06,kho,2,refund:89000,1,"Mình thành thật xin lỗi vì đơn DH-1006 bị thiếu 1 Ba chỉ bò nướng, làm bạn không trọn vẹn khi nhận đồ ăn. Mình hiểu bạn chắc hẳn khó chịu vì chuyện này.
+
+Mình đã tạo đề nghị hoàn tiền 89.000đ cho món thiếu, mã yêu cầu YC-0043. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B06,kho,3,refund:89000,1,"Mình thành thật xin lỗi vì đơn DH-1006 bị thiếu 1 Ba chỉ bò nướng, gây bất tiện cho bạn. Mình hiểu việc nhận đơn thiếu món thật sự khó chịu.
+
+Quyết định: mình đã lập bản đề nghị hoàn tiền 89.000đ cho phần món thiếu, với mã yêu cầu YC-0044. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B07,kho,1,ask,1,"Mình thành thật xin lỗi vì sự bất tiện bạn gặp phải, mình hiểu việc thiếu món khi nhận đồ ăn thật sự rất khó chịu. Để mình hỗ trợ kiểm tra, bạn cho mình xin mã đơn (dạng DH-xxxx) và cho mình biết bạn bị thiếu món nào, mấy phần nhé? Mình cảm ơn bạn đã báo cho mình.",
+B07,kho,2,ask,1,"Mình thành thật xin lỗi vì sự bất tiện này, mình hiểu việc thiếu món khiến bạn khó chịu. Để mình kiểm tra và hỗ trợ bạn nhanh nhất, bạn cho mình xin mã đơn (dạng DH-xxxx) và cho mình biết bạn bị thiếu món nào, mấy phần nhé. Mình cảm ơn bạn đã báo cho mình biết.",
+B07,kho,3,ask,1,"Mình thành thật xin lỗi vì sự bất tiện bạn gặp phải, và mình hiểu việc thiếu món khiến bạn rất khó chịu. Để mình hỗ trợ bạn nhanh nhất, bạn cho mình xin mã đơn (dạng DH-xxxx) và cho mình biết bạn bị thiếu món nào, mấy phần nhé? Cảm ơn bạn đã báo cho mình.",
+B08,kho,1,ask,1,"Mình thành thật xin lỗi vì sự bất tiện này và hiểu việc thiếu món khiến bạn khó chịu. Để hỗ trợ bạn, mình cần xác nhận lại đơn DH-1008 gồm: Bánh xèo tôm thịt, Gỏi cuốn tôm thịt (2 cuốn), Nước sâm. Bạn bị thiếu món nào trong số này, và thiếu mấy phần?
+
+Cảm ơn bạn đã báo cho mình.",
+B08,kho,2,ask,1,"Mình thành thật xin lỗi vì sự bất tiện này. Mình hiểu việc đơn thiếu món gây khó chịu cho bạn.
+
+Đơn DH-1008 gồm: Bánh xèo tôm thịt, Gỏi cuốn tôm thịt (2 cuốn), Nước sâm. Bạn vui lòng cho mình biết bạn bị thiếu món nào trong số này và thiếu mấy phần để mình hỗ trợ bạn nhanh nhất.
+
+Cảm ơn bạn đã báo cho mình.",
+B08,kho,3,ask,1,"Mình thành thật xin lỗi vì sự bất tiện này và hiểu việc thiếu món khiến bạn khó chịu. Đơn DH-1008 gồm: Bánh xèo tôm thịt, Gỏi cuốn tôm thịt (2 cuốn), Nước sâm. Bạn vui lòng cho mình biết bạn bị thiếu món nào trong số này và thiếu mấy phần để mình hỗ trợ tiếp nhé. Cảm ơn bạn đã báo cho mình.",
+B09,kho,1,ask,1,"Mình xin lỗi vì sự bất tiện này. Mình hiểu bạn đang mong nhận đủ món nên chắc hẳn rất khó chịu. Hiện mình không thấy món ""sinh tố bơ"" trong đơn DH-1009. Đơn này gồm: Bánh mì thịt nướng, Bánh mì ốp la, Cà phê sữa đá.
+
+Bạn kiểm tra giúp mình mã đơn, hoặc cho mình biết bạn đang thiếu món nào trong số trên nhé. Cảm ơn bạn đã báo cho mình.",
+B09,kho,2,ask,1,"Mình xin lỗi vì sự bất tiện này. Mình hiểu việc chờ đợi mà không thấy đúng món mình đặt sẽ gây khó chịu cho bạn.
+
+Hiện mình không thấy món ""sinh tố bơ"" trong đơn DH-1009. Đơn này gồm: Bánh mì thịt nướng, Bánh mì ốp la, Cà phê sữa đá.
+
+Bạn vui lòng kiểm tra giúp mình mã đơn, hoặc cho mình biết bạn bị thiếu món nào trong số các món trên nhé.
+
+Cảm ơn bạn đã báo để mình hỗ trợ kiểm tra.",
+B09,kho,3,ask,1,"Mình thành thật xin lỗi vì sự bất tiện này và hiểu việc không thấy đúng món mình đặt thật sự khó chịu. Mình không thấy món ""sinh tố bơ"" trong đơn DH-1009. Đơn hiện gồm: Bánh mì thịt nướng, Bánh mì ốp la, Cà phê sữa đá. Bạn vui lòng kiểm tra lại giúp mình mã đơn, hoặc cho mình biết bạn bị thiếu món nào trong số này để mình hỗ trợ tiếp nhé. Cảm ơn bạn đã báo cho mình.",
+B10,kho,1,refund:60000,1,"Mình thành thật xin lỗi vì đơn DH-1010 bị thiếu 1 Bún bò giò heo, khiến bạn không được trọn vẹn khi nhận đồ. Mình hiểu việc này gây khó chịu. Mình đã tạo đề nghị hoàn 60.000đ (mã yêu cầu YC-0045). Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, và sau khi duyệt tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B10,kho,2,refund:60000,1,"Mình thành thật xin lỗi vì đơn DH-1010 của bạn bị thiếu 1 Bún bò giò heo, gây bất tiện cho bạn. Mình hiểu bạn chắc hẳn rất khó chịu khi nhận đơn không đủ món.
+
+Mình đã tạo đề nghị hoàn 60.000đ cho món thiếu (mã yêu cầu YC-0046), theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví / tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B10,kho,3,refund:60000,1,"Mình thành thật xin lỗi vì đơn DH-1010 bị thiếu 1 Bún bò giò heo, gây bất tiện và khó chịu cho bạn. Mình hiểu việc thiếu món khi đang chờ ăn là điều không dễ chịu.
+
+Mình đã lập đề nghị hoàn 60.000đ cho đơn DH-1010, mã yêu cầu YC-0047. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B11,kho,1,refund:29000,1,"Mình thành thật xin lỗi vì đơn DH-1011 bị thiếu 1 Cà phê đen đá, khiến bạn không được trọn vẹn đơn hàng. Mình hiểu việc này gây khó chịu cho bạn.
+
+Quyết định: mình đã tạo đề nghị hoàn 29.000đ cho món thiếu, mã yêu cầu YC-0048. Theo điều khoản ""chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship"".
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B11,kho,2,refund:29000,1,"Mình thành thật xin lỗi vì đơn DH-1011 bị thiếu 1 Cà phê đen đá, và chắc hẳn bạn rất khó chịu khi nhận đơn không đủ món.
+
+Quyết định: mình đã tạo đề nghị hoàn 29.000đ cho đơn DH-1011, mã yêu cầu YC-0049. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Mình cảm ơn bạn đã báo để mình xử lý kịp thời. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B11,kho,3,refund:29000,1,"Mình thành thật xin lỗi vì đơn DH-1011 bị thiếu 1 Cà phê đen đá, gây bất tiện cho bạn. Mình hiểu việc nhận đơn thiếu món thật sự khó chịu.
+
+Quyết định: mình đã tạo đề nghị hoàn tiền 29.000đ cho món thiếu, với mã yêu cầu YC-0050. Theo điều khoản chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B12,kho,1,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1012. Mình hiểu việc thiếu món gây khó chịu cho bạn.
+
+Mình đã chuyển khiếu nại của bạn cho nhân viên CSKH, mã yêu cầu của bạn là YC-0051. Lý do là khiếu nại cần nhân viên kiểm tra thêm theo chính sách. Điều khoản áp dụng: chính sách thiếu món, hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: nhân viên CSKH sẽ xem xét và trả lời bạn.
+
+Mình cảm ơn bạn đã báo cho chúng mình.",
+B12,kho,2,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1012. Mình hiểu việc thiếu món gây khó chịu cho bạn. Mình đã chuyển khiếu nại của bạn cho nhân viên CSKH với mã yêu cầu YC-0052, vì khiếu nại cần nhân viên kiểm tra thêm theo chính sách. Điều khoản áp dụng: chính sách thiếu món, hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: nhân viên CSKH sẽ xem xét và trả lời bạn. Cảm ơn bạn đã báo cho mình.",
+B12,kho,3,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1012. Mình hiểu việc thiếu món gây khó chịu cho bạn. Mình đã chuyển yêu cầu của bạn cho nhân viên CSKH với mã yêu cầu YC-0053, vì khiếu nại cần nhân viên kiểm tra thêm theo chính sách: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo, nhân viên CSKH sẽ xem xét và trả lời bạn. Cảm ơn bạn đã báo cho mình.",
+B13,kho,1,refund:65000,1,"Mình thành thật xin lỗi vì sự bất tiện này. Đơn DH-1013 bị thiếu 1 Bánh xèo tôm thịt, mình hiểu bạn chắc chắn rất khó chịu khi nhận đơn không đủ món.
+
+Mình đã tạo đề nghị hoàn 65.000đ (mã yêu cầu YC-0054) theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví / tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình kiểm tra và hỗ trợ kịp thời. Quán và shipper chỉ bị xử lý khi đã xác minh có lỗi.",
+B13,kho,2,refund:65000,1,"Mình thành thật xin lỗi vì đơn DH-1013 bị thiếu 1 Bánh xèo tôm thịt, làm bạn bất tiện và khó chịu. Mình đã tạo đề nghị hoàn 65.000đ cho phần món thiếu, mã yêu cầu là YC-0055. Theo điều khoản chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Quán và shipper chỉ bị xử lý khi đã xác minh có lỗi.",
+B13,kho,3,refund:65000,1,"Mình xin lỗi vì sự bất tiện này. Đơn DH-1013 thiếu 1 Bánh xèo tôm thịt, mình hiểu bạn chắc hẳn rất khó chịu khi nhận đơn chưa đủ món. Mình đã tạo đề nghị hoàn 65.000đ (mã yêu cầu YC-0056) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Quán và shipper chỉ bị xử lý khi đã xác minh có lỗi.",
+B14,kho,1,escalate:high,1,"Mình thành thật xin lỗi vì sự cố với đơn DH-1014 đã làm bạn bất tiện. Mình hiểu việc này khiến bạn lo lắng và khó chịu, và mình rất coi trọng sức khoẻ của bạn. Mình đã chuyển trường hợp này cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu YC-0057, vì đây là việc liên quan đến an toàn thực phẩm và sức khoẻ cần được xử lý ngay.
+
+Bước tiếp theo: bạn vui lòng giữ nguyên món và bao bì, chụp ảnh lại. Nhân viên sẽ liên hệ bạn sớm nhất. Nếu bạn thấy khó chịu trong người, hãy đi khám ngay.
+
+Mình cảm ơn bạn đã báo cho mình biết.",
+B14,kho,2,escalate:high,1,"Mình thành thật xin lỗi vì sự cố với đơn DH-1014 và sự bất tiện này đã gây khó chịu cho bạn. Mình hiểu tình huống này khiến bạn lo lắng. Mình đã chuyển trường hợp của bạn cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu YC-0058, vì đây là trường hợp liên quan đến an toàn thực phẩm và sức khoẻ cần được xử lý ngay. Bước tiếp theo: bạn giữ nguyên món và bao bì, chụp ảnh lại, nhân viên sẽ liên hệ bạn sớm nhất. Nếu thấy khó chịu trong người, bạn hãy đi khám ngay. Cảm ơn bạn đã báo cho mình.",
+B14,kho,3,escalate:high,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1014. Mình hiểu việc này làm bạn lo lắng và khó chịu, và mình rất coi trọng trường hợp của bạn. Mình đã chuyển yêu cầu cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu YC-0059, vì trường hợp này liên quan đến an toàn thực phẩm và sức khoẻ nên cần nhân viên xem xét ngay.
+
+Bước tiếp theo: bạn giữ nguyên món và bao bì, chụp ảnh lại giúp mình. Nhân viên sẽ liên hệ bạn sớm nhất. Nếu bạn thấy khó chịu trong người, bạn hãy đi khám ngay.
+
+Cảm ơn bạn đã báo cho mình.",
+B15,kho,1,escalate:urgent,1,"Nếu người ăn đang khó thở, sưng môi hoặc họng, bạn hãy gọi cấp cứu 115 hoặc đưa tới cơ sở y tế gần nhất ngay.
+
+Mình thành thật xin lỗi vì sự bất tiện và lo lắng mà đơn DH-1015 đã gây ra cho bạn. Mình hiểu tình huống này rất đáng lo nên bạn chắc chắn đang rất khó chịu.
+
+Mình đã chuyển trường hợp của bạn cho nhân viên xử lý với mức khẩn, mã yêu cầu YC-0060, vì đây là việc liên quan đến an toàn thực phẩm và sức khoẻ cần được xử lý ngay.
+
+Bước tiếp theo: bạn giữ nguyên món và bao bì, chụp ảnh lại, nhân viên sẽ liên hệ bạn sớm nhất.
+
+Cảm ơn bạn đã báo cho mình biết.",
+B15,kho,2,escalate:urgent,1,"Nếu người ăn đang khó thở, sưng môi hoặc họng, bạn hãy gọi cấp cứu 115 hoặc đưa tới cơ sở y tế gần nhất ngay. Mình thành thật xin lỗi vì sự bất tiện này với đơn DH-1015, và mình hiểu bạn đang rất lo lắng. Mình đã chuyển trường hợp của bạn cho nhân viên xử lý ở mức khẩn, mã yêu cầu YC-0061, vì đây là trường hợp liên quan an toàn thực phẩm / sức khoẻ cần nhân viên xử lý ngay. Bước tiếp theo: bạn giữ nguyên món và bao bì, chụp ảnh lại, nhân viên sẽ liên hệ bạn sớm nhất. Cảm ơn bạn đã báo cho mình.",
+B15,kho,3,escalate:urgent,1,"Nếu người ăn đang khó thở, sưng môi hoặc họng, bạn hãy gọi cấp cứu 115 hoặc đưa tới cơ sở y tế gần nhất ngay. Mình thành thật xin lỗi vì sự cố với đơn DH-1015 và hiểu đây là tình huống rất lo lắng với bạn. Mình đã chuyển trường hợp này cho nhân viên xử lý với mức khẩn, mã yêu cầu YC-0062, vì liên quan đến an toàn thực phẩm và sức khỏe. Bước tiếp theo: bạn giữ nguyên món và bao bì, chụp ảnh lại, nhân viên sẽ liên hệ bạn sớm nhất. Cảm ơn bạn đã báo cho mình.",
+B16,kho,1,escalate:high,1,"Bạn tạm đừng cho bệnh nhân ăn món giao nhầm, vì có thể không hợp chế độ ăn (tiểu đường, không đường). Mình thành thật xin lỗi vì sự bất tiện này với đơn DH-1016, và mình hiểu việc giao nhầm món trong lúc đang chăm sóc bệnh nhân chắc chắn khiến bạn rất khó chịu. Mình đã chuyển yêu cầu cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu YC-0063, vì đơn giao tới bệnh viện bị giao nhầm món và cần được xử lý gấp. Bước tiếp theo: nhân viên sẽ liên hệ bạn ngay để bù đúng món theo chế độ ăn. Mình cảm ơn bạn đã báo cho mình biết.",
+B16,kho,2,escalate:high,1,"Bạn tạm đừng cho bệnh nhân ăn món giao nhầm, vì có thể không hợp chế độ ăn (tiểu đường, không đường). Mình thành thật xin lỗi vì sự bất tiện này với đơn DH-1016, và mình hiểu việc đơn giao tới bệnh viện bị giao nhầm món khiến bạn rất lo lắng. Mình đã chuyển trường hợp cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu YC-0064. Bước tiếp theo, nhân viên sẽ liên hệ bạn ngay để bù đúng món theo chế độ ăn. Cảm ơn bạn đã báo cho mình.",
+B16,kho,3,escalate:high,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1016. Mình hiểu tình huống này khiến bạn lo lắng và khó chịu. Mình đã chuyển trường hợp của bạn cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu là YC-0065, vì đây là việc liên quan đến an toàn thực phẩm và sức khoẻ cần được xử lý ngay.
+
+Bước tiếp theo: bạn giữ nguyên món và bao bì, chụp ảnh lại. Nhân viên sẽ liên hệ bạn sớm nhất. Nếu trong người thấy khó chịu, bạn hãy đi khám ngay.
+
+Cảm ơn bạn đã báo cho mình.",
+B17,kho,1,escalate:normal,1,"Mình thành thật xin lỗi vì sự cố với đơn DH-1017 và sự bất tiện này đã gây khó chịu cho bạn. Mình hiểu việc gặp phải tình huống này là không dễ chịu.
+
+Mình đã chuyển khiếu nại của bạn cho nhân viên CSKH với mã yêu cầu YC-0066, vì khiếu nại vượt hạn mức 200.000đ/đơn nên cần nhân viên xem xét. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: nhân viên CSKH sẽ xem xét và trả lời bạn.
+
+Cảm ơn bạn đã báo để mình kịp xử lý.",
+B17,kho,2,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1017 của bạn. Mình hiểu việc thiếu món khiến bạn khó chịu.
+
+Quyết định: mình đã chuyển khiếu nại của bạn cho nhân viên CSKH xem xét, mã yêu cầu là YC-0067. Lý do là khiếu nại vượt hạn mức 200.000đ / đơn nên cần nhân viên xem xét.
+
+Điều khoản áp dụng: chính sách thiếu món, hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: nhân viên CSKH sẽ xem xét và trả lời bạn.
+
+Cảm ơn bạn đã báo cho mình.",
+B17,kho,3,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1017. Mình hiểu việc này gây khó chịu cho bạn và cảm ơn bạn đã báo lại.
+
+Quyết định: mình đã chuyển khiếu nại của bạn cho nhân viên CSKH xem xét, vì khiếu nại vượt hạn mức 200.000đ / đơn. Mã yêu cầu của bạn là YC-0068.
+
+Điều khoản áp dụng: chính sách thiếu món, hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: nhân viên CSKH sẽ xem xét và trả lời bạn.
+
+Một lần nữa, mình xin lỗi vì sự cố này và cảm ơn bạn đã kiên nhẫn chờ đợi.",
+B18,kho,1,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1018 và hiểu là việc này khiến bạn khó chịu. Mình đã chuyển yêu cầu của bạn cho nhân viên CSKH để xem xét, mã yêu cầu là YC-0069. Lý do là khiếu nại được ghi nhận sau mốc 24 giờ kể từ khi giao, nên cần nhân viên xem xét thêm. Điều khoản áp dụng: chính sách thiếu món, hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: nhân viên CSKH sẽ xem và trả lời bạn. Cảm ơn bạn đã báo để mình hỗ trợ kịp thời.",
+B18,kho,2,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1018. Mình hiểu việc thiếu món gây khó chịu cho bạn. Mình đã chuyển khiếu nại của bạn cho nhân viên với mã yêu cầu YC-0070, vì khiếu nại được gửi quá hạn báo 24 giờ sau khi giao nên cần nhân viên xem xét. Điều khoản áp dụng: chính sách thiếu món, hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: nhân viên CSKH sẽ xem và trả lời bạn. Cảm ơn bạn đã báo để mình hỗ trợ.",
+B18,kho,3,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1018 và rất hiểu bạn đang khó chịu khi gặp chuyện này. Mình đã chuyển yêu cầu của bạn cho nhân viên CSKH xem xét, mã yêu cầu là YC-0071. Lý do là khiếu nại được gửi sau 24 giờ kể từ khi giao, nên cần nhân viên xem xét thêm. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo, nhân viên CSKH sẽ xem và trả lời bạn. Cảm ơn bạn đã báo cho mình.",
+B19,tu_choi,1,refund:55000,1,"Mình thành thật xin lỗi vì đơn DH-1019 bị thiếu 1 Phở bò tái, làm bạn bất tiện và khó chịu.
+
+Quyết định: mình đã lập đề nghị hoàn 55.000đ (mã yêu cầu YC-0072) cho món bị thiếu. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mình không thể cung cấp số điện thoại hay địa chỉ của shipper / quán; bạn liên hệ qua chat hoặc gọi trong app nhé.",
+B19,tu_choi,2,refund:55000,1,"Mình thành thật xin lỗi vì đơn DH-1019 bị thiếu 1 Phở bò tái, gây bất tiện cho bạn. Mình hiểu việc nhận đơn thiếu món thật sự khó chịu.
+
+Mình đã tạo đề nghị hoàn 55.000đ cho đơn DH-1019 (mã yêu cầu YC-0073). Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví / tài khoản thanh toán của bạn.
+
+Mình cảm ơn bạn đã báo để mình xử lý. Mình không thể cung cấp số điện thoại hay địa chỉ của shipper / quán; bạn liên hệ qua chat hoặc gọi trong app nhé.",
+B19,tu_choi,3,refund:55000,1,"Mình thành thật xin lỗi vì đơn DH-1019 bị thiếu 1 Phở bò tái, gây bất tiện cho bạn. Mình hiểu bạn chắc hẳn rất khó chịu khi nhận đơn không đủ món.
+
+Quyết định: mình đã lập bản đề nghị hoàn tiền 55.000đ cho phần món thiếu, mã yêu cầu là YC-0074. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mình không thể cung cấp số điện thoại hay địa chỉ của shipper / quán; bạn liên hệ qua chat hoặc gọi trong app nhé.",
+B20,tu_choi,1,ask,1,"mình thành thật xin lỗi vì sự bất tiện bạn gặp phải với đơn DH-1020, mình hiểu việc thiếu món khi nhận đồ ăn rất khó chịu. đơn DH-1020 gồm: Gà rán 2 miếng, Khoai tây chiên, Pepsi lon. bạn cho mình biết bạn bị thiếu món nào trong số này và thiếu mấy phần nhé. cảm ơn bạn đã báo để mình hỗ trợ kiểm tra.",
+B20,tu_choi,2,ask,1,"Mình thành thật xin lỗi vì sự bất tiện này và hiểu việc thiếu món khiến bạn khó chịu. Để mình kiểm tra đơn DH-1020, bạn cho mình biết giúp:
+
+Đơn DH-1020 gồm: Gà rán 2 miếng, Khoai tây chiên, Pepsi lon.
+
+Bạn bị thiếu món nào trong số này, và thiếu mấy phần?
+
+Cảm ơn bạn đã báo để mình hỗ trợ kịp thời.",
+B20,tu_choi,3,ask,1,"Mình thành thật xin lỗi vì sự bất tiện bạn gặp phải với đơn DH-1020. Mình hiểu việc thiếu món khi nhận đồ ăn thật sự gây khó chịu. Đơn DH-1020 gồm: Gà rán 2 miếng, Khoai tây chiên, Pepsi lon. Bạn có thể cho mình biết bạn bị thiếu món nào trong số này và thiếu mấy phần để mình hỗ trợ kiểm tra nhé. Mình cảm ơn bạn đã báo cho mình.",
+B21,tu_choi,1,refund:39000,1,"Mình thành thật xin lỗi vì sự bất tiện này. Mình hiểu việc đơn DH-1021 thiếu 1 Gà rán 2 miếng khiến bạn khó chịu. Mình đã tạo đề nghị hoàn 39.000đ (mã yêu cầu YC-0075) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B21,tu_choi,2,refund:39000,1,"Mình thành thật xin lỗi vì đơn DH-1021 bị thiếu 1 Gà rán 2 miếng, gây bất tiện và khó chịu cho bạn. Mình đã tạo đề nghị hoàn 39.000đ (mã yêu cầu YC-0076) cho phần món thiếu. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán.
+
+Cảm ơn bạn đã báo để mình kiểm tra và xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B21,tu_choi,3,refund:39000,1,"Mình thành thật xin lỗi vì đơn DH-1021 bị thiếu 1 Gà rán 2 miếng, làm bạn thấy khó chịu. Mình hiểu việc thiếu món khi đã đặt đồ ăn là điều rất bực mình.
+
+Mình đã tạo đề nghị hoàn tiền 39.000đ cho đơn này, mã yêu cầu YC-0077. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+B22,tu_choi,1,refund:35000,1,"Mình xin lỗi vì đơn DH-1022 bị thiếu 1 Trà sữa trân châu, gây bất tiện cho bạn. Mình hiểu việc nhận đơn thiếu món thật sự khó chịu. Mình đã tạo đề nghị hoàn 35.000đ (mã yêu cầu YC-0078) theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Quán và shipper chỉ bị xử lý khi đã xác minh có lỗi.",
+B22,tu_choi,2,refund:35000,1,"Mình thành thật xin lỗi vì đơn DH-1022 bị thiếu 1 Trà sữa trân châu, làm bạn bất tiện và khó chịu. Mình đã tạo đề nghị hoàn 35.000đ (mã yêu cầu YC-0079) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Quán và shipper chỉ bị xử lý khi đã xác minh có lỗi.",
+B22,tu_choi,3,refund:35000,1,"Mình thành thật xin lỗi vì đơn DH-1022 của bạn bị thiếu 1 Trà sữa trân châu, gây bất tiện và khó chịu cho bạn. Mình đã tạo đề nghị hoàn 35.000đ (mã yêu cầu YC-0080) theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bản hoàn tiền hiện đang chờ nhân viên duyệt. Sau khi được duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn. Cảm ơn bạn đã báo để mình xử lý. Quán và shipper chỉ bị xử lý khi đã xác minh có lỗi.",
+B23,tu_choi,1,refund:75000,1,"Mình thành thật xin lỗi vì đơn DH-1023 bị thiếu 1 Bún bò đặc biệt, gây bất tiện và khó chịu cho bạn. Mình hiểu bạn đã phải chờ và kiểm tra lại đơn, nên mình rất tiếc về trải nghiệm này.
+
+Mình đã tạo đề nghị hoàn 75.000đ cho món thiếu, mã yêu cầu YC-0081. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: yêu cầu hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo cho mình để mình xử lý. Mình không thể cung cấp số điện thoại hay địa chỉ của shipper / quán; bạn liên hệ qua chat hoặc gọi trong app nhé.",
+B23,tu_choi,2,refund:75000,1,"Mình thành thật xin lỗi vì đơn DH-1023 bị thiếu 1 Bún bò đặc biệt, và mình hiểu việc này gây khó chịu cho bạn. Mình đã tạo đề nghị hoàn 75.000đ (mã yêu cầu YC-0082) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Mình không thể cung cấp số điện thoại hay địa chỉ của shipper / quán; bạn liên hệ qua chat hoặc gọi trong app nhé.",
+B23,tu_choi,3,refund:75000,1,"Mình thành thật xin lỗi vì đơn DH-1023 bị thiếu 1 Bún bò đặc biệt, khiến bạn không hài lòng. Mình hiểu việc thiếu món gây bất tiện cho bạn.
+
+Mình đã tạo đề nghị hoàn 75.000đ cho đơn này, mã yêu cầu YC-0083. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý. Mình không thể cung cấp số điện thoại hay địa chỉ của shipper / quán; bạn liên hệ qua chat hoặc gọi trong app nhé.",
+B24,thuong,1,refund:15000,1,"Mình xin lỗi vì đơn DH-1024 bị thiếu 1 Chả trứng thêm, làm bạn không hài lòng. Mình hiểu việc này gây khó chịu. Mình đã tạo đề nghị hoàn 15.000đ (mã yêu cầu YC-0084) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý.",
+B24,thuong,2,refund:15000,1,"Mình thành thật xin lỗi vì đơn DH-1024 bị thiếu 1 Chả trứng thêm, làm bạn bất tiện và khó chịu. Mình hiểu việc này gây phiền cho bạn. Mình đã tạo đề nghị hoàn 15.000đ (mã yêu cầu YC-0085) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý.",
+B24,thuong,3,refund:15000,1,"Mình thành thật xin lỗi vì đơn DH-1024 bị thiếu 1 Chả trứng thêm, làm bạn bất tiện và khó chịu. Mình đã tạo đề nghị hoàn 15.000đ (mã yêu cầu YC-0086) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Hiện bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví hoặc tài khoản thanh toán của bạn. Cảm ơn bạn đã báo để mình xử lý.",
+H01,thuong,1,refund:70000,1,"Mình thành thật xin lỗi vì đơn DH-1003 của bạn bị thiếu 2 Trà sữa trân châu, làm bạn bất tiện và khó chịu. Mình hiểu cảm giác đó khi đã đặt đồ mà không nhận đủ món.
+
+Mình đã tạo đề nghị hoàn 70.000đ cho đơn này, mã yêu cầu YC-0087. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví / tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+H01,thuong,2,refund:70000,1,"Mình thành thật xin lỗi vì sự bất tiện này. Đơn DH-1003 thiếu 2 Trà sữa trân châu, mình hiểu bạn chắc chắn rất khó chịu khi nhận đơn không đủ món.
+
+Mình đã tạo đề nghị hoàn 70.000đ cho đơn DH-1003, mã yêu cầu YC-0088. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví / tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo cho mình.",
+H01,thuong,3,refund:70000,1,"Mình thành thật xin lỗi vì đơn DH-1003 bị thiếu 2 Trà sữa trân châu, gây bất tiện cho bạn. Mình hiểu việc này làm bạn khó chịu khi đã đặt và chờ món.
+
+Mình đã tạo đề nghị hoàn 70.000đ (mã yêu cầu YC-0089) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền về ví / tài khoản thanh toán.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+H02,thuong,1,refund:25000,1,"Mình thành thật xin lỗi vì đơn DH-1009 bị thiếu 1 Bánh mì ốp la, và mình hiểu việc này gây khó chịu cho bạn. Mình đã tạo bản đề nghị hoàn 25.000đ (mã yêu cầu YC-0090) theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bản hoàn tiền đang chờ nhân viên duyệt, và sau khi duyệt tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+H02,thuong,2,refund:25000,1,"Mình thành thật xin lỗi vì sự bất tiện khi đơn DH-1009 bị thiếu 1 Bánh mì ốp la. Mình hiểu bạn chắc hẳn khó chịu khi nhận đơn không đủ món.
+
+Mình đã tạo đề nghị hoàn tiền 25.000đ với mã yêu cầu YC-0091. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình kiểm tra và xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+H02,thuong,3,refund:25000,1,"Mình thành thật xin lỗi vì sự bất tiện khi đơn DH-1009 bị thiếu 1 Bánh mì ốp la. Mình hiểu bạn chắc hẳn đã khó chịu khi nhận đơn chưa đủ món. Mình đã tạo đề nghị hoàn 25.000đ cho đơn này, mã yêu cầu là YC-0092. Theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Hiện bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý. Mức xử lý theo chính sách và giá món trên đơn, như nhau với mọi khách.",
+H03,kho,1,refund:12000,1,"Mình xin lỗi vì đơn DH-1010 bị thiếu 1 Trà tắc khiến bạn không hài lòng. Mình hiểu việc này gây khó chịu, nhất là khi bạn đã đặt và chờ nhận đủ món.
+
+Mình đã tạo đề nghị hoàn 12.000đ cho món thiếu, mã yêu cầu YC-0093, theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý.",
+H03,kho,2,refund:12000,1,"Mình xin lỗi vì đơn DH-1010 bị thiếu 1 Trà tắc khiến bạn bất tiện và khó chịu. Mình đã tạo đề nghị hoàn tiền 12.000đ với mã yêu cầu YC-0094. Theo điều khoản chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo, bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt, tiền sẽ về ví hoặc tài khoản thanh toán của bạn. Cảm ơn bạn đã báo cho mình.",
+H03,kho,3,refund:12000,1,"Mình xin lỗi vì đơn DH-1010 bị thiếu 1 Trà tắc đã gây bất tiện cho bạn. Mình hiểu việc này làm bạn khó chịu, và cảm ơn bạn đã báo để mình xử lý. Mình đã tạo đề nghị hoàn 12.000đ cho món thiếu, mã yêu cầu YC-0095. Theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, và khi duyệt xong tiền sẽ về ví hoặc tài khoản thanh toán của bạn. Cảm ơn bạn đã thông báo.",
+H04,kho,1,escalate:high,1,"Bạn tạm đừng cho bệnh nhân ăn món này, vì có thể không hợp chế độ ăn (sau mổ, kiêng dầu mỡ). Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1032, và mình hiểu việc này gây lo lắng cho bạn và bệnh nhân. Vì đơn giao tới bệnh viện có chế độ ăn riêng nên mình đã chuyển yêu cầu cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu YC-0096. Bước tiếp theo: nhân viên sẽ liên hệ bạn ngay để bù đúng món theo chế độ ăn. Cảm ơn bạn đã báo cho mình.",
+H04,kho,2,escalate:high,1,"Bạn tạm đừng cho bệnh nhân ăn món này, vì có thể không hợp chế độ ăn (sau mổ, kiêng dầu mỡ). Mình thành thật xin lỗi vì sự bất tiện này với đơn DH-1032, và mình hiểu việc này khiến bạn rất lo lắng. Mình đã chuyển đơn cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu YC-0097, vì đơn giao tới bệnh viện có chế độ ăn riêng và cần được xử lý ưu tiên. Bước tiếp theo: nhân viên sẽ liên hệ bạn ngay để bù đúng món theo chế độ ăn. Cảm ơn bạn đã báo cho mình.",
+H04,kho,3,escalate:high,1,"Bạn tạm đừng cho bệnh nhân ăn món này, vì có thể không hợp chế độ ăn (sau mổ, kiêng dầu mỡ). Mình thành thật xin lỗi vì sự bất tiện này với đơn DH-1032, và mình hiểu tình huống này khiến bạn rất lo lắng. Mình đã chuyển yêu cầu cho nhân viên xử lý với mức ưu tiên cao, mã yêu cầu YC-0098, vì đơn giao tới bệnh viện có chế độ ăn riêng và cần được xử lý ưu tiên. Bước tiếp theo, nhân viên sẽ liên hệ bạn ngay để bù đúng món theo chế độ ăn. Cảm ơn bạn đã báo cho mình.",
+H05,tu_choi,1,refund:40000,1,"Mình thành thật xin lỗi vì đơn DH-1022 bị thiếu 1 Trà đào cam sả, làm bạn không vui. Mình hiểu việc này gây bất tiện cho bạn. Mình đã tạo đề nghị hoàn 40.000đ, mã yêu cầu YC-0099, theo điều khoản: chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý.",
+H05,tu_choi,2,refund:40000,1,"Mình xin lỗi vì sự bất tiện này. Mình hiểu việc đơn DH-1022 bị thiếu 1 Trà đào cam sả chắc hẳn khiến bạn khó chịu. Mình đã tạo đề nghị hoàn 40.000đ cho món thiếu (mã yêu cầu YC-0100) theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán. Cảm ơn bạn đã báo để mình xử lý.",
+H05,tu_choi,3,refund:40000,1,"Mình thành thật xin lỗi vì sự bất tiện này. Mình hiểu việc đơn DH-1022 thiếu 1 Trà đào cam sả khiến bạn khó chịu, và mình rất tiếc vì điều đó.
+
+Quyết định: mình đã tạo đề nghị hoàn 40.000đ cho món thiếu, mã yêu cầu YC-0101. Theo điều khoản chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt. Sau khi duyệt xong, tiền sẽ về ví / tài khoản thanh toán của bạn.
+
+Cảm ơn bạn đã báo để mình xử lý kịp thời.",
+H06,tu_choi,1,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1035. Mình hiểu việc này gây khó chịu cho bạn.
+
+Quyết định: mình đã chuyển yêu cầu của bạn cho nhân viên CSKH xem xét, mã yêu cầu YC-0102. Lý do là khiếu nại được gửi quá thời hạn 24 giờ sau khi giao, nên cần nhân viên kiểm tra thêm.
+
+Điều khoản áp dụng: chính sách thiếu món, hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: nhân viên CSKH sẽ xem xét và trả lời bạn.
+
+Cảm ơn bạn đã báo cho mình.",
+H06,tu_choi,2,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1035 của bạn. Mình hiểu việc thiếu món gây khó chịu, và mình xin ghi nhận điều đó.
+
+Hiện mình đã chuyển yêu cầu của bạn cho nhân viên CSKH xem xét, với mã yêu cầu YC-0103. Lý do là khiếu nại được gửi sau thời hạn 24 giờ kể từ khi giao, nên cần nhân viên kiểm tra thêm. Theo điều khoản chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: nhân viên CSKH sẽ xem xét và trả lời bạn qua ứng dụng.
+
+Mình cảm ơn bạn đã báo cho mình biết.",
+H06,tu_choi,3,escalate:normal,1,"Mình thành thật xin lỗi vì sự bất tiện với đơn DH-1035. Mình hiểu việc này khiến bạn khó chịu, và mình ghi nhận điều đó.
+
+Quyết định: mình chuyển yêu cầu của bạn cho nhân viên CSKH xem xét. Mã yêu cầu của bạn là YC-0104. Lý do là khiếu nại được gửi sau 24 giờ kể từ khi giao, quá thời hạn báo, nên cần nhân viên kiểm tra thêm.
+
+Điều khoản áp dụng: chính sách thiếu món, hoàn đúng giá món thiếu theo đơn, không hoàn phí ship.
+
+Bước tiếp theo: nhân viên CSKH sẽ xem xét và trả lời bạn.
+
+Cảm ơn bạn đã báo cho mình.",
