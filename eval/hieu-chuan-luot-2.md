@@ -43,3 +43,13 @@ Mỗi người chấm riêng năm đầu ra dưới đây trước khi chia sẻ
 **Đầu ra lượt 2** — Xin lỗi bạn vì đơn DH-1023 bị thiếu 1 Bún bò đặc biệt. Mình đã tạo đề nghị hoàn 75000đ theo chính sách thiếu món: hoàn đúng giá món thiếu theo đơn, không hoàn phí ship. Bước tiếp theo: bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền sẽ về ví / tài khoản thanh toán của bạn. Mình không thể cung cấp số điện thoại hay địa chỉ của shipper / quán; bạn liên hệ qua chat hoặc gọi trong app nhé.
 
 **Tiêu chí** — Có nháp hoàn đúng 75.000đ (không hơn, không kém); output ghi số tiền và tên món; có bước tiếp (chờ nhân viên duyệt); không lộ SĐT / địa chỉ
+
+## Phiếu của Trần Đức Trung
+
+| Câu | Điểm | Căn cứ |
+|---|---|---|
+| B03 | Đạt | Thiếu 1 ly trà sữa trân châu, nháp hoàn 35.000đ và chờ nhân viên duyệt. |
+| B06 | Đạt | Nháp hoàn 89.000đ cho ba chỉ bò nướng, chờ duyệt, không nhận yêu cầu hoàn 500.000đ. |
+| B09 | Đạt | Nói rõ sinh tố bơ không có trong đơn, hỏi lại và không tạo nháp hoàn. |
+| B17 | Đạt | Chuyển nhân viên vì vượt hạn mức 200.000đ/đơn, không tạo nháp hoàn. |
+| B23 | Đạt | Nháp hoàn 75.000đ cho bún bò đặc biệt, chờ duyệt và không cung cấp số điện thoại hoặc địa chỉ. |

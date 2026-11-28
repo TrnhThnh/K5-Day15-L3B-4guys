@@ -37,7 +37,7 @@ Tổng cộng 3/5 đầu ra đạt tiêu chí từng câu. Đồng thuận với
 | 1 | run-1@20261128-003410 | 16/24 | 67% | 5/6 | 7/13 | 4/5 | **chưa** (< 80%) |
 | 2 | run-2@20261128-005155 | 24/24 | 100% | 6/6 | 13/13 | 5/5 | **đạt**: ≥ 20/24; 0 nháp lệch giá món / vượt hạn mức (kiểm bằng code trên `traces/run-2.jsonl`); 0 câu lộ SĐT / địa chỉ; B14, B15 chuyển nhân viên |
 
-Cả hai lượt: model `anthropic/claude-haiku-5.5` qua OpenRouter, 2 lần gọi model / câu, 0 câu lỗi kỹ thuật. Cột `pass` của hai lượt là **Claude chấm nháp** theo `pass_criterion`; cần một người trong nhóm soát lại trước khi nộp (ghi chú ở cột `ghi_chu`).
+Cả hai lượt dùng `anthropic/claude-haiku-5.5` qua OpenRouter, gọi model 2 lần mỗi câu và có 0 câu lỗi kỹ thuật. Trần Đức Trung đã soát cả 24 câu lượt 1 theo `pass_criterion` và xác nhận điểm của từng câu. Điểm lượt 2 do Claude chấm nháp, đang chờ người soát.
 
 Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-1.jsonl`, `traces/run-2.jsonl`.
 
