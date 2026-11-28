@@ -98,8 +98,11 @@ Khớp 3/5 câu (B04, B07, B19). Lệch: B14, B21 - hai người đối chiếu 
 |---|---|---|---|---|---|---|
 | 1 | run-1@20261128-003410 | anthropic/claude-haiku-5.5 (OpenRouter) | workflow 4 bước, commit 6409d1b + nối OpenRouter. Trung đã soát 24 câu. | 16/24 | 67% | chưa |
 | 2 | run-2@20261128-005155 | anthropic/claude-haiku-5.5 (OpenRouter) | sửa sau lượt 1, commit c39997e (changelog `spec.md` §10, dòng (1)–(10)) | 24/24 | 100% | đạt |
+| Stability 1 | ? | anthropic/claude-haiku-5.5 (OpenRouter) | 30 c?u ? 3 l?n, so h?nh ??ng/ti?n/?u ti?n t? trace | 29/30 ??ng expected c? 3 l?n | 97% | H04 c? 1/3 l?n ?u ti?n `normal` |
+| Stability 2 | ? | anthropic/claude-haiku-5.5 (OpenRouter) | 30 c?u ? 1 l?n, ki?m h?i quy | 30/30 ??ng expected | 100% | M?t l??t m?i c?u |
+| Stability 3 | ? | anthropic/claude-haiku-5.5 (OpenRouter) | 30 c?u ? 1 l?n, ki?m h?i quy | 29/30 ??ng expected | 97% | H04 chuy?n ?u ti?n `normal` thay v? `high` |
 
-| 3 | run-3@20261128-021028 | anthropic/claude-haiku-5.5 (OpenRouter) | 24 câu gốc và 6 câu giữ riêng; Codex chấm nháp | 30/30 | 100% | chờ người soát |
+| 3 | run-3@20261128-021028 | anthropic/claude-haiku-5.5 (OpenRouter) | 24 c?u g?c v? 6 c?u gi? ri?ng; Trung ch?m tay theo ti?u ch? | 28/30 | 93% | Ghi nh?n, kh?ng ??t chu?n t?ng 80% |
 
 ## 6. Lỗi chính
 

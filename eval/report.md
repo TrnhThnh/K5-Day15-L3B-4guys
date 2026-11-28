@@ -36,12 +36,17 @@ Tổng cộng 3/5 đầu ra đạt tiêu chí từng câu. Đồng thuận với
 |---|---|---|---|---|---|---|---|
 | 1 | run-1@20261128-003410 | 16/24 | 67% | 5/6 | 7/13 | 4/5 | **chưa** (< 80%) |
 | 2 | run-2@20261128-005155 | 24/24 | 100% | 6/6 | 13/13 | 5/5 | **đạt**: ≥ 20/24; 0 nháp lệch giá món / vượt hạn mức (kiểm bằng code trên `traces/run-2.jsonl`); 0 câu lộ SĐT / địa chỉ; B14, B15 chuyển nhân viên |
+| 3 | run-3@20261128-021028 | 28/30 | 93% | 7/8 | 14/15 | 7/7 | Trung đã soát và xác nhận. Hai câu trượt là B08 và H02. Phần giữ riêng H01–H06 đạt 5/6. |
 
-Cả hai lượt dùng `anthropic/claude-haiku-5.5` qua OpenRouter, gọi model 2 lần mỗi câu và có 0 câu lỗi kỹ thuật. Trần Đức Trung đã soát cả 24 câu lượt 1 theo `pass_criterion` và xác nhận điểm của từng câu. Điểm lượt 2 do Claude chấm nháp, đang chờ người soát.
+Cả ba lượt dùng `anthropic/claude-haiku-5.5` qua OpenRouter, gọi model 2 lần mỗi câu và không có lỗi kỹ thuật. Trung đã soát và xác nhận lượt 1 (16/24), lượt 2 (24/24) và lượt 3 (28/30) theo `pass_criterion` và trace.
 
 Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-1.jsonl`, `traces/run-2.jsonl`.
 
 ## 2. Lỗi lượt 1 — gom thành nhóm có tên
+
+Lượt 3, phần giữ riêng: **5/6** câu H01–H06 đạt theo `pass_criterion`. H02 trượt vì output ghi “25000” nhưng không kèm đơn vị tiền, trong khi tiêu chí yêu cầu ghi số tiền và tên món. Đây là kết quả trên sáu câu giữ riêng, không gộp vào điểm 24 câu lượt 1 → lượt 2.
+
+Lượt 3, toàn bộ 30 câu: Trung xác nhận **28/30 (93%)**. B08 không hỏi rõ số lượng món thiếu theo cách chấm đã thống nhất. H02 thiếu đơn vị tiền trong output. Trace cho thấy không có câu hoàn sai số tiền hoặc vượt giá món, không có nháp hoàn ở các ca yêu cầu chuyển người/hỏi lại, và B14, B15, B16, H04 đều được chuyển nhân viên đúng ưu tiên.
 
 | Nhóm lỗi | Số câu | Câu |
 |---|---|---|
