@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4guys · Hỗ trợ đơn hàng</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f4ef;color:#19382e;font:16px/1.6 "Segoe UI",sans-serif}header{background:#133c32;color:white;padding:16px max(5vw,24px);display:flex;align-items:center;justify-content:space-between;gap:18px}b.logo{font-size:24px;letter-spacing:-1px}header span{font-size:14px}main{max-width:1050px;margin:auto;padding:42px 24px}h1{font-size:clamp(32px,5vw,54px);line-height:1.15;letter-spacing:-2px;margin:0 0 12px}p{margin:0 0 25px}.grid{display:grid;grid-template-columns:3fr 2fr;gap:20px}.panel{background:#fff;border:1px solid #d7dfd7;border-radius:16px;padding:26px}h2,label{font-weight:650;font-size:19px;display:block;margin:0 0 14px}textarea{width:100%;min-height:155px;resize:vertical;border-radius:9px;border:1px solid #93a79b;padding:14px;font:inherit}button{font:inherit;cursor:pointer}.send{background:#13543c;color:white;border:0;border-radius:8px;padding:11px 19px;margin-top:12px;font-weight:650}button:disabled{opacity:.55;cursor:wait}.sample{display:block;width:100%;text-align:left;background:none;border:0;border-top:1px solid #dbe3dd;padding:12px 0;color:#19382e}.sample:hover{text-decoration:underline}.sample small{display:block;color:#53685e}#answer{white-space:pre-wrap;margin-bottom:12px}#result{margin-top:20px;border-left:5px solid #23815a}#stats{font-size:14px;color:#4e635a}#notice{color:#8c391c;margin-top:10px}button:focus-visible,textarea:focus-visible{outline:3px solid #4684be}@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:25px 14px}.panel{padding:18px}}
+</style>
+<header><b class="logo">4guys</b><span id="mode">Đang kiểm tra model…</span></header>
+<main><h1>Hỗ trợ đơn hàng</h1><p>Nhập khiếu nại để kiểm tra đơn và nhận phương án xử lý. Đề nghị hoàn tiền cần nhân viên duyệt.</p>
+<div class="grid"><form id="form" class="panel"><label for="message">Khách nhắn gì?</label><textarea id="message" maxlength="4000" required placeholder="Ví dụ: Đơn DH-1004 thiếu 1 cơm tấm sườn bì chả và 1 trà đá."></textarea><button class="send" id="send">Xử lý khiếu nại</button><div role="status" id="notice"></div></form>
+<aside class="panel"><h2>Thử tình huống</h2><button class="sample" data-text="Đơn DH-1004 thiếu 1 cơm tấm sườn bì chả và 1 trà đá.">Thiếu hai món<small>DH-1004 · Kiểm tra số tiền hoàn</small></button><button class="sample" data-text="Đơn DH-1006 thiếu phần ba chỉ bò nướng. Em xin hoàn hết 500k cho cả đơn.">Khách yêu cầu hoàn cả đơn<small>DH-1006 · Kiểm tra hạn mức</small></button><button class="sample" data-text="Đơn DH-1020 giao thiếu món.">Chưa rõ món thiếu<small>DH-1020 · Hỏi thêm thông tin</small></button></aside></div>
+<section id="result" class="panel" hidden aria-live="polite"><h2>Phản hồi cho khách</h2><p id="answer"></p><div id="stats"></div></section></main>
+<script>
+const el=id=>document.getElementById(id);
+fetch('/mode').then(r=>r.json()).then(m=>{
+ el('mode').textContent=m.name+(m.ready?'':' · Chưa cấu hình khóa');
+ if(!m.ready) el('notice').textContent='Điền API_KEY trong .env hoặc chọn MODEL_PROVIDER=fake, rồi khởi động lại.';
+}).catch(()=>{el('mode').textContent='Mất kết nối';});
+document.querySelectorAll('.sample').forEach(b=>b.onclick=()=>{
+ el('message').value=b.dataset.text; el('message').focus(); el('result').hidden=true;
+});
+el('form').onsubmit=async event=>{
+ event.preventDefault();const message=el('message').value.trim();
+ if(!message){el('notice').textContent='Nhập nội dung khiếu nại.';return;}
+ const controls=document.querySelectorAll('button,textarea');controls.forEach(c=>c.disabled=true);
+ el('notice').textContent='Đang kiểm tra đơn hàng…';el('result').hidden=true;
+ try{
+  const response=await fetch('/answer',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message})});
+  const data=await response.json();if(!response.ok)throw Error(data.error);
+  el('answer').textContent=data.output;const s=data.summary;
+  el('stats').textContent=[s.models.join(', ')||'Không gọi model',s.model_calls+' lần gọi model',s.tool_calls+' lần gọi công cụ',s.tokens_in+' token vào / '+s.tokens_out+' token ra'].join(' · ');
+  el('result').hidden=false;el('notice').textContent='';
+ }catch(error){el('notice').textContent=error.message||'Mất kết nối. Vui lòng thử lại.';}
+ finally{controls.forEach(c=>c.disabled=false);}
+};
+</script></html>

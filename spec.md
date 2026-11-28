@@ -195,3 +195,5 @@ Ngày 28/11: ghi nhận phiếu Thịnh cho 5 đầu ra lượt 2, đối chiế
 | Thời điểm | Đổi gì | Vì sao |
 |---|---|---|
 |  |  |  |
+
+Ngày 28/11: thêm giao diện web cục bộ cho demo, dùng lại hàm answer và số liệu trace của từng yêu cầu.

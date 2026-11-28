@@ -6,6 +6,10 @@
 
 ---
 
+## Giao diện demo
+
+Chạy `python codebase/demo_web.py` ở thư mục gốc, rồi mở http://127.0.0.1:8765. Chọn tình huống mẫu hoặc nhập lời khách và bấm **Xử lý khiếu nại**. Trang hiển thị phản hồi, số lần gọi công cụ và token. Để trình diễn ngoại tuyến, đặt `MODEL_PROVIDER=fake` trước khi khởi động; để dùng model thật, cấu hình theo [hướng dẫn](docs/connect-model.md).
+
 ## Nhóm làm gì, khung làm gì
 
 | Nhóm quyết định và viết | Khung làm sẵn (không cần sửa) |
