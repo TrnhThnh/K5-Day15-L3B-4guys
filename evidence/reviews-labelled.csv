@@ -139,7 +139,7 @@ A-shopeefood-2026-10-23T17:18:52,A,shopeefood,2026-10-23,1,"lừa đảo khách 
 A-shopeefood-2026-10-22T12:23:45,A,shopeefood,2026-10-22,1,"bỏ cái mua deal đi ạ, cần mua món ăn chứ ko có cần mua deal, mua deal xong rồi phải mua cả món, giá còn mắc hơn giá gốc",khong_lien_quan,
 A-shopeefood-2026-10-22T12:19:59,A,shopeefood,2026-10-22,1,"t tức mà t phải lên đây đánh giá luôn 😃mỗi lần đơn có vấn đề là t báo cáo lên app, nhưng con tép nó phản hồi lâu kinh khủng, load lâu như gì. thoát ra vô lại gần nửa tiếng, đợi nó phản hồi mãi mới làm đc cái đơn báo cáo.",bot_cho_lau,
 A-shopeefood-2026-10-22T12:14:10,A,shopeefood,2026-10-22,1,ship muộn,giao_tre,
-A-shopeefood-2026-10-22T11:09:38,A,shopeefood,2026-10-22,1,đơn hàng xử lý rất lâu nhưng không cho hủy,giao_tre,
+A-shopeefood-2026-10-22T11:09:38,A,shopeefood,2026-10-22,1,đơn hàng xử lý rất lâu nhưng không cho hủy,bot_cho_lau,Chiến soát 28/11: giao_tre → bot_cho_lau
 A-shopeefood-2026-10-22T10:45:11,A,shopeefood,2026-10-22,1,"Đơn hàng thì bị hủy trong lúc thanh toán mà lại thanh toán thành công, đã yêu cầu hỗ trợ nhưng toàn để chat bot hỗ trợ sao mà xử lý được. Gọi số tổng đài thì không liên lạc được.",bot_cho_lau bi_tu_choi,
 A-shopeefood-2026-10-21T21:35:23,A,shopeefood,2026-10-21,1,ap lừa đảo vừa dô thấy món 27k tưởng 27k mua xg thấy ship 47k sao k ghi ra lúc thanh toán 27k đi.,khong_lien_quan,
 A-shopeefood-2026-10-21T13:00:39,A,shopeefood,2026-10-21,1,Giờ chế độ ghép đơn khiến thời gian giao hàng rất chậm. Gọi bữa trưa mà gần 2 tiếng đồ ăn mới đến nơi.,giao_tre,

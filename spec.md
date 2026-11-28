@@ -19,7 +19,7 @@ Data BTC cấp đã dùng (nếu có - không commit nguyên file): không có (
 - Việc họ cố làm xong: lấy lại đúng phần tiền (hoặc món) bị thiếu trong đơn vừa nhận, nhanh, không phải cãi qua lại.
 - Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ: nhắn trợ giúp trong app; hỏng ở chỗ trả lời theo mẫu, chờ lâu, thường chỉ được bù mã thay vì hoàn đúng giá món (giả thuyết, đang kiểm); chưa bỏ vì đây là kênh duy nhất để đòi tiền.
 - Pain: khách nhận đơn thiếu món - nhắn hỗ trợ để đòi lại phần thiếu - gặp câu trả lời mẫu, chờ lâu, chỉ được bù mã - mất tiền phần món thiếu, mất thời gian, bỏ app hoặc đăng bóc phốt. Phía kia: quán / shipper có thể bị trừ tiền mà không ai hỏi.
-- Bằng chứng - số chính + kết luận (chi tiết: `evidence/summary.md`): review Google Play 12 tháng (4 app): 30/41 (73%) review đơn thiếu món gặp bot / chờ lâu, chỉ được voucher hoặc bị từ chối; nhưng thiếu món chỉ chiếm 2/150 (1,3%) review 1–3★ mới nhất của ShopeeFood, giao trễ là 40/150 (26,7%). Kết luận tạm: pain nằm ở **cách xử lý sau khi thiếu món**, không ở tần suất; khảo sát lớp và phỏng vấn đang làm để kiểm lại.
+- Bằng chứng - số chính + kết luận (chi tiết: `evidence/summary.md`): review Google Play 12 tháng (4 app): 30/41 (73%) review đơn thiếu món gặp bot / chờ lâu, chỉ được voucher hoặc bị từ chối; nhưng thiếu món chỉ chiếm 2/150 (1,3%) review 1–3★ mới nhất của ShopeeFood, giao trễ là 39/150 (26,0%). Kết luận tạm: pain nằm ở **cách xử lý sau khi thiếu món**, không ở tần suất; khảo sát lớp và phỏng vấn đang làm để kiểm lại.
 
 ## §2. Impact & quyết định chọn *(guide 1.3 · Thịnh)*
 
@@ -180,6 +180,7 @@ flowchart TD
 
 | 28/11, chuẩn bị nộp | Chuẩn bị bản nộp CP3, phiếu hiệu chuẩn lượt 2, cấu hình chi phí và slide nháp. | Năm đầu ra từ run-2, token đo trong 24 câu và số liệu khảo sát hiện có. |
 | 28/11, soát lượt 1 | Trung xác nhận điểm của cả 24 câu. Cập nhật `ghi_chu` và báo cáo CP3. | Đối chiếu từng câu theo `pass_criterion`, kết quả 16/24 (67%). |
+| 28/11, soát nhãn review (Chiến) | Thêm `evidence/scripts/sample_review.py` (seed 2811) chọn ngẫu nhiên 12 dòng mẫu A + 12 dòng mẫu B → phiếu `evidence/label-review.csv`. Chiến soát: đồng ý 22/24, sửa 1 (mẫu A giao trễ 40 → 39/150, bot / chờ lâu 17 → 18/150; cập nhật `summary.md`, §1), treo 1 dòng mẫu B chờ đọc toàn văn. | Issue #3: nhãn lượt đầu có AI hỗ trợ, cần người soát ≥20 dòng (`evidence/data-mining.md` mục 5). |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý - không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

@@ -53,9 +53,9 @@ Chạy `python evidence/scripts/count_labels.py` ra đúng các số dưới đ�
 | thiếu món | 2/150 | 1,3% | khớp desk research trước đó (2-3/150) |
 | sai món | 1/150 | 0,7% | |
 | bù voucher thay vì hoàn giá món | 1/150 | 0,7% | chính là 1 trong 2 review thiếu món |
-| chờ lâu / bot không giải quyết | 17/150 | 11,3% | mọi loại sự cố, không riêng thiếu món |
+| chờ lâu / bot không giải quyết | 18/150 | 12,0% | mọi loại sự cố, không riêng thiếu món |
 | bị từ chối / không được hoàn | 5/150 | 3,3% | chủ yếu đơn bị huỷ đã trừ tiền |
-| giao trễ | 40/150 | 26,7% | phàn nàn lớn nhất |
+| giao trễ | 39/150 | 26,0% | phàn nàn lớn nhất |
 | không liên quan | 91/150 | 60,7% | lỗi thanh toán, không cho huỷ, deal, định vị, chửi chung |
 
 ### Mẫu B - mọi review khớp từ khoá thiếu món, 4 app, 27/11/2025 - 26/11/2026
@@ -100,4 +100,8 @@ Chạy `python evidence/scripts/count_labels.py` ra đúng các số dưới đ�
 
 > **Lượt gắn nhãn này là lượt đầu, làm với trợ giúp của AI** (đọc và gắn nhãn từng review trong file thô), trên review thật đã cào, không bịa dòng nào.
 > **Dương Minh Chiến (phụ trách bằng chứng) cần soát lại**: đọc ngẫu nhiên ít nhất 20 dòng trong `evidence/reviews-labelled.csv`, sửa nhãn nếu không đồng ý, rồi chạy lại `count_labels.py`.
+> **Phiếu soát:** `python evidence/scripts/sample_review.py` (seed 2811) → `evidence/label-review.csv`, 12 dòng A + 12 dòng B. Người soát điền `nhan_nguoi_soat` khi không đồng ý (để trống = đồng ý).
+> **Kết quả soát (Dương Minh Chiến, 28/11):** đồng ý 22/24 · sửa 1/24 · còn treo 1/24.
+> - Sửa: A `2026-10-22T11:09:38` `giao_tre` → `bot_cho_lau` ("xử lý rất lâu nhưng không cho huỷ", không nói shipper hay giao muộn). Đã sửa trong `reviews-labelled.csv` và chạy lại `count_labels.py`: mẫu A giao trễ 40 → 39/150, bot / chờ lâu 17 → 18/150. Mẫu B không đổi.
+> - Treo: B `xanhsm-2026-08-20T12:38:54`. Người soát đề nghị bỏ `thieu_mon` vì đoạn trích không nói thiếu món, nhưng dòng này chỉ vào mẫu B khi **toàn văn** khớp regex thiếu món (`sample.py`), nên đoạn trích có thể đã cắt mất phần đó. Chưa sửa, chờ đọc toàn văn trên Google Play. Nếu bỏ: mẫu B còn 40 đơn, ít nhất một trong ba kết quả bất lợi là 29/40 (72,5%), so với 30/41 (73,2%) hiện tại.
 > Ca ranh giới đã biết: A `2026-10-27T19:36:31`, `2026-11-07T11:55:27`, `2026-11-01T19:20:43` (gắn "bot / không giải quyết" dù không nói rõ kênh); B `2026-07-04T14:35:18` (đơn đi chợ, đã loại).

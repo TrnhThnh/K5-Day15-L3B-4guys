@@ -1,0 +1,25 @@
+id,mau,sao,trich,nhan_luot_dau,nhan_nguoi_soat,ghi_chu_soat
+A-shopeefood-2026-11-23T20:58:19,A,1,dính bẫy deal mua xong thấy quán cách 13km😡😡,khong_lien_quan,,
+A-shopeefood-2026-10-30T15:28:43,A,2,"mất tiền oan mà k nhận đc hàng, nhắn tin cho shop shop bảo k có trg trường hơpk hoàn trả",bi_tu_choi,,
+A-shopeefood-2026-11-10T13:07:39,A,1,nhìu cái ko hỗ trợ dc,khong_lien_quan,,
+A-shopeefood-2026-11-11T20:37:58,A,1,ghép đơn quá nhiều,khong_lien_quan,,
+A-shopeefood-2026-11-22T10:23:21,A,1,đặt đồ ăn k đc,khong_lien_quan,,
+A-shopeefood-2026-10-28T18:48:25,A,1,"bỏ ngay cái trò ghép đơn, xong một ly nước mà đợi cả tiếng thì còn gì uống hả :)",giao_tre,,
+A-shopeefood-2026-10-25T16:12:46,A,1,"lừa đảo, đặt đồ ăn đã thanh toán trước xong bị hủy rồi không hoàn tiền lại",bi_tu_choi,,
+A-shopeefood-2026-11-19T20:27:31,A,1,app lỏ....bấm vào mục gợi ý xong mình đặt hàng thì báo NGOÀI PHẠM VI GIAO HÀNG nếu k phục vụ đc Gợi Ý để cho có tương tác hả.,khong_lien_quan,,
+A-shopeefood-2026-10-20T21:28:45,A,1,app như l,khong_lien_quan,,
+A-shopeefood-2026-10-22T11:09:38,A,1,đơn hàng xử lý rất lâu nhưng không cho hủy,giao_tre,bot_cho_lau,đơn xử lý rất lâu nhưng vẫn chưa xong; không nêu chờ shipper hoặc giao muộn
+A-shopeefood-2026-10-28T10:00:44,A,1,App quá kém toàn nằm ngoài phạm vi giao hàng đặt 1 đơn hàng không giao được còn mất tiền oan đề nghị mọi người xem kĩ trước khi đặt xem có nằm trong phạm vi giao hàng hay không hãy đặt đặt rồi mất tiền oan lắm,khong_lien_quan,,
+A-shopeefood-2026-11-12T12:05:15,A,1,"ưu đãi thua xa grabfood, đã vậy phí dịch vụ còn cao gấp đôi",khong_lien_quan,,
+B-grab-2026-06-03T12:22:53,B,1,giải quyết vấn đề quá lâu dù đã khiếu nại nhiều lần grabfood rất hay thiếu món mà k cập nhật k báo tự í sửa,thieu_mon bot_cho_lau,thieu_mon bot_cho_lau,có cả tình trạng thường xuyên thiếu món và khiếu nại kéo dài
+B-shopeefood-2026-01-15T12:38:02,B,1,"giao thiếu, khiếu nại Shopeefood thì nó cho bot nói chuyện, nói tới lui thì đòi gừi theo form báo cáo mà lại bị lỗi ko up ảnh, TỆ",thieu_mon bot_cho_lau,,
+B-grab-2026-07-20T17:36:58,B,1,"Shop giao thiếu món, grab có tặng 1 voucher, nhưng voucher này không sử dụng chung với các voucher khác được.",thieu_mon bu_voucher,,
+B-shopeefood-2026-01-21T17:10:28,B,1,ko có món nào gần tôi.,khong_lien_quan,,
+B-grab-2026-08-19T16:32:39,B,1,"Quán giao thiếu chỉ nhắn đc quán qua flow ""Liên hệ với merchant"" trên đơn hàng, nhắn xong 30p vẫn ko thấy quán trl, 1 tiếng sau vào ktra lại thì mất hẳn nút ""Liên hệ với merchant"" nghĩa là ko có cách nào liên hệ với quán được nữa.",thieu_mon bot_cho_lau,,
+B-grab-2025-11-30T10:23:55,B,1,LỪA ĐẢO trong 1 ngày: trưa không nhận được hàng. tối giao thiếu đồ ăn (đặt 2 nhưng giao 1) tiền thì toàn thanh toán trước,thieu_mon,,
+B-be-2026-10-15T18:47:37,B,1,đặc hàng thì truyển tiền trước. không có món.,khong_lien_quan,,
+B-xanhsm-2026-08-20T12:38:54,B,1,"Mình gửi yêu cầu trong app lên Green SM khiếu nại. 22 tiếng sau, yêu cầu đó vẫn ở trạng thái ""đang mở""? và chưa chuyển qua ""xử lý"".",thieu_mon bot_cho_lau,bot_cho_lau,"khiếu nại vẫn đang mở sau 22 tiếng, chưa được xử lý; không có nội dung giao thiếu món"
+B-be-2026-04-28T18:55:36,B,1,"đặt đồ ăn ko có món,phải chuyển tiền trước, be nó bảo 15 ngày mới trả lại tiền, vớ vẩn",khong_lien_quan,,
+B-shopeefood-2026-10-09T16:15:58,B,1,đề nghị đánh giá lại hoạt động của đối tác dạo gần đây tầng xuất giao sai giao thiếu đồ ăn của các đối tác q10 tphcm tăng quá cao 1 tuần 2 3 lần là không thể chấp nhận dc,thieu_mon sai_mon,,
+B-shopeefood-2026-03-10T11:08:44,B,1,chính sách giải quyết đơn giao thiếu quá dổm,thieu_mon,,
+B-shopeefood-2026-10-25T14:13:05,B,1,"ko cho mua, tìm kiếm thì cứ hiện thị không có món này",khong_lien_quan,,

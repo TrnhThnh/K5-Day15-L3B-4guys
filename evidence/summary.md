@@ -14,7 +14,7 @@
 
 ## 2. Số chính
 
-- **Đào data, mẫu A** (150 review 1-3★ mới nhất ShopeeFood, 20/10 - 26/11/2026): thiếu món **2/150 (1,3%)** · giao trễ 40/150 (26,7%) · chờ lâu / bot không giải quyết 17/150 (11,3%).
+- **Đào data, mẫu A** (150 review 1-3★ mới nhất ShopeeFood, 20/10 - 26/11/2026): thiếu món **2/150 (1,3%)** · giao trễ 39/150 (26,0%) · chờ lâu / bot không giải quyết 18/150 (12,0%).
 - **Đào data, mẫu B** (mọi review khớp từ khoá thiếu món, 4 app, 27/11/2025 - 26/11/2026): 41/50 hit là đơn thiếu món thật; trong 41 đơn đó, chờ lâu / bot **21/41 (51,2%)** · bù voucher thay vì hoàn giá **6/41 (14,6%)** · bị từ chối / không được gì **6/41 (14,6%)** · ít nhất một trong ba **30/41 (73,2%)**.
   Trong 13 review kể rõ kết quả cuối, chỉ 2 được bù đúng phần thiếu.
 - Phỏng vấn hiện có 1 câu trả lời được ghi tóm tắt: P2 không gặp sự cố trong tháng qua, kể một lần cách đây khoảng 2 năm, gọi quán và được hoàn trong khoảng 15 phút. Chưa đủ 3 cuộc phỏng vấn; metadata và câu hỏi nguyên văn cần bổ sung từ người phỏng vấn.
@@ -45,7 +45,7 @@ Khảo sát cũng ghi nhận một trường hợp chỉ nhận voucher. Một n
 ## 5. Kết luận
 
 Hai tỷ lệ sơ bộ để kiểm giả thuyết ở `evidence/hypothesis.md` là 3/6 gặp sự cố và 2/3 không được hoàn đúng giá hay giao bù. Cỡ mẫu người có đặt còn dưới ngưỡng 20 người ngoài nhóm, nên nhóm chưa chốt giả thuyết từ khảo sát.
-Tín hiệu từ review: vế "kênh khiếu nại là bot / chờ lâu, thường chỉ được voucher" được ủng hộ; vế "thiếu món xảy ra đủ thường" **chưa** được ủng hộ - cách giải thích khác (a) và (b) trong giả thuyết vẫn mở, vì giao trễ là phàn nàn lớn hơn nhiều (40/150 so với 2/150).
+Tín hiệu từ review: vế "kênh khiếu nại là bot / chờ lâu, thường chỉ được voucher" được ủng hộ; vế "thiếu món xảy ra đủ thường" **chưa** được ủng hộ - cách giải thích khác (a) và (b) trong giả thuyết vẫn mở, vì giao trễ là phàn nàn lớn hơn nhiều (39/150 so với 2/150).
 Điều vẫn chưa biết: bao nhiêu % người trong lớp gặp thiếu món trong 3 tháng; mỗi lần mất bao nhiêu phút; người không viết review có được hoàn đúng giá không.
 
 ## Lịch hẹn (dùng cho CP2 - chỉ ghi vai và giờ, không tên)
