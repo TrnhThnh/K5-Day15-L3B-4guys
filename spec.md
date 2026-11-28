@@ -182,6 +182,8 @@ flowchart TD
 | 28/11, soát lượt 1 | Trung xác nhận điểm của cả 24 câu. Cập nhật `ghi_chu` và báo cáo CP3. | Đối chiếu từng câu theo `pass_criterion`, kết quả 16/24 (67%). |
 | 28/11, soát nhãn review (Chiến) | Thêm `evidence/scripts/sample_review.py` (seed 2811) chọn ngẫu nhiên 12 dòng mẫu A + 12 dòng mẫu B → phiếu `evidence/label-review.csv`. Chiến soát: đồng ý 22/24, sửa 1 (mẫu A giao trễ 40 → 39/150, bot / chờ lâu 17 → 18/150; cập nhật `summary.md`, §1), treo 1 dòng mẫu B chờ đọc toàn văn. | Issue #3: nhãn lượt đầu có AI hỗ trợ, cần người soát ≥20 dòng (`evidence/data-mining.md` mục 5). |
 
+Cập nhật hồ sơ ngày 28/11: bổ sung video và kết quả lượt 1 do Trung soát vào `slides/CP3.md`.
+
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý - không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
 | Thời điểm | Đổi gì | Vì sao |
