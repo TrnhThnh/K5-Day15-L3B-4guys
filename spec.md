@@ -147,10 +147,9 @@ flowchart TD
 - Kết quả: lượt 1 16/24 (67%), Trần Đức Trung đã soát 24 câu · lượt 2 24/24 (100%), Claude chấm nháp và đang chờ người soát. Run ID `run-1@20261128-003410` và `run-2@20261128-005155`, model `anthropic/claude-haiku-5.5` qua OpenRouter. Chi tiết ở `eval/report.md` và `eval/README.md`.
 
 ## §8. Chi phí khi dùng thật *(guide 4.2 · Thịnh)*
-- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
-- Chi phí / task thành công: __ (model gemini-3.5-flash-lite) · __ (model Claude Haiku 5.5)
-- Chi phí / tháng ở quy mô thật: thấp __ · cơ sở __ · cao __ → chi tiết `cost/cost-estimate.md`
-- So với impact / người / tháng (§2): đáng làm không, vì sao:
+- [Cấu hình](cost/personas.yaml) gồm ba persona, 50 phiên và seed 42. Phép đo nhiều lượt đang chờ model thật.
+- [Dự toán theo token lượt 2](cost/cost-estimate.md): Claude Haiku 5.5 khoảng 0,000995 USD/task thành công; áp giá Gemini 3.5 Flash Lite lên cùng số token là 0,004438 USD/task. Tỷ lệ đạt dùng trong phép tính là 24/24 theo điểm nháp lượt 2.
+- Với Claude Haiku 5.5, dự toán thấp / cơ sở / cao lần lượt là 0,488 / 0,976 / 1,952 USD mỗi tháng cho 550 / 1.100 / 2.200 khách.
 
 ## §9. Rủi ro & an toàn
 - Dữ liệu: chỉ dùng đơn dựng, tên quán dựng; review công khai đã bỏ tên người viết; không đưa SĐT, địa chỉ vào model.
@@ -197,3 +196,5 @@ Ngày 28/11: ghi nhận phiếu Thịnh cho 5 đầu ra lượt 2, đối chiế
 |  |  |  |
 
 Ngày 28/11: thêm giao diện web cục bộ cho demo, dùng lại hàm answer và số liệu trace của từng yêu cầu.
+
+Ngày 28/11: hoàn thiện reflection của Thịnh và đối chiếu dự toán chi phí với impact ở §8. Phép đo 50 phiên thật còn chờ khóa API.

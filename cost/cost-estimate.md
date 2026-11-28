@@ -21,27 +21,12 @@ Giả định mỗi lượt hỏi dùng lượng token trung bình của 24 câu
 
 Đây là dự toán tuyến tính theo token benchmark. Độ dài hội thoại thực tế có thể thay đổi chi phí. Bảng mô phỏng chính thức bên dưới cần usage của 50 phiên.
 
-## 2. Kết quả mô phỏng
+## 2. Trạng thái phép đo 50 phiên
 
-Lượt mô phỏng: `cost/simulate-__.csv` · run ID __ · __ phiên · seed __
-
-*(dán bảng từ `cost/simulate-N-summary.md`)*
-
-| Model | Chi phí / phiên | Chi phí / task thành công | / tháng — thấp | / tháng — cơ sở | / tháng — cao | / người / tháng (cơ sở) |
-|---|---|---|---|---|---|---|
-| | | | | | | |
-| | | | | | | |
-
-Chi phí / task thành công = chi phí trung bình mỗi phiên ÷ tỉ lệ đạt — **không coi như đạt 100%**.
+Cấu hình đã có 50 phiên và seed 42. Chạy `python run.py simulate --rate-from eval/run-2.csv` trên máy đã cấu hình model thật. Khi có run ID, lấy kết quả từ báo cáo do chương trình sinh. Hiện chưa có số đo nhiều lượt trong repo.
 
 ## 3. So với impact
 
-- Impact / người / tháng (`spec.md` §2): __
-- Chi phí / người / tháng (cơ sở, model __): __
-- **Kết luận một dòng — đáng làm không:** __
+Theo kịch bản cơ sở trong [spec §2](../spec.md), một khách gặp sự cố mất khoảng 20 phút/tháng (giả định một lần/tháng). Hai người trả lời câu hỏi về thời gian khiếu nại chọn khoảng 5–15 phút. Đây là thời gian của quy trình hiện tại; nhóm chưa đo phần thời gian mà bản demo tiết kiệm được.
 
-## 4. *(Muốn sâu hơn, không bắt buộc)*
-
-- Bảng độ nhạy: model rẻ hơn · cache · cắt ngữ cảnh · giới hạn bước — mỗi cần gạt đổi chi phí bao nhiêu
-- Chi phí ngoài model: hosting, lưu trữ, giờ công người duyệt
-- Quy mô nào thì bài toán còn đáng làm
+Chi phí model dự toán ở kịch bản cơ sở là 0,975816 USD/tháng cho 1.100 khách, tương đương khoảng 0,000887 USD/khách/tháng với Claude Haiku 5.5. Phí hạ tầng và công nhân viên duyệt đề nghị hoàn chưa được đo. Với dữ liệu hiện có, quyết định là tiếp tục thí điểm có người duyệt và đo thời gian xử lý trước khi mở rộng.
