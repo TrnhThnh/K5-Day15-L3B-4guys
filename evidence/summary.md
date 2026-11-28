@@ -8,7 +8,7 @@
 
 | Nguồn | Đạt ngưỡng? | File |
 |---|---|---|
-| Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☑ lượt đầu, chờ Chiến soát nhãn | `evidence/data-mining.md` · `evidence/reviews-labelled.csv` · `evidence/scripts/` |
+| Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☑ Chiến đã soát 24 nhãn, đồng ý 23 và sửa 1 | `evidence/data-mining.md` mục 5 · `evidence/label-review.csv` · `evidence/scripts/` |
 | Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | ☑ 3 khách ngoài nhóm (P1–P3), 2/3 gặp thiếu món trong tháng qua. Câu không có số ghi "không nhớ" / "không trả lời" theo đúng lời người được hỏi, không đoán hộ | `evidence/interviews/script.md` · `evidence/interviews/P1.md` · `P2.md` · `P3.md` |
 | Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☐ chốt 12 phiếu ngày 28/11 (gửi trên Discord chung của khoá), 6 người có đặt qua app; **dưới ngưỡng 20**, chỉ dùng làm tín hiệu sơ bộ. Tư cách ngoài nhóm chưa được xác minh. | Google Sheets của nhóm, câu 1, 3 và 10 |
 
@@ -18,7 +18,7 @@
 - **Đào data, mẫu B** (mọi review khớp từ khoá thiếu món, 4 app, 27/11/2025 - 26/11/2026): 41/50 hit là đơn thiếu món thật; trong 41 đơn đó, chờ lâu / bot **21/41 (51,2%)** · bù voucher thay vì hoàn giá **6/41 (14,6%)** · bị từ chối / không được gì **6/41 (14,6%)** · ít nhất một trong ba **30/41 (73,2%)**.
   Trong 13 review kể rõ kết quả cuối, chỉ 2 được bù đúng phần thiếu.
 - Phỏng vấn 3 khách: **2/3 gặp thiếu món trong 1 tháng qua** (P1: thiếu 1 trong 2 bát bún, ShopeeFood, giữa tháng 11; P3: thiếu 1 trong 2 phần cơm, 08/11). P2 không gặp trong tháng qua, kể một lần khoảng 2 năm trước, gọi quán và được hoàn trong khoảng 15 phút. **Cả 3 đều tìm tới quán trước, không ai kể dùng chat hỗ trợ của app**; 2/3 lần gần đây quán không phản hồi. Không ai nhớ hay trả lời kết quả cuối của lần gần đây.
-- Khảo sát sơ bộ ngày 27/11 có 12 phiếu. Câu 1 có 6 người chọn 0 lần, 4 người chọn 1–3 lần, 1 người chọn 4–10 lần và 1 người chọn hơn 10 lần. Trong 6 người có đặt, 3 người báo thiếu/sai món ở câu 3. Ở câu 10, 1 trong 3 được hoàn đúng giá, 1 chỉ nhận voucher và 1 không khiếu nại.
+- Khảo sát chốt ngày 28/11 có 12 phiếu. Câu 1 có 6 người chọn 0 lần, 4 người chọn 1–3 lần, 1 người chọn 4–10 lần và 1 người chọn hơn 10 lần. Trong 6 người có đặt, câu 3 ghi nhận 1 người báo thiếu món, 2 người báo sai món, 2 người trả lời không và 1 người không nhớ. Ở câu 9, hai người đã khiếu nại đều chọn 5–15 phút. Ở câu 10, trong 3 người gặp sự cố, 1 người được hoàn đúng giá, 1 người chỉ nhận voucher và 1 người không khiếu nại. Số câu theo biểu mẫu đã tạo bằng `evidence/survey/create_form.gs`; số liệu thời gian đối chiếu với `spec.md` §2.
 
 Phỏng vấn nhiều vai thì đếm theo từng vai, không cộng chung.
 

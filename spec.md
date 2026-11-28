@@ -7,7 +7,11 @@ Track: [ ] A · [ ] B · [ ] C · [x] D · [ ] E - bài toán: D1 · xử lý kh
 Data BTC cấp đã dùng (nếu có - không commit nguyên file): không có (track D không có data BTC). Dữ liệu chạy thử là dữ liệu dựng có seed, xem `data/DATA_CARD.md`.
 
 ## §0. Hiện tại việc này diễn ra thế nào *(guide 1.1)*
-- Luồng hiện tại (khách trên app ShopeeFood / GrabFood, *chưa kiểm bằng ảnh chụp từ tài khoản nhóm, Chiến bổ sung*):
+- Ảnh chụp do nhóm cung cấp cho thấy màn hình **Đơn hàng**, tab **Deal đã mua**, với hai trạng thái “Đã hủy” và “Đã sử dụng”. Để kiểm chứng bước báo thiếu món, còn cần ảnh từ chi tiết một đơn đã giao đến mục Trợ giúp và lý do khiếu nại, đã che thông tin cá nhân.
+
+  ![Màn hình Đơn hàng, tab Deal đã mua](evidence/don-hang-deal-da-mua.jpg)
+
+- Luồng nhóm mô tả từ tài liệu và lời kể của khách:
   1. Khách mở đơn vừa nhận, phát hiện thiếu một món.
   2. Vào "Trợ giúp" của đơn, chọn lý do có sẵn trong menu (vd "Thiếu món"), chụp ảnh trong hạn báo cáo.
   3. Trợ lý chạy theo menu có sẵn hoặc chuyển nhân viên; khách chờ phản hồi.
@@ -182,6 +186,7 @@ flowchart TD
 | 28/11, soát lượt 1 | Trung xác nhận điểm của cả 24 câu. Cập nhật `ghi_chu` và báo cáo CP3. | Đối chiếu từng câu theo `pass_criterion`, kết quả 16/24 (67%). |
 | 28/11, soát nhãn review (Chiến) | Thêm `evidence/scripts/sample_review.py` (seed 2811) chọn ngẫu nhiên 12 dòng mẫu A + 12 dòng mẫu B → phiếu `evidence/label-review.csv`. Chiến soát: đồng ý 23/24, sửa 1 (mẫu A giao trễ 40 → 39/150, bot / chờ lâu 17 → 18/150; cập nhật `summary.md`, §1). Dòng B Xanh SM đã đọc toàn văn, giữ `thieu_mon`, mẫu B giữ 30/41. | Issue #3: nhãn lượt đầu có AI hỗ trợ, cần người soát ≥20 dòng (`evidence/data-mining.md` mục 5). |
 | 28/11, phỏng vấn (Chiến) | Thêm `evidence/interviews/P1.md` (đủ câu 1–9) và `P3.md` (chỉ câu 3); cập nhật bảng P1–P3, mục 4–5 của `evidence/summary.md`: 2/3 khách gặp thiếu món trong tháng, cả 3 tìm tới quán trước, giả thuyết đổi một phần. | Issue #3: phỏng vấn ≥3 khách ngoài nhóm, hỏi chuyện 1 tháng qua. |
+| 28/11 | Ghi nhận màn hình Đơn hàng ở §0 và bổ sung kết quả câu 9 vào bản tổng hợp khảo sát. | Issue #3 yêu cầu kiểm chứng luồng khiếu nại bằng ảnh và tổng hợp kết quả bốn câu khảo sát. |
 
 Cập nhật ngày 28/11 sau pull 7374c83: bổ sung điểm nháp lượt 3, đối chiếu P1–P3 và khai báo AI. Điểm chờ người duyệt.
 
