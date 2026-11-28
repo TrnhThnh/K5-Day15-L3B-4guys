@@ -10,7 +10,7 @@
 |---|---|---|
 | Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☑ lượt đầu, chờ Chiến soát nhãn | `evidence/data-mining.md` · `evidence/reviews-labelled.csv` · `evidence/scripts/` |
 | Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | ☑ 3 khách ngoài nhóm (P1–P3), 2/3 gặp thiếu món trong tháng qua. Câu không có số ghi "không nhớ" / "không trả lời" theo đúng lời người được hỏi, không đoán hộ | `evidence/interviews/script.md` · `evidence/interviews/P1.md` · `P2.md` · `P3.md` |
-| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | 12 phiếu tại lần đọc ngày 27/11; 6 người có đặt qua app. Tư cách ngoài nhóm chưa được xác minh. | Google Sheets của nhóm, câu 1, 3 và 10 |
+| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☐ chốt 12 phiếu ngày 28/11 (gửi trên Discord chung của khoá), 6 người có đặt qua app; **dưới ngưỡng 20**, chỉ dùng làm tín hiệu sơ bộ. Tư cách ngoài nhóm chưa được xác minh. | Google Sheets của nhóm, câu 1, 3 và 10 |
 
 ## 2. Số chính
 
