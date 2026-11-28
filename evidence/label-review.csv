@@ -18,7 +18,7 @@ B-shopeefood-2026-01-21T17:10:28,B,1,ko có món nào gần tôi.,khong_lien_qua
 B-grab-2026-08-19T16:32:39,B,1,"Quán giao thiếu chỉ nhắn đc quán qua flow ""Liên hệ với merchant"" trên đơn hàng, nhắn xong 30p vẫn ko thấy quán trl, 1 tiếng sau vào ktra lại thì mất hẳn nút ""Liên hệ với merchant"" nghĩa là ko có cách nào liên hệ với quán được nữa.",thieu_mon bot_cho_lau,,
 B-grab-2025-11-30T10:23:55,B,1,LỪA ĐẢO trong 1 ngày: trưa không nhận được hàng. tối giao thiếu đồ ăn (đặt 2 nhưng giao 1) tiền thì toàn thanh toán trước,thieu_mon,,
 B-be-2026-10-15T18:47:37,B,1,đặc hàng thì truyển tiền trước. không có món.,khong_lien_quan,,
-B-xanhsm-2026-08-20T12:38:54,B,1,"Mình gửi yêu cầu trong app lên Green SM khiếu nại. 22 tiếng sau, yêu cầu đó vẫn ở trạng thái ""đang mở""? và chưa chuyển qua ""xử lý"".",thieu_mon bot_cho_lau,bot_cho_lau,"khiếu nại vẫn đang mở sau 22 tiếng, chưa được xử lý; không có nội dung giao thiếu món"
+B-xanhsm-2026-08-20T12:38:54,B,1,"Mình gửi yêu cầu trong app lên Green SM khiếu nại. 22 tiếng sau, yêu cầu đó vẫn ở trạng thái ""đang mở""? và chưa chuyển qua ""xử lý"".",thieu_mon bot_cho_lau,thieu_mon bot_cho_lau,"đề xuất bỏ thieu_mon theo đoạn trích; đọc toàn văn trên Google Play 28/11 có câu ""Quán giao thiếu món"" nên giữ nguyên nhãn"
 B-be-2026-04-28T18:55:36,B,1,"đặt đồ ăn ko có món,phải chuyển tiền trước, be nó bảo 15 ngày mới trả lại tiền, vớ vẩn",khong_lien_quan,,
 B-shopeefood-2026-10-09T16:15:58,B,1,đề nghị đánh giá lại hoạt động của đối tác dạo gần đây tầng xuất giao sai giao thiếu đồ ăn của các đối tác q10 tphcm tăng quá cao 1 tuần 2 3 lần là không thể chấp nhận dc,thieu_mon sai_mon,,
 B-shopeefood-2026-03-10T11:08:44,B,1,chính sách giải quyết đơn giao thiếu quá dổm,thieu_mon,,

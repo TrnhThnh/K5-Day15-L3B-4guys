@@ -101,7 +101,7 @@ Chạy `python evidence/scripts/count_labels.py` ra đúng các số dưới đ�
 > **Lượt gắn nhãn này là lượt đầu, làm với trợ giúp của AI** (đọc và gắn nhãn từng review trong file thô), trên review thật đã cào, không bịa dòng nào.
 > **Dương Minh Chiến (phụ trách bằng chứng) cần soát lại**: đọc ngẫu nhiên ít nhất 20 dòng trong `evidence/reviews-labelled.csv`, sửa nhãn nếu không đồng ý, rồi chạy lại `count_labels.py`.
 > **Phiếu soát:** `python evidence/scripts/sample_review.py` (seed 2811) → `evidence/label-review.csv`, 12 dòng A + 12 dòng B. Người soát điền `nhan_nguoi_soat` khi không đồng ý (để trống = đồng ý).
-> **Kết quả soát (Dương Minh Chiến, 28/11):** đồng ý 22/24 · sửa 1/24 · còn treo 1/24.
+> **Kết quả soát (Dương Minh Chiến, 28/11):** đồng ý 23/24 · sửa 1/24.
 > - Sửa: A `2026-10-22T11:09:38` `giao_tre` → `bot_cho_lau` ("xử lý rất lâu nhưng không cho huỷ", không nói shipper hay giao muộn). Đã sửa trong `reviews-labelled.csv` và chạy lại `count_labels.py`: mẫu A giao trễ 40 → 39/150, bot / chờ lâu 17 → 18/150. Mẫu B không đổi.
-> - Treo: B `xanhsm-2026-08-20T12:38:54`. Người soát đề nghị bỏ `thieu_mon` vì đoạn trích không nói thiếu món, nhưng dòng này chỉ vào mẫu B khi **toàn văn** khớp regex thiếu món (`sample.py`), nên đoạn trích có thể đã cắt mất phần đó. Chưa sửa, chờ đọc toàn văn trên Google Play. Nếu bỏ: mẫu B còn 40 đơn, ít nhất một trong ba kết quả bất lợi là 29/40 (72,5%), so với 30/41 (73,2%) hiện tại.
+> - Đã kiểm: B `xanhsm-2026-08-20T12:38:54`. Người soát định bỏ `thieu_mon` vì đoạn trích không nói thiếu món. Đọc toàn văn trên Google Play (28/11) thấy câu "Mình đặt food. Quán giao thiếu món…", nên giữ `thieu_mon bot_cho_lau`. Mẫu B giữ 30/41. Bài học: soát nhãn phải đọc toàn văn, không chỉ đoạn trích.
 > Ca ranh giới đã biết: A `2026-10-27T19:36:31`, `2026-11-07T11:55:27`, `2026-11-01T19:20:43` (gắn "bot / không giải quyết" dù không nói rõ kênh); B `2026-07-04T14:35:18` (đơn đi chợ, đã loại).
