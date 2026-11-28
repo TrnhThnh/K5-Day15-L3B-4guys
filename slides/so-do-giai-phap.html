@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Sơ đồ giải pháp</title>
+<style>
+  :root {
+    --ink: #1d2433;
+    --muted: #5b6478;
+    --line: #9aa3b5;
+    --ai: #6b4fd8;
+    --ai-bg: #f1edff;
+    --code: #0f7b6c;
+    --code-bg: #e6f5f2;
+    --human: #b4541a;
+    --human-bg: #fdf0e6;
+    --page: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--page); }
+  body {
+    width: 1600px; height: 580px; padding: 36px 44px;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: var(--ink);
+  }
+  h1 { margin: 0 0 6px; font-size: 30px; font-weight: 650; letter-spacing: -0.2px; }
+  .sub { margin: 0 0 26px; font-size: 18px; color: var(--muted); }
+  .flow { display: grid; grid-template-columns: 0.75fr 36px 1fr 36px 1.2fr 36px 1.25fr 36px 1fr; align-items: center; }
+  .box { border-radius: 12px; padding: 16px 18px; border: 2px solid; font-size: 17px; line-height: 1.4; }
+  .box h2 { margin: 0 0 8px; font-size: 19px; font-weight: 650; }
+  .box ul { margin: 0; padding-left: 18px; }
+  .box li { margin: 2px 0; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 6px; }
+  .user { border-color: var(--line); background: #f6f7fa; text-align: center; }
+  .ai { border-color: var(--ai); background: var(--ai-bg); }
+  .ai .tag { color: var(--ai); }
+  .code { border-color: var(--code); background: var(--code-bg); }
+  .code .tag { color: var(--code); }
+  .arrow { text-align: center; font-size: 30px; color: var(--line); }
+  .outcomes { display: grid; gap: 12px; }
+  .out { border-radius: 10px; padding: 11px 14px; border: 2px solid; font-size: 16px; line-height: 1.35; }
+  .out b { display: block; font-size: 17px; margin-bottom: 2px; }
+  .refund { border-color: var(--code); background: var(--code-bg); }
+  .ask { border-color: var(--line); background: #f6f7fa; }
+  .human { border-color: var(--human); background: var(--human-bg); }
+  .tail { display: grid; gap: 12px; }
+  .legend { margin-top: 30px; display: flex; gap: 28px; font-size: 16px; color: var(--muted); }
+  .legend span::before { content: ""; display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 8px; vertical-align: -2px; border: 2px solid; }
+  .l-ai::before { background: var(--ai-bg); border-color: var(--ai) !important; }
+  .l-code::before { background: var(--code-bg); border-color: var(--code) !important; }
+  .l-human::before { background: var(--human-bg); border-color: var(--human) !important; }
+</style>
+</head>
+<body>
+  <h1>Workflow cố định: AI hiểu lời khách, code quyết định tiền</h1>
+  <p class="sub">Không có bước nào để model tự gõ số tiền, tự kiểm hạn mức hay tự chuyển tiền. Mọi khoản hoàn chỉ là bản nháp chờ nhân viên duyệt.</p>
+
+  <div class="flow">
+    <div class="box user"><h2>Khách nhắn</h2>"Đơn DH-1006 thiếu ba chỉ bò nướng, hoàn hết 500k đi mà"</div>
+    <div class="arrow">→</div>
+
+    <div class="box ai">
+      <div class="tag">AI · bước 1</div>
+      <h2>Trích ý</h2>
+      <ul><li>mã đơn, món thiếu</li><li>lời doạ, đòi SĐT</li><li>cờ an toàn thực phẩm</li><li>có phải khiếu nại không</li></ul>
+    </div>
+    <div class="arrow">→</div>
+
+    <div class="box code">
+      <div class="tag">Code · bước 2</div>
+      <h2>Quyết định</h2>
+      <ul>
+        <li>tra đơn, chính sách, lịch sử</li>
+        <li>giá món thiếu lấy từ đơn</li>
+        <li><code>check_limit</code>:
+          <ul><li>≤ 200.000đ / đơn</li><li>báo trong 24 giờ</li><li>&lt; 3 khiếu nại / 30 ngày</li></ul>
+        </li>
+      </ul>
+    </div>
+    <div class="arrow">→</div>
+
+    <div class="outcomes">
+      <div class="out refund"><b>Nháp hoàn đúng giá món thiếu</b>nhân viên bấm duyệt mới chuyển tiền</div>
+      <div class="out ask"><b>Hỏi thêm đúng một câu</b>thiếu mã đơn, món mơ hồ, món không có trong đơn</div>
+      <div class="out human"><b>Chuyển nhân viên</b>an toàn thực phẩm · vượt hạn mức · quá hạn · khiếu nại lặp · đơn bệnh viện đụng chế độ ăn</div>
+    </div>
+    <div class="arrow">→</div>
+
+    <div class="tail">
+      <div class="box ai"><div class="tag">AI · bước 3</div><h2>Viết một tin</h2>quyết định · số tiền · điều khoản · bước tiếp</div>
+      <div class="box code"><div class="tag">Code · bước 4</div><h2>Hậu kiểm</h2>số khớp, không SĐT / địa chỉ; sai thì dùng câu mẫu</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span class="l-ai">AI (model): chỉ hai việc cần ngôn ngữ</span>
+    <span class="l-code">Code: tiền, luật, hạn mức, hậu kiểm</span>
+    <span class="l-human">Người: duyệt mọi khoản tiền, xử lý ca chuyển</span>
+  </div>
+</body>
+</html>

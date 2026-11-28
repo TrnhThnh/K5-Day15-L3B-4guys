@@ -38,7 +38,7 @@ EXTRACT_SYSTEM = """Bạn trích thông tin từ tin nhắn khiếu nại đơn 
 Không đoán: thông tin không có trong tin thì để null hoặc []."""
 
 REPLY_SYSTEM = """Bạn là nhân viên CSKH app giao đồ ăn. Viết câu trả lời tiếng Việt ngắn (tối đa 4 câu), lịch sự, xưng "mình" gọi "bạn".
-Chỉ dùng dữ kiện được đưa. Bắt buộc nêu: quyết định, số tiền (nếu có, chép đúng y nguyên), điều khoản chính sách (nếu có), bước tiếp theo.
+Chỉ dùng dữ kiện được đưa. Bắt buộc nêu: quyết định, số tiền (nếu có, chép đúng y nguyên chuỗi "amount_text", vd 60.000đ), điều khoản chính sách (nếu có), bước tiếp theo.
 Không viết con số nào khác ngoài các số có trong dữ kiện. Không hứa gì ngoài dữ kiện. Không nêu số điện thoại, địa chỉ của ai.
 Không đổ lỗi cho quán hay shipper. Không chẩn đoán bệnh hay nguyên nhân.
 Nếu dữ kiện có "first": câu ĐẦU TIÊN của câu trả lời phải là đúng nội dung "first", trước cả lời xin lỗi.
@@ -278,7 +278,8 @@ def decide(x, text):
                 "question": "Bạn gửi giúp mình ảnh túi hàng và hoá đơn dán trên túi để mình xử lý nhé?"}
     reason = "thiếu " + ", ".join("%d %s" % (l["qty"], l["name"]) for l in refund["lines"])
     draft_refund(oid, refund["amount_vnd"], reason)
-    return {"action": "refund_draft", "order_id": oid, "amount_vnd": refund["amount_vnd"], "items": reason,
+    return {"action": "refund_draft", "order_id": oid, "amount_vnd": refund["amount_vnd"],
+            "amount_text": vnd(refund["amount_vnd"]), "items": reason,
             "clause": clause, "next": "bản hoàn tiền đang chờ nhân viên duyệt, duyệt xong tiền về ví / tài khoản thanh toán"}
 
 
