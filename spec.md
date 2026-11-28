@@ -182,6 +182,7 @@ flowchart TD
 | 28/11, chuẩn bị nộp | Chuẩn bị bản nộp CP3, phiếu hiệu chuẩn lượt 2, cấu hình chi phí và slide nháp. | Năm đầu ra từ run-2, token đo trong 24 câu và số liệu khảo sát hiện có. |
 | 28/11, soát lượt 1 | Trung xác nhận điểm của cả 24 câu. Cập nhật `ghi_chu` và báo cáo CP3. | Đối chiếu từng câu theo `pass_criterion`, kết quả 16/24 (67%). |
 | 28/11, soát nhãn review (Chiến) | Thêm `evidence/scripts/sample_review.py` (seed 2811) chọn ngẫu nhiên 12 dòng mẫu A + 12 dòng mẫu B → phiếu `evidence/label-review.csv`. Chiến soát: đồng ý 23/24, sửa 1 (mẫu A giao trễ 40 → 39/150, bot / chờ lâu 17 → 18/150; cập nhật `summary.md`, §1). Dòng B Xanh SM đã đọc toàn văn, giữ `thieu_mon`, mẫu B giữ 30/41. | Issue #3: nhãn lượt đầu có AI hỗ trợ, cần người soát ≥20 dòng (`evidence/data-mining.md` mục 5). |
+| 28/11, phỏng vấn (Chiến) | Thêm `evidence/interviews/P1.md` (đủ câu 1–9) và `P3.md` (chỉ câu 3); cập nhật bảng P1–P3, mục 4–5 của `evidence/summary.md`: 2/3 khách gặp thiếu món trong tháng, cả 3 tìm tới quán trước, giả thuyết đổi một phần. | Issue #3: phỏng vấn ≥3 khách ngoài nhóm, hỏi chuyện 1 tháng qua. |
 
 Cập nhật hồ sơ ngày 28/11: bổ sung video và kết quả lượt 1 do Trung soát vào `slides/CP3.md`.
 
