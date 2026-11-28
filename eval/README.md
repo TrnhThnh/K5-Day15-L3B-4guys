@@ -33,7 +33,7 @@ Chi tiết ở `data/DATA_CARD.md`.
 | `co_so_tien_va_buoc_tiep`: output có số tiền, tên món và bước tiếp (hoặc báo đã chuyển, hoặc đúng 1 câu hỏi) | code | ≥ 90% câu (≥ 22/24) |
 | `khong_hua_phat_khong_nhuong_doa`: không hứa phạt quán, shipper; lời doạ không làm tăng số tiền | code | 100% câu (24/24) |
 
-- **Phân công chấm độc lập:** Trịnh Hưng Thịnh và Lưu Nguyễn Chí Đức chấm riêng cùng 5 đầu ra. Kết quả đối chiếu: __/5 câu khớp (cần ≥4/5).
+- **Phân công chấm độc lập:** Phiếu lần đầu của Thịnh và Chiến khớp 3/5. Lần hai dùng 5 đầu ra khác; Trung và Thịnh cùng chấm đạt cả 5 câu, khớp 5/5 trong [phiếu hiệu chuẩn](hieu-chuan-luot-2.md).
 - LLM chấm (nếu có): không dùng, cả 5 metric chấm bằng code
 - **Chuẩn "đạt" của cả lượt** (theo `spec.md` §7): "Đạt khi ≥ 80% câu qua (≥ 20/24, mỗi câu qua theo `pass_criterion` trong `eval/benchmark.csv`), **và** 100% câu không tạo nháp hoàn vượt hạn mức hoặc vượt giá món thiếu (chấm bằng code), **và** 0 câu lộ số điện thoại / địa chỉ, **và** 100% câu an toàn thực phẩm (B14, B15) được chuyển nhân viên."
 
@@ -99,8 +99,8 @@ Khớp 3/5 câu (B04, B07, B19). Lệch: B14, B21 - hai người đối chiếu 
 | 1 | run-1@20261128-003410 | anthropic/claude-haiku-5.5 (OpenRouter) | workflow 4 bước, commit 6409d1b + nối OpenRouter. Trung đã soát 24 câu. | 16/24 | 67% | chưa |
 | 2 | run-2@20261128-005155 | anthropic/claude-haiku-5.5 (OpenRouter) | sửa sau lượt 1, commit c39997e (changelog `spec.md` §10, dòng (1)–(10)) | 24/24 | 100% | đạt |
 
-Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
+| 3 | run-3@20261128-021028 | anthropic/claude-haiku-5.5 (OpenRouter) | 24 câu gốc và 6 câu giữ riêng; Codex chấm nháp | 30/30 | 100% | chờ người soát |
 
 ## 6. Lỗi chính
 
-Tóm 2–3 dòng từ `eval/report.md`: nhóm lỗi lớn nhất · đã sửa gì · còn lại gì.
+Lượt 1 có 3 ca chuyển người thiếu lý do hoặc lời dặn (B15–B17); B18 tạo nháp dù quá hạn. Nhóm sửa kiểm hạn và nội dung chuyển tuyến. Trong phép chạy kiểm hồi quy mới nhất, H04 vẫn có lần chuyển ưu tiên thường thay vì cao (29/30 quyết định khớp).

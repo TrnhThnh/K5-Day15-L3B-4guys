@@ -10,6 +10,17 @@ Lượt 2 dùng Claude Haiku 5.5 qua OpenRouter. Cộng 24 dòng trong `eval/run
 
 Mô phỏng dùng 50 phiên, seed 42, ba nhóm khách và ba quy mô 550 / 1.100 / 2.200 khách. Các giả định nằm trong `cost/personas.yaml`. Chi phí mỗi phiên nhiều lượt, mỗi task thành công và mỗi tháng chờ phép đo bằng model thật.
 
+### Dự toán trước lượt mô phỏng
+
+Giả định mỗi lượt hỏi dùng lượng token trung bình của 24 câu ở run-2. Với tỷ trọng và tần suất trong personas.yaml, mỗi khách có 0,89165 phiên và 1,99165 lượt hỏi/tháng. Một phiên tương ứng một task. Dùng tỷ lệ đạt nháp 24/24 của lượt 2. Chi phí/task = chi phí/lượt hỏi × lượt hỏi/tháng ÷ phiên/tháng ÷ tỷ lệ đạt. Chi phí tháng = khách × lượt hỏi/tháng × chi phí/lượt hỏi.
+
+| Model | USD/task thành công | USD/tháng, 550 khách | 1.100 khách | 2.200 khách |
+|---|---:|---:|---:|---:|
+| Claude Haiku 5.5 | 0.000995 | 0.487908 | 0.975816 | 1.951633 |
+| Gemini 3.5 Flash Lite | 0.004438 | 2.176607 | 4.353213 | 8.706427 |
+
+Đây là dự toán tuyến tính theo token benchmark. Độ dài hội thoại thực tế có thể thay đổi chi phí. Bảng mô phỏng chính thức bên dưới cần usage của 50 phiên.
+
 ## 2. Kết quả mô phỏng
 
 Lượt mô phỏng: `cost/simulate-__.csv` · run ID __ · __ phiên · seed __

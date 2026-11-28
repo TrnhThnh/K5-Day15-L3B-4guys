@@ -90,7 +90,7 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 2–3 dòng (bắt buộc): nhóm dùng công cụ AI nào để làm gì, người kiểm lại phần nào. Chi tiết: [docs/ai-usage.md](docs/ai-usage.md). Coding agent đọc [AGENTS.md](AGENTS.md).
 
-____
+Claude hỗ trợ chấm nháp benchmark; Trung đã soát 24 câu lượt 1. Codex hỗ trợ rà code, đối chiếu đầu ra với trace và soạn hồ sơ. Chiến soát độc lập 24 nhãn review, đồng ý 23 và sửa 1.
 
 ## File mẫu — điền ở bước nào
 

@@ -34,7 +34,7 @@ Data BTC cấp đã dùng (nếu có - không commit nguyên file): không có (
   - 1.100 người gặp / tháng = 10.000 × 1/3 (người gặp thiếu/sai món trong 3 tháng) ÷ 3 tháng. Tỉ lệ 1/3 là **ngưỡng giả thuyết, chưa kiểm** (`evidence/hypothesis.md`) - thay bằng câu 3 khảo sát `evidence/survey/form.md`.
   - 1 lần / người / tháng: *(tự ước tính)* - thay bằng câu 1 và câu 3 khảo sát.
   - 20 phút / lần: *(tự ước tính)*; review cho thấy dao động từ 30 phút không ai trả lời đến nhiều ngày (`evidence/data-mining.md`, mẫu B) - thay bằng khoảng thời gian câu 9 khảo sát.
-- **Kiểm lại khảo sát ngày 28/11:** 12 phiếu, 6 người đặt qua app trong 3 tháng. Trong 6 người, 1 báo thiếu món, 2 báo sai món, 2 trả lời không và 1 không nhớ. Mẫu cho lát cắt thiếu món là 1/6; mẫu cho cả hai loại sự cố là 3/6. Hai người khiếu nại chọn 5–15 phút ở câu 9, người còn lại không khiếu nại. Chờ đủ 20 khách ngoài nhóm để hiệu chỉnh kịch bản cơ sở. Câu 1 đếm số lần đặt, câu 3 đếm người từng gặp; để đo số sự cố mỗi tháng cần hỏi số lần trong P3.
+- **Kiểm lại khảo sát ngày 28/11:** 12 phiếu, 6 người đặt qua app trong 3 tháng. Trong 6 người, 1 báo thiếu món, 2 báo sai món, 2 trả lời không và 1 không nhớ. Mẫu cho lát cắt thiếu món là 1/6; mẫu cho cả hai loại sự cố là 3/6. Hai người khiếu nại chọn 5–15 phút ở câu 9, người còn lại không khiếu nại. Chờ đủ 20 khách ngoài nhóm để hiệu chỉnh kịch bản cơ sở. Câu 1 đếm số lần đặt, câu 3 đếm người từng gặp; P1 báo 1 lần, P2 báo 0 lần và P3 báo ít nhất 1 lần trong tháng. P3 không cung cấp thời gian xử lý hoặc kết quả cuối.
 - **Độ nhạy:** nếu dùng khoảng 5–15 phút của hai người khiếu nại, giữ giả định 1.100 người và 1 lần/tháng, tổng thời gian là 92–275 giờ/tháng. Đây là thời gian xử lý hiện tại theo kịch bản; thời gian thực sự tiết kiệm cần đo với người dùng.
 - Hướng ĐÃ LOẠI + vì sao:
   - Người nhà bệnh nhân đặt đồ ăn tới bệnh viện: nhóm chưa có mẫu riêng đủ để ước lượng tần suất và tác động. Giữ tình huống xung đột chế độ ăn làm ca khó lớp 4 (§5).
@@ -184,7 +184,11 @@ flowchart TD
 | 28/11, soát nhãn review (Chiến) | Thêm `evidence/scripts/sample_review.py` (seed 2811) chọn ngẫu nhiên 12 dòng mẫu A + 12 dòng mẫu B → phiếu `evidence/label-review.csv`. Chiến soát: đồng ý 23/24, sửa 1 (mẫu A giao trễ 40 → 39/150, bot / chờ lâu 17 → 18/150; cập nhật `summary.md`, §1). Dòng B Xanh SM đã đọc toàn văn, giữ `thieu_mon`, mẫu B giữ 30/41. | Issue #3: nhãn lượt đầu có AI hỗ trợ, cần người soát ≥20 dòng (`evidence/data-mining.md` mục 5). |
 | 28/11, phỏng vấn (Chiến) | Thêm `evidence/interviews/P1.md` (đủ câu 1–9) và `P3.md` (chỉ câu 3); cập nhật bảng P1–P3, mục 4–5 của `evidence/summary.md`: 2/3 khách gặp thiếu món trong tháng, cả 3 tìm tới quán trước, giả thuyết đổi một phần. | Issue #3: phỏng vấn ≥3 khách ngoài nhóm, hỏi chuyện 1 tháng qua. |
 
+Cập nhật ngày 28/11 sau pull 7374c83: bổ sung điểm nháp lượt 3, đối chiếu P1–P3 và khai báo AI. Điểm chờ người duyệt.
+
 Cập nhật hồ sơ ngày 28/11: bổ sung video và kết quả lượt 1 do Trung soát vào `slides/CP3.md`.
+
+Ngày 28/11: ghi nhận phiếu Thịnh cho 5 đầu ra lượt 2, đối chiếu khớp 5/5 với Trung; tổng hợp hồ sơ CP4.
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý - không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
